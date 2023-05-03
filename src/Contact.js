@@ -6,7 +6,7 @@ const Contact = () => {
     return (
         <div>
             <Typography variant="h5" sx={{ mb: 1 }} textAlign="center">
-                Jordan Rudman (jrud25@vt.edu)
+                Jordan Rudman (jrud25@outlook.com)
             </Typography>
         </div>
     );
