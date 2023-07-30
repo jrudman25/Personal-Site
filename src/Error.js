@@ -25,7 +25,7 @@ const Error = () => {
                         </Typography>
                     </Typography>
                     <Typography variant="h4" sx={{ mb: 1, marginTop: 4 }} textAlign="left" color="white">
-                        You can return to our homepage by clicking{' '}
+                        You can return to the homepage by clicking{' '}
                         <Link to="/" style={{ color: '#fff', textDecoration: 'underline' }}>here</Link>.
                     </Typography>
                 </Box>

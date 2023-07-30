@@ -1,6 +1,17 @@
 import React from 'react';
 import { Typography, Box } from '@mui/material';
 import self from './img/myself.jpg';
+import {styled} from "@mui/material/styles";
+
+const fadeInAnimation = {
+    from: { opacity: 0, transform: 'translateY(20px)' },
+    to: { opacity: 1, transform: 'translateY(0)' },
+};
+
+const AnimatedBox = styled(Box)(({ theme }) => ({
+    animation: `fadeIn 1s ${theme.transitions.easing.easeInOut}`,
+    '@keyframes fadeIn': fadeInAnimation,
+}));
 
 const About = () => {
     return (
@@ -14,7 +25,7 @@ const About = () => {
                 />
             </div>
             <div style={{ flex: '1' }}>
-                <Box sx={{ marginTop: '1rem', marginRight: '7rem' }}>
+                <AnimatedBox sx={{ marginTop: '1rem', marginRight: '7rem' }}>
                     <Typography
                         variant="h4"
                         sx={{ mb: 1, marginTop: 4 }}
@@ -34,7 +45,7 @@ const About = () => {
                         sx={{ mb: 1 }}
                         color="white"
                     >
-                        I'm Jordan Rudman, a new grad Software Engineer/UX Designer currently based out of Charleston,
+                        I'm Jordan Rudman, a new grad Software Engineer & UI/UX Designer currently based out of Charleston,
                         South Carolina.
                     </Typography>
                     <Typography
@@ -62,7 +73,7 @@ const About = () => {
                             Spotify
                         </a>!
                     </Typography>
-                </Box>
+                </AnimatedBox>
             </div>
         </div>
     );

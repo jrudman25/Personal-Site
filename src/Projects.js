@@ -1,32 +1,20 @@
 import React from 'react';
-import { Typography, Box, Paper, Link, styled } from '@mui/material';
+import { Box, styled } from '@mui/material';
 
-const ProjectCardContainer = styled(Paper)(({ theme }) => ({
+const ProjectContainer = styled(Box)(({ theme }) => ({
+    width: '100%',
+    maxWidth: '400px', // Adjust the maximum width of each project
     padding: theme.spacing(2),
-    marginBottom: theme.spacing(2),
-    '&:last-child': {
-        marginBottom: 0,
+    marginBottom: theme.spacing(2), // Add some space between projects
+    backgroundColor: '#f0f0f0', // Adjust the background color of each project
+    borderRadius: '8px', // Adjust the border radius of each project
+    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', // Adjust the box shadow of each project
+    animation: 'fadeIn 1s ease-in-out', // Apply the fadeIn animation to each project
+    '@keyframes fadeIn': {
+        from: { opacity: 0, transform: 'translateY(20px)' },
+        to: { opacity: 1, transform: 'translateY(0)' },
     },
 }));
-
-const ProjectCard = ({ project, isLeft }) => (
-    <ProjectCardContainer elevation={3}>
-        <Typography variant="h5" gutterBottom>
-            {project.title}
-        </Typography>
-        <Typography variant="body1" gutterBottom>
-            {project.description}
-        </Typography>
-        <Typography variant="subtitle1" gutterBottom>
-            Technologies used: {project.technologies}
-        </Typography>
-        <Typography variant="subtitle2">
-            <Link href={project.link} target="_blank" rel="noopener noreferrer" underline="hover">
-                View project
-            </Link>
-        </Typography>
-    </ProjectCardContainer>
-);
 
 const Projects = () => {
     const projectData = [
@@ -46,14 +34,13 @@ const Projects = () => {
         {
             title: 'ATLAS Finances',
             description: 'Desc',
-            technologies: 'Technologies used: React, Firebase, etc.',
+            technologies: 'JavaScript, Python, CSS',
             link: 'https://atlas-finances-link.com/',
         },
         {
             title: 'WeatherNow',
             description: 'Desc',
             technologies: 'HTML, CSS, JavaScript, OpenWeatherMap API',
-            link: 'https://weathernow-link.com/',
         },
         {
             title: 'CAMP',
@@ -65,22 +52,23 @@ const Projects = () => {
             title: 'TechDaddy',
             description: 'Desc',
             technologies: 'Figma, ',
-            link: 'https://daddy-project-link.com/',
         },
     ];
 
-    return (
-        <Box my={4}>
-            <Typography variant="h4" textAlign="center" color="primary" mb={4}>
-                Here are some of my projects.
-            </Typography>
 
+    return (
+        <Box display="flex" flexDirection="column" alignItems="center" style={{ flexGrow: 1 }}>
             {projectData.map((project, index) => (
-                <ProjectCard
-                    key={index}
-                    project={project}
-                    isLeft={index % 2 === 0} // Alternating sides
-                />
+                <ProjectContainer key={index}>
+                    <h2>{project.title}</h2>
+                    <p>{project.description}</p>
+                    <p>Technologies used: {project.technologies}</p>
+                    {project.link && (
+                        <a href={project.link} target="_blank" rel="noopener noreferrer">
+                            View project
+                        </a>
+                    )}
+                </ProjectContainer>
             ))}
         </Box>
     );

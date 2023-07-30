@@ -17,7 +17,7 @@ const NavBar = () => {
                     alignItems: 'center',
                     backgroundColor: 'transparent',
                     zIndex: 9999,
-                    padding: '55px',
+                    padding: '60px',
                 }}
             >
                 <Box style={{ flex: 1 }}>
@@ -37,8 +37,8 @@ const NavBar = () => {
                     <Link to="/about" style={{ textDecoration: 'none', marginRight: '20px' }}>
                         <Typography style={{ color: '#fff' }}>About</Typography>
                     </Link>
-                    <Link to="/contact" style={{ textDecoration: 'none' }}>
-                        <Typography style={{ color: '#fff' }}>Contact</Typography>
+                    <Link to="/resume" style={{ textDecoration: 'none' }}>
+                        <Typography style={{ color: '#fff' }}>Resumé</Typography>
                     </Link>
                 </Box>
             </Nav>

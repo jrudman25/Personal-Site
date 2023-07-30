@@ -1,4 +1,6 @@
 # Jordan Rudman personal website
 
-Created using React, Tailwind, and MUI.
+Designed with Figma and Canva.
+
+Created using React, MUI, Tailwind, and Framer.
 
