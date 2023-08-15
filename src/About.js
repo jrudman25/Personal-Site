@@ -21,7 +21,7 @@ const About = () => {
                     src={self}
                     className="list-icon"
                     style={{ width: 'auto', height: '550px' }}
-                    alt="a picture of myself sitting on a bench in front of some trees"
+                    alt="myself sitting on a bench in front of some trees"
                 />
             </div>
             <div style={{ flex: '1' }}>

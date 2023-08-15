@@ -1,5 +1,12 @@
 import React from 'react';
 import { Box, styled } from '@mui/material';
+/**
+import camp from './img/camp.jpg';
+import techdaddy from './img/techdaddy.jpg';
+import bucketlist from './img/bucketlist.jpg';
+import atlas from './img/atlas.jpg';
+import spirestats from './img/spirestats.jpg';
+ **/
 
 const ProjectContainer = styled(Box)(({ theme }) => ({
     width: '100%',
@@ -21,38 +28,59 @@ const Projects = () => {
         {
             title: 'Hokie Bucket List',
             description:
-                'A mobile-optimized website to incentivize all kinds of people to explore local hikes and the Virginia Tech campus. This was my senior capstone project that won 2nd place at the Virginia Tech Undergraduate Research in Computer Science (VTURCS) symposium.',
-            technologies: 'React, MUI, Firebase',
+                'A symposium-winning app for Virginia Tech students & Blacksburg locals to discover the great ' +
+                'outdoors at a difficulty level that\'s right for them.',
+            technologies: 'React, MUI, Firebase, Firestore',
+            //icon: bucketlist,
             link: 'https://bucketlist-90b4c.web.app/',
+            repo: 'https://github.com/jrudman25/FitEx-Bucket-List',
         },
         {
             title: 'Slay the Spire Stats',
-            description: 'Desc',
+            description: 'A personalized website for players of the desktop game Slay the Spire to keep track of ' +
+                'stats from their runs.',
+            //icon: spirestats,
             technologies: 'React, Python, SQL, Firebase, Flask',
-            link: 'https://slay-the-spire-stats-link.com/',
+            link: 'https://slaythespirestats.web.app/',
+            repo: 'https://github.com/jrudman25/DBMS',
         },
         {
             title: 'ATLAS Finances',
-            description: 'Desc',
-            technologies: 'JavaScript, Python, CSS',
-            link: 'https://atlas-finances-link.com/',
-        },
-        {
-            title: 'WeatherNow',
-            description: 'Desc',
-            technologies: 'HTML, CSS, JavaScript, OpenWeatherMap API',
+            description: 'An app to track and predict the performance of cryptocurrencies using data from ' +
+                'Yahoo\'s Finance API and machine learning. Created as part of a winning project at VT Hacks IX. ',
+            technologies: 'HTML, CSS, JavaScript, JQuery, Python, Prophet, RESTful API, Google Cloud Compute Engine ',
+            //icon: atlas,
+            video: 'https://www.youtube.com/watch?v=jt1Fnz99XYw&ab_channel=JordanRudman',
+            repo: 'https://github.com/jrudman25/ATLAS-Finances',
         },
         {
             title: 'CAMP',
-            description: 'Desc',
+            description: 'CAMP is a team design project that covered the entire lifecycle of an idea: ideation, ' +
+                'design, prototyping, and evaluation. The idea of CAMP was to provide a user-friendly mobile app to ' +
+                'connect local communities and combat isolation. Users would be able to plan, run, and attend events ' +
+                'in their area and get rewarded for doing so. Please see the GitHub repository below for access to ' +
+                'our complete collection of documents we drew up to create and share our project. ',
+            //icon: camp,
             technologies: 'Figma, Canva, Balsamiq, Marvel',
-            link: 'https://camp-project-link.com/',
+            repo: 'https://github.com/jrudman25/CAMP',
         },
         {
             title: 'TechDaddy',
-            description: 'Desc',
+            description: 'TechDaddy is a tool designed to empower everybody to make informed choices on their next' +
+                'electronics purchase, no matter their level of technical knowledge.',
+            //icon: techdaddy,
             technologies: 'Figma, ',
+            repo: 'https://github.com/Sarang-R-119/Tech-Daddy',
         },
+        /**
+        {
+            title: 'Listle',
+            description: '',
+            icon: '',
+            technologies: '',
+            repo: '',
+        },
+         **/
     ];
 
 
@@ -60,12 +88,17 @@ const Projects = () => {
         <Box display="flex" flexDirection="column" alignItems="center" style={{ flexGrow: 1 }}>
             {projectData.map((project, index) => (
                 <ProjectContainer key={index}>
-                    <h2>{project.title}</h2>
+                    <h1>{project.title}</h1>
                     <p>{project.description}</p>
                     <p>Technologies used: {project.technologies}</p>
                     {project.link && (
                         <a href={project.link} target="_blank" rel="noopener noreferrer">
                             View project
+                        </a>
+                    )}
+                    {project.repo && (
+                        <a href={project.repo} target="_blank" rel="noopener noreferrer">
+                            View repository
                         </a>
                     )}
                 </ProjectContainer>

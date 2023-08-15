@@ -7,7 +7,6 @@ import Home from './Home';
 import Error from './Error';
 import About from './About';
 import Resume from './Resume';
-import './App.css';
 
 function App() {
     const [loadingComplete, setLoadingComplete] = useState(false);
