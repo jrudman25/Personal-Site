@@ -1,7 +1,7 @@
 /**
  * NavBar.js
  * The navigation bar at the top of the screen with my logo and links to other pages.
- * @version 2023.08.20
+ * @version 2023.08.21
  */
 import React from 'react';
 import { Box, Typography } from '@mui/material';
@@ -26,18 +26,14 @@ const NavBar = () => {
                     padding: '60px',
                 }}
             >
-                <Box style={{ flex: 1 }}>
-                    <Link to="/">
-                        <div style={{ height: '50px' }}>
-                            <img
-                                src={myLogo}
-                                className="list-icon"
-                                style={{ width: 'auto', height: '100%' }}
-                                alt="the letters J and R as a circle logo"
-                            />
-                        </div>
-                    </Link>
-                </Box>
+                <Link to="/">
+                    <img
+                        src={myLogo}
+                        className="list-icon"
+                        style={{ height: '50px', width: '53px' }}
+                        alt="the letters J and R as a circle logo"
+                    />
+                </Link>
 
                 <Box style={{ display: 'flex', alignItems: 'center' }}>
                     <Link to="/about" style={{ textDecoration: 'none', marginRight: '20px' }}>

@@ -1,7 +1,7 @@
 /**
  * Home.js
  * The main page of the site. Contains a greeting, an intro, a skills section, and a project showcase.
- * @version 2023.08.20
+ * @version 2023.08.21
  */
 import React, { useState, useEffect } from "react";
 import { Typography, Box, Link, Paper } from "@mui/material";
@@ -88,7 +88,7 @@ const Home = () => {
 
     return (
         <Box style={{ height: '100%', overflowY: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <AnimatedBox sx={{ marginTop: '5rem', textAlign: 'center', overflow: 'hidden' }}>
+            <AnimatedBox sx={{ marginTop: '4rem', textAlign: 'center', overflow: 'hidden' }}>
                 <div style={{ height: '100px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                     <Typography
                         variant="h1" // this has no effect on font size, see !test-#xl in className below

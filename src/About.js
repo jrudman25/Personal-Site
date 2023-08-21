@@ -1,12 +1,12 @@
 /**
  * About.js
  * My about page. Includes information about myself as well as a photo.
- * @version 2023.08.20
+ * @version 2023.08.21
  */
 import React from 'react';
 import { Typography, Box } from '@mui/material';
 import self from './img/myself.jpg';
-import {styled} from "@mui/material/styles";
+import { styled } from "@mui/material/styles";
 
 const fadeInAnimation = {
     from: { opacity: 0, transform: 'translateY(20px)' },
@@ -20,20 +20,22 @@ const AnimatedBox = styled(Box)(({ theme }) => ({
 
 const About = () => {
     return (
-        <div style={{ display: 'flex', justifyContent: 'center', marginTop: '3rem', marginLeft: '8rem' }}>
-            <div style={{ flex: '0 0 40%' }}>
+        <Box display="flex" justifyContent="center" alignItems="flex-start" padding="3rem 6rem" style={{
+            height: '100%',
+        }}>
+            <Box flex="0 0 30%" marginRight="7rem" display="flex" alignItems="center" style={{ border: '1px solid white' }}>
                 <img
                     src={self}
                     className="list-icon"
-                    style={{ width: 'auto', height: '550px' }}
+                    style={{ width: '100%', height: 'auto', display: 'block' }}
                     alt="myself sitting on a bench in front of some trees"
                 />
-            </div>
-            <div style={{ flex: '1' }}>
-                <AnimatedBox sx={{ marginTop: '1rem', marginRight: '7rem' }}>
+            </Box>
+            <AnimatedBox flex="1" display="flex" flexDirection="column">
+                <Box marginRight= "3rem">
                     <Typography
                         variant="h4"
-                        sx={{ mb: 1, marginTop: 4 }}
+                        sx={{ mb: 1 }}
                         color="white"
                     >
                         Hi! Thanks for checking out my site.
@@ -78,9 +80,9 @@ const About = () => {
                             Spotify
                         </a>!
                     </Typography>
-                </AnimatedBox>
-            </div>
-        </div>
+                </Box>
+            </AnimatedBox>
+        </Box>
     );
 };
 

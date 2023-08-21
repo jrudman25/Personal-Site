@@ -28,7 +28,7 @@ function App() {
                 <Router>
                     <Box style={{ height: '100vh', overflowY: 'auto', display: 'flex', flexDirection: 'column' }}>
                         <NavBar />
-                        <Box style={{ flexGrow: 1, paddingTop: '70px' }}>
+                        <Box style={{ flexGrow: 1, paddingTop: '120px' }}>
                             <Routes>
                                 <Route exact path="/" element={<Home />} />
                                 <Route path="/about" element={<About />} />
