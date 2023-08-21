@@ -1,8 +1,14 @@
+/**
+ * NavBar.js
+ * The navigation bar at the top of the screen with my logo and links to other pages.
+ * @version 2023.08.20
+ */
 import React from 'react';
 import { Box, Typography } from '@mui/material';
 import { Nav } from './NavBarElement';
 import { Link } from 'react-router-dom';
 import myLogo from './img/JRlogo4.png';
+import './NavBar.css'
 
 const NavBar = () => {
     return (
@@ -35,10 +41,10 @@ const NavBar = () => {
 
                 <Box style={{ display: 'flex', alignItems: 'center' }}>
                     <Link to="/about" style={{ textDecoration: 'none', marginRight: '20px' }}>
-                        <Typography style={{ color: '#fff' }}>About</Typography>
+                        <Typography className="nav">About</Typography>
                     </Link>
                     <Link to="/resume" style={{ textDecoration: 'none' }}>
-                        <Typography style={{ color: '#fff' }}>Resumé</Typography>
+                        <Typography className="nav">Resumé</Typography>
                     </Link>
                 </Box>
             </Nav>

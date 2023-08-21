@@ -1,3 +1,8 @@
+/**
+ * Error.js
+ * Handles display when users navigate to a route that doesn't exist.
+ * @version 2023.08.20
+ */
 import React from 'react';
 import { Typography, Box } from '@mui/material';
 import { Link } from 'react-router-dom';

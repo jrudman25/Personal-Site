@@ -1,3 +1,8 @@
+/**
+ * Resume.js
+ * Handles the loading and display of my resume.
+ * @version 2023.08.20
+ */
 import React from 'react';
 import { pdfjs, Document, Page } from 'react-pdf';
 

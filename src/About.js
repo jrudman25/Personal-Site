@@ -1,3 +1,8 @@
+/**
+ * About.js
+ * My about page. Includes information about myself as well as a photo.
+ * @version 2023.08.20
+ */
 import React from 'react';
 import { Typography, Box } from '@mui/material';
 import self from './img/myself.jpg';

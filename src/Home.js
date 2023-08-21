@@ -1,8 +1,15 @@
+/**
+ * Home.js
+ * The main page of the site. Contains a greeting, an intro, a skills section, and a project showcase.
+ * @version 2023.08.20
+ */
 import React, { useState, useEffect } from "react";
 import { Typography, Box, Link, Paper } from "@mui/material";
 import { GitHub, LinkedIn, Twitter, Email, Code, DesignServices } from '@mui/icons-material';
 import { styled } from '@mui/material/styles';
+import './Home.css';
 import Projects from './Projects';
+import skyline from './img/skyline.png'
 
 const languages = ["Hello", "Hola", "Bonjour", "こんにちは", "안녕하세요", "Ciao"];
 
@@ -23,11 +30,11 @@ const skills = [
         subSections: [
             {
                 title: 'Things I Enjoy Designing',
-                items: 'UX, UI, Web, Apps, Logos',
+                items: 'UX, UI, Websites, Web Apps, Mobile',
             },
             {
                 title: 'Design & Planning Tools',
-                items: 'Figma, Canva, Coolors, Lucidchart',
+                items: 'Figma, Canva, Coolors, Marvel, Balsamiq, Lucidchart',
             },
         ],
     },
@@ -41,7 +48,7 @@ const skills = [
             },
             {
                 title: 'Dev Tools',
-                items: 'VS Code, WebStorm, GitHub, Firebase, Framer',
+                items: 'VS Code, WebStorm, GitHub, Firebase, Framer, Better Stack',
             },
         ],
     },
@@ -101,16 +108,16 @@ const Home = () => {
                 </Typography>
                 <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: '1rem', marginBottom: '2rem' }}>
                     <Link href="https://github.com/jrudman25" target="_blank" rel="noopener noreferrer">
-                        <GitHub sx={{ fontSize: 36, color: 'white', marginRight: '1rem' }} />
+                        <GitHub className="social-icon" sx={{ fontSize: 36, color: 'white', marginRight: '1rem' }} />
                     </Link>
                     <Link href="https://www.linkedin.com/in/jordan-rudman/" target="_blank" rel="noopener noreferrer">
-                        <LinkedIn sx={{ fontSize: 36, color: 'white', marginRight: '1rem' }} />
+                        <LinkedIn className="social-icon" sx={{ fontSize: 36, color: 'white', marginRight: '1rem' }} />
                     </Link>
                     <Link href="https://twitter.com/jrudman25" target="_blank" rel="noopener noreferrer">
-                        <Twitter sx={{ fontSize: 36, color: 'white', marginRight: '1rem' }} />
+                        <Twitter className="social-icon" sx={{ fontSize: 36, color: 'white', marginRight: '1rem' }} />
                     </Link>
                     <Link href="mailto:your.jrud25@outlook.com" >
-                        <Email sx={{ fontSize: 36, color: 'white' }} />
+                        <Email className="social-icon" sx={{ fontSize: 36, color: 'white' }} />
                     </Link>
                 </Box>
                 <Typography
@@ -121,26 +128,36 @@ const Home = () => {
                         maxWidth: '800px',
                         marginLeft: 'auto',
                         marginRight: 'auto',
-                        fontSize: '1.2rem', // Adjust the font size as needed
+                        fontSize: '1.2rem',
                     }}
                 >
-                    Hi there! I'm Jordan, a passionate Software Engineer and UI/UX Designer with a mission to create
-                    meaningful and user-centric digital experiences. With a background in Computer Science and a knack
-                    for design, I bridge the gap between aesthetics and functionality. My goal is to craft innovative
-                    solutions that delight users and solve real-world problems.
+                    Hi there! I'm Jordan, a dedicated Software Engineer and UI/UX Designer that's all about crafting
+                    digital experiences that truly matter to users. Armed with a Computer Science background and an eye
+                    for design, I aim to fuse aesthetics with functionality. My goal is to craft innovative solutions
+                    that delight users and solve real-world problems.
                 </Typography>
-
-                <Paper elevation={3} sx={{ padding: '2rem', width: '100%', maxWidth: '800px', marginBottom: '3rem' }}>
+                <img
+                    src={skyline}
+                    style={{ width: '100%', height: 'auto' }}
+                    className="decoration"
+                    alt="a city skyline"
+                />
+                <Paper elevation={3} sx={{ padding: '2rem', width: '100%', marginTop: '2rem', marginBottom: '3rem' }}>
                     <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'flex-start', marginTop: '2rem' }}>
-                        {skills.map((skillCategory) => (
-                            <Box key={skillCategory.title} sx={{ flex: 1, padding: '1rem', textAlign: 'center' }}>
+                        {skills.map((skillCategory, index) => (
+                            <Box key={skillCategory.title} sx={{
+                                flex: 1,
+                                padding: '1rem',
+                                textAlign: 'center',
+                                borderRight: index === 0 ? '1px solid #03003D' : 'none' }}
+                            >
                                 {React.createElement(skillCategory.icon, { sx: { fontSize: '4rem', color: '#03003D' } })}
                                 <Typography variant="h5" color="black" sx={{ marginBottom: '1rem', marginTop: '0.5rem' }}>
                                     {skillCategory.title}
                                 </Typography>
                                 {skillCategory.subSections.map((subSection) => (
                                     <Box key={subSection.title} sx={{ marginBottom: '1rem' }}>
-                                        <Typography variant="subtitle1" color="primary" sx={{ marginBottom: '0.5rem' }}>
+                                        <Typography variant="subtitle1" color="#060070" sx={{ marginBottom: '0.5rem' }}>
                                             {subSection.title}
                                         </Typography>
                                         {subSection.title === 'Things I Enjoy Designing' ||
@@ -164,12 +181,29 @@ const Home = () => {
                 <Typography
                     variant="h4"
                     color="white"
-                    sx={{ marginTop: '3rem', marginBottom: '1rem' }}
+                    sx={{ marginTop: '3rem', marginBottom: '0.5rem' }}
                 >
-                Check out some of my projects below:
-            </Typography>
+                    My Recent Work
+                </Typography>
+                <Typography
+                    variant="h6"
+                    color="white"
+                    sx={{ marginTop: '0.5rem', marginBottom: '3rem' }}
+                >
+                    Here are some past projects I've worked on. Interested in seeing more? See my
+                    {" "}
+                    <a href="https://github.com/jrudman25" target="_blank" rel="noopener noreferrer" style={{ textDecoration: "underline" }}>
+                        GitHub
+                    </a> or
+                    {" "}
+                    <a href="mailto:your.jrud25@outlook.com" target="_blank" rel="noopener noreferrer" style={{ textDecoration: "underline" }}>
+                        email
+                    </a> me.
+                </Typography>
             </AnimatedBox>
-            <Projects style={{ flex: 1 }} />
+            <Box sx={{ flexGrow: 1 }}>
+                <Projects />
+            </Box>
         </Box>
     );
 };

@@ -1,4 +1,8 @@
-/* src/styles.css */
+/**
+ * styles.css
+ * Tailwind css controls
+ * @version 2023.08.20
+ */
 body {
     background-color: #03003D;
     overflow: hidden;
