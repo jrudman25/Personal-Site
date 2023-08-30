@@ -1,7 +1,7 @@
 /**
  * About.js
  * My about page. Includes information about myself as well as a photo.
- * @version 2023.08.21
+ * @version 2023.08.30
  */
 import React from 'react';
 import { Typography, Box } from '@mui/material';
@@ -76,7 +76,8 @@ const About = () => {
                         color="white"
                     >
                         I love sports, mechanical keyboards, and music- particularly rock. Add me on {" "}
-                        <a href="https://open.spotify.com/user/elementx25" target="_blank" rel="noopener noreferrer" style={{ textDecoration: "underline" }}>
+                        <a href="https://open.spotify.com/user/elementx25" target="_blank" rel="noopener noreferrer"
+                           style={{ textDecoration: "underline" }}>
                             Spotify
                         </a>!
                     </Typography>

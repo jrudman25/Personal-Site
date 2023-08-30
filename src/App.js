@@ -1,7 +1,7 @@
 /**
  * App.js
  * Handles loading and routing for the site.
- * @version 2023.08.20
+ * @version 2023.08.21
  */
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';

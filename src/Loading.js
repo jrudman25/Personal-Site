@@ -1,12 +1,13 @@
 /**
  * Loading.js
  * Handles the animation that plays when you first visit the site.
- * @version 2023.08.20
+ * @version 2023.08.30
  */
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 
 const Loading = ({ onLoadingComplete }) => {
+
     const [loadingComplete, setLoadingComplete] = useState(false);
 
     useEffect(() => {
@@ -16,7 +17,7 @@ const Loading = ({ onLoadingComplete }) => {
 
         setTimeout(() => {
             onLoadingComplete();
-        }, 5000);
+        }, 4250);
     }, [onLoadingComplete]);
 
     return (
@@ -70,7 +71,7 @@ const Loading = ({ onLoadingComplete }) => {
                         strokeLinecap="round"
                         initial={{ pathLength: 0 }}
                         animate={{ pathLength: 1 }}
-                        transition={{ duration: 2.25, ease: 'easeInOut' }}
+                        transition={{ duration: 2, ease: 'easeInOut' }}
                     />
                 </motion.svg>
             )}

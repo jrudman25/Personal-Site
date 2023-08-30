@@ -1,7 +1,7 @@
 /**
  * Home.js
  * The main page of the site. Contains a greeting, an intro, a skills section, and a project showcase.
- * @version 2023.08.21
+ * @version 2023.08.30
  */
 import React, { useState, useEffect } from "react";
 import { Typography, Box, Link, Paper } from "@mui/material";
@@ -87,7 +87,7 @@ const Home = () => {
     }, [languageIndex]);
 
     return (
-        <Box style={{ height: '100%', overflowY: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        <Box style={{ height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <AnimatedBox sx={{ marginTop: '4rem', textAlign: 'center', overflow: 'hidden' }}>
                 <div style={{ height: '100px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                     <Typography
@@ -192,11 +192,13 @@ const Home = () => {
                 >
                     Here are some past projects I've worked on. Interested in seeing more? See my
                     {" "}
-                    <a href="https://github.com/jrudman25" target="_blank" rel="noopener noreferrer" style={{ textDecoration: "underline" }}>
+                    <a href="https://github.com/jrudman25" target="_blank" rel="noopener noreferrer"
+                       style={{ textDecoration: "underline" }}>
                         GitHub
                     </a> or
                     {" "}
-                    <a href="mailto:your.jrud25@outlook.com" target="_blank" rel="noopener noreferrer" style={{ textDecoration: "underline" }}>
+                    <a href="mailto:your.jrud25@outlook.com" target="_blank" rel="noopener noreferrer"
+                       style={{ textDecoration: "underline" }}>
                         email
                     </a> me.
                 </Typography>

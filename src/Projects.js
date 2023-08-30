@@ -1,7 +1,7 @@
 /**
  * Projects.js
  * Handles the projects showcase section on the home page.
- * @version 2023.08.20
+ * @version 2023.08.30
  */
 import React from 'react';
 import { Box, styled } from '@mui/material';
@@ -66,6 +66,7 @@ const ProjectTitleOverlay = styled('div')({
     left: 0,
     width: '100%',
     zIndex: 1,
+    pointerEvents: 'none',
 });
 
 const ProjectIcon = styled('img')({
