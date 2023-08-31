@@ -11,13 +11,20 @@ const Loading = ({ onLoadingComplete }) => {
     const [loadingComplete, setLoadingComplete] = useState(false);
 
     useEffect(() => {
-        setTimeout(() => {
-            setLoadingComplete(true);
-        }, 2750);
+        const animationShown = sessionStorage.getItem('animationShown');
 
-        setTimeout(() => {
+        if (!animationShown) {
+            setTimeout(() => {
+                setLoadingComplete(true);
+            }, 2750);
+
+            setTimeout(() => {
+                sessionStorage.setItem('animationShown', 'true');
+                onLoadingComplete();
+            }, 4250);
+        } else {
             onLoadingComplete();
-        }, 4250);
+        }
     }, [onLoadingComplete]);
 
     return (

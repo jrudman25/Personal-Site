@@ -1,16 +1,24 @@
 /**
  * NavBar.js
  * The navigation bar at the top of the screen with my logo and links to other pages.
- * @version 2023.08.21
+ * @version 2023.08.30
  */
 import React from 'react';
 import { Box, Typography } from '@mui/material';
 import { Nav } from './NavBarElement';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom'; // Import useLocation
 import myLogo from './img/JRlogo4.png';
-import './NavBar.css'
+import './NavBar.css';
 
 const NavBar = () => {
+    const location = useLocation();
+
+    const handleLogoClick = () => {
+        if (location.pathname === '/') {
+            window.location.reload();
+        }
+    };
+
     return (
         <>
             <Nav
@@ -26,7 +34,7 @@ const NavBar = () => {
                     padding: '60px',
                 }}
             >
-                <Link to="/">
+                <Link to="/" onClick={handleLogoClick}> {/* Attach onClick handler */}
                     <img
                         src={myLogo}
                         className="list-icon"
