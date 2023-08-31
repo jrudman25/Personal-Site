@@ -1,0 +1,13 @@
+/**
+ * Home.css
+ * Styles the social icons on the home page.
+ * @version 2023.08.20
+ */
+.social-icon {
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icon:hover {
+    color: #FFA500;
+    transform: scale(1.1);
+}
