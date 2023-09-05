@@ -13,6 +13,7 @@
     "@testing-library/user-event": "^13.5.0",
     "firebase": "^9.21.0",
     "framer-motion": "^10.13.0",
+    "identity-obj-proxy": "^3.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.8.0",
@@ -46,5 +47,14 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.22.14",
+    "@babel/preset-react": "^7.22.5",
+    "babel-jest": "^29.6.4",
+    "jest-transform-stub": "^2.0.0",
+    "jsdom": "^22.1.0",
+    "jsdom-global": "^3.0.2",
+    "text-encoding-utf-8": "^1.0.2"
   }
 }

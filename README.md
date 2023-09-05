@@ -4,3 +4,4 @@ Designed with Figma and Canva.
 
 Created using React, MUI, Tailwind, Framer, React Router, and Styled Components.
 
+Tested with Jest and jsdom.
