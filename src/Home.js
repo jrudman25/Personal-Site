@@ -1,15 +1,16 @@
 /**
  * Home.js
  * The main page of the site. Contains a greeting, an intro, a skills section, and a project showcase.
- * @version 2023.08.30
+ * @version 2023.09.05
  */
 import React, { useState, useEffect } from "react";
-import { Typography, Box, Link, Paper } from "@mui/material";
-import { GitHub, LinkedIn, Twitter, Email, Code, DesignServices } from '@mui/icons-material';
+import { Typography, Box, Paper } from "@mui/material";
+import { Code, DesignServices } from '@mui/icons-material';
 import { styled } from '@mui/material/styles';
-import './Home.css';
 import Projects from './Projects';
-import skyline from './img/skyline.png'
+import Socials from './Socials';
+import Contact from './Contact';
+import skyline from './img/skyline.png';
 
 const languages = ["Hello", "Hola", "Bonjour", "こんにちは", "안녕하세요", "Ciao"];
 
@@ -106,20 +107,7 @@ const Home = () => {
                 >
                     Designer, developer, & creator
                 </Typography>
-                <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: '1rem', marginBottom: '2rem' }}>
-                    <Link href="https://github.com/jrudman25" target="_blank" rel="noopener noreferrer">
-                        <GitHub className="social-icon" sx={{ fontSize: 36, color: 'white', marginRight: '1rem' }} />
-                    </Link>
-                    <Link href="https://www.linkedin.com/in/jordan-rudman/" target="_blank" rel="noopener noreferrer">
-                        <LinkedIn className="social-icon" sx={{ fontSize: 36, color: 'white', marginRight: '1rem' }} />
-                    </Link>
-                    <Link href="https://twitter.com/jrudman25" target="_blank" rel="noopener noreferrer">
-                        <Twitter className="social-icon" sx={{ fontSize: 36, color: 'white', marginRight: '1rem' }} />
-                    </Link>
-                    <Link href="mailto:your.jrud25@outlook.com" >
-                        <Email className="social-icon" sx={{ fontSize: 36, color: 'white' }} />
-                    </Link>
-                </Box>
+                <Socials />
                 <Typography
                     variant="body1"
                     color="white"
@@ -206,6 +194,9 @@ const Home = () => {
             <Box sx={{ flexGrow: 1 }}>
                 <Projects />
             </Box>
+            {/*<Box >
+                <Contact />
+            </Box>*/}
         </Box>
     );
 };
