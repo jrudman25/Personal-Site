@@ -32,7 +32,8 @@ const Contact = () => {
                     </Box>
                     <Box flex={3} mr={12}>
                         <Typography variant="body1" gutterBottom sx={{ textAlign: 'center' }}>
-                            Want to collaborate on a project, discuss employment opportunities, or just say hey? Let's chat.
+                            Want to collaborate on a project, discuss employment opportunities, or just say hey? I'm
+                            always up for it. Let's chat.
                         </Typography>
                     </Box>
                     <Box flex={1} display="flex" alignItems="center">
@@ -42,7 +43,7 @@ const Contact = () => {
                             sx={{ mt: 2, height: 'fit-content' }}
                         >
                             <Typography variant="body1" noWrap>
-                                Click here
+                                Let's do it
                             </Typography>
                         </StyledButton>
                     </Box>

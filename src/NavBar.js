@@ -6,7 +6,7 @@
 import React from 'react';
 import { Box, Typography } from '@mui/material';
 import { Nav } from './NavBarElement';
-import { Link, useLocation } from 'react-router-dom'; // Import useLocation
+import { Link, useLocation } from 'react-router-dom';
 import myLogo from './img/JRlogo4.png';
 import './NavBar.css';
 

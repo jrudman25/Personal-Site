@@ -1,28 +1,18 @@
 /**
  * Home.js
  * The main page of the site. Contains a greeting, an intro, a skills section, and a project showcase.
- * @version 2023.09.05
+ * @version 2023.09.07
  */
 import React, { useState, useEffect } from "react";
 import { Typography, Box, Paper } from "@mui/material";
 import { Code, DesignServices } from '@mui/icons-material';
-import { styled } from '@mui/material/styles';
 import Projects from './Projects';
 import Socials from './Socials';
 import Contact from './Contact';
+import AnimatedBox from './AnimatedBox';
 import skyline from './img/skyline.png';
 
 const languages = ["Hello", "Hola", "Bonjour", "こんにちは", "안녕하세요", "Ciao"];
-
-const fadeInAnimation = {
-    from: { opacity: 0, transform: 'translateY(20px)' },
-    to: { opacity: 1, transform: 'translateY(0)' },
-};
-
-const AnimatedBox = styled(Box)(({ theme }) => ({
-    animation: `fadeIn 1s ${theme.transitions.easing.easeInOut}`,
-    '@keyframes fadeIn': fadeInAnimation,
-}));
 
 const skills = [
     {

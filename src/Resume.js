@@ -1,25 +1,15 @@
 /**
  * Resume.js
  * Handles the loading and display of my resume.
- * @version 2023.08.30
+ * @version 2023.09.07
  */
 import React from 'react';
 import { Typography, Box } from "@mui/material";
 import { pdfjs, Document, Page } from 'react-pdf';
-import {styled} from "@mui/material/styles";
+import AnimatedBox from './AnimatedBox';
 
 // shoutout Ronak Solanki on StackOverflow (https://stackoverflow.com/a/75614759) for the following line:
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
-
-const fadeInAnimation = {
-    from: { opacity: 0, transform: 'translateY(20px)' },
-    to: { opacity: 1, transform: 'translateY(0)' },
-};
-
-const AnimatedBox = styled(Box)(({ theme }) => ({
-    animation: `fadeIn 1s ${theme.transitions.easing.easeInOut}`,
-    '@keyframes fadeIn': fadeInAnimation,
-}));
 
 const date = new Date();
 const month = date.toLocaleString('default', { month: 'long' });
