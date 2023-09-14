@@ -1,14 +1,14 @@
 /**
  * Home.js
  * The main page of the site. Contains a greeting, an intro, a skills section, and a project showcase.
- * @version 2023.09.07
+ * @version 2023.09.11
  */
 import React, { useState, useEffect } from "react";
 import { Typography, Box, Paper } from "@mui/material";
 import { Code, DesignServices } from '@mui/icons-material';
 import Projects from './Projects';
 import Socials from './Socials';
-import Contact from './Contact';
+//import Contact from './Contact';
 import AnimatedBox from './AnimatedBox';
 import skyline from './img/skyline.png';
 
@@ -46,6 +46,7 @@ const skills = [
 ];
 
 const Home = () => {
+
     const [languageIndex, setLanguageIndex] = useState(0);
     const [displayedGreeting, setDisplayedGreeting] = useState("");
     const greeting = languages[languageIndex];
@@ -75,7 +76,7 @@ const Home = () => {
         return () => {
             clearTimeout(timeoutId);
         };
-    }, [languageIndex]);
+    }, [languageIndex, typeGreeting()]);
 
     return (
         <Box style={{ height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
@@ -85,7 +86,10 @@ const Home = () => {
                         variant="h1" // this has no effect on font size, see !test-#xl in className below
                         color="white"
                         className="transition duration-500 ease-in-out text-center !font-bold !text-7xl"
-                        sx={{marginBottom:'1rem'}}
+                        sx={{
+                            fontSize: { xs: '4rem', sm: '6rem' },
+                            marginBottom: '1rem',
+                        }}
                     >
                         {`${displayedGreeting}, I'm Jordan.`}
                     </Typography>
@@ -103,7 +107,8 @@ const Home = () => {
                     color="white"
                     sx={{
                         marginBottom: '3rem',
-                        maxWidth: '800px',
+                        width: '800px',
+                        maxWidth: '100%',
                         marginLeft: 'auto',
                         marginRight: 'auto',
                         fontSize: '1.2rem',
@@ -116,7 +121,7 @@ const Home = () => {
                 </Typography>
                 <img
                     src={skyline}
-                    style={{ width: '100%', height: 'auto' }}
+                    style={{ width: '100%', height: 'auto', maxWidth: '100%' }}
                     className="decoration"
                     alt="a city skyline"
                 />

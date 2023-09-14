@@ -1,9 +1,8 @@
 /**
  * AnimatedBox.js
  * The animated box I use for smooth content loading. Used in multiple files, so it's its own component. Keep it DRY.
- * @version 2023.09.07
+ * @version 2023.09.11
  */
-import React from 'react';
 import { styled } from "@mui/material/styles";
 import { Box } from '@mui/material';
 

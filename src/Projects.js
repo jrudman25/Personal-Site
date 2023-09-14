@@ -1,7 +1,7 @@
 /**
  * Projects.js
  * Handles the projects showcase section on the home page.
- * @version 2023.08.30
+ * @version 2023.09.14
  */
 import React from 'react';
 import { Box, styled } from '@mui/material';
@@ -17,6 +17,7 @@ import bucketlistBG from './img/bucketlistBG.jpg';
 import spirestatsBG from './img/spirestatsBG.jpg';
 import campBG from './img/campBG2.jpg';
 import musicBG from './img/musicBG.jpg'
+import './Projects.css';
 
 const ProjectsGrid = styled(Box)({
     display: 'grid',
@@ -27,32 +28,34 @@ const ProjectsGrid = styled(Box)({
 });
 
 const ProjectContainer = styled(Box)(({ theme }) => ({
-    width: '100%',
-    maxWidth: '600px',
-    height: '325px',
-    color: 'white',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    padding: theme.spacing(2),
-    marginBottom: theme.spacing(2),
-    backgroundColor: 'rgba(240, 240, 240, 0.9)',
-    backgroundSize: 'cover',
-    borderRadius: '8px',
-    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-    animation: 'fadeIn 1s ease-in-out',
-    transition: 'background-color 0.3s, transform 0.3s',
-    position: 'relative',
-    overflow: 'hidden',
-    '&:hover': {
-        backgroundColor: '#03003D',
-        transform: 'scale(1.05)',
-        cursor: 'pointer',
-    },
-    '@keyframes fadeIn': {
-        from: { opacity: 0, transform: 'translateY(20px)' },
-        to: { opacity: 1, transform: 'translateY(0)' },
-    },
+    '&.project-container': {
+        width: '100%',
+        maxWidth: '600px',
+        height: '325px',
+        color: 'white',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        padding: theme.spacing(2),
+        marginBottom: theme.spacing(2),
+        backgroundColor: 'rgba(240, 240, 240, 0.9)',
+        backgroundSize: 'cover',
+        borderRadius: '8px',
+        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+        animation: 'fadeIn 1s ease-in-out',
+        transition: 'background-color 0.3s, transform 0.3s',
+        position: 'relative',
+        overflow: 'hidden',
+        '&:hover': {
+            backgroundColor: '#03003D',
+            transform: 'scale(1.05)',
+            cursor: 'pointer',
+        },
+        '@keyframes fadeIn': {
+            from: {opacity: 0, transform: 'translateY(20px)'},
+            to: {opacity: 1, transform: 'translateY(0)'},
+        },
+    }
 }));
 
 const ProjectTitleOverlay = styled('div')({
@@ -189,6 +192,7 @@ const Projects = () => {
                 {projectData.map((project, index) => (
                     <ProjectContainer
                         key={index}
+                        className="project-container"
                         style={{
                             backgroundImage: `url(${project.background})`,
                         }}

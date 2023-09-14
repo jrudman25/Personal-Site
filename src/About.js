@@ -1,13 +1,13 @@
 /**
  * About.js
  * My about page. Includes information about myself as well as a photo.
- * @version 2023.09.07
+ * @version 2023.09.11
  */
 import React from 'react';
-import { Typography, Box, Grid } from '@mui/material';
+import { Typography, Grid } from '@mui/material';
 import self from './img/myself.jpg';
 import Socials from './Socials';
-import Contact from './Contact';
+//import Contact from './Contact';
 import AnimatedBox from './AnimatedBox';
 
 const About = () => {

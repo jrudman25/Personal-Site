@@ -1,10 +1,10 @@
 /**
  * Resume.js
  * Handles the loading and display of my resume.
- * @version 2023.09.07
+ * @version 2023.09.11
  */
 import React from 'react';
-import { Typography, Box } from "@mui/material";
+import { Typography } from "@mui/material";
 import { pdfjs, Document, Page } from 'react-pdf';
 import AnimatedBox from './AnimatedBox';
 
