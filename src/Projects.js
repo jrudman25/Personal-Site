@@ -10,13 +10,15 @@ import atlas from './img/atlas.png';
 import bucketlist from './img/bucketlist.png';
 import spirestats from './img/spirestats.png';
 import camp from './img/camp.png';
-import question from './img/questionmark.png'
+//import question from './img/questionmark.png'
 import techdaddyBG from './img/techdaddyBG.jpg';
 import atlasBG from './img/atlasBG.jpg';
 import bucketlistBG from './img/bucketlistBG.jpg';
 import spirestatsBG from './img/spirestatsBG.jpg';
 import campBG from './img/campBG2.jpg';
-import musicBG from './img/musicBG.jpg'
+//import musicBG from './img/musicBG.jpg'
+import weathernow from './img/weathernow.png'
+import weathernowBG from './img/weathernowBG.avif'
 import './Projects.css';
 
 const ProjectsGrid = styled(Box)({
@@ -135,16 +137,6 @@ const Projects = () => {
             repo: 'https://github.com/jrudman25/FitEx-Bucket-List',
         },
         {
-            title: 'Slay the Spire Stats',
-            description: 'A companion website for players of the PC game Slay the Spire to keep track of ' +
-                'stats from their runs and see information about other users\' runs.',
-            icon: spirestats,
-            background: spirestatsBG,
-            technologies: 'React, Python, SQL, Firebase, Flask',
-            link: 'https://slaythespirestats.web.app/',
-            repo: 'https://github.com/jrudman25/DBMS',
-        },
-        {
             title: 'ATLAS Finances',
             description: 'An app to track and predict the performance of cryptocurrencies using data from ' +
                 'Yahoo\'s Finance API and machine learning. Created as part of a winning project at VT Hacks IX. ',
@@ -153,6 +145,27 @@ const Projects = () => {
             background: atlasBG,
             video: 'https://www.youtube.com/watch?v=jt1Fnz99XYw&ab_channel=JordanRudman',
             repo: 'https://github.com/jrudman25/ATLAS-Finances',
+        },
+        {
+            title: 'WeatherNow',
+            description: 'A simple desktop weather app that displays useful up-to-date information like temperature, ' +
+                'wind strength, and humidity level. Built using the OpenWeatherMap API on top of plain HTML, CSS, ' +
+                'and JS.',
+            icon: weathernow,
+            background: weathernowBG,
+            technologies: 'RESTful API, HTML, CSS, JavaScript, Firebase',
+            link: 'https://weathernow-old.web.app/',
+            repo: 'https://github.com/jrudman25/WeatherNowOld',
+        },
+        {
+            title: 'Slay the Spire Stats',
+            description: 'A companion website for players of the PC game Slay the Spire to keep track of ' +
+                'stats from their runs and see information about other users\' runs.',
+            icon: spirestats,
+            background: spirestatsBG,
+            technologies: 'React, Python, SQL, Firebase, Flask',
+            link: 'https://slaythespirestats.web.app/',
+            repo: 'https://github.com/jrudman25/DBMS',
         },
         {
             title: 'CAMP',
@@ -174,7 +187,8 @@ const Projects = () => {
             technologies: 'Figma, ',
             repo: 'https://github.com/Sarang-R-119/Tech-Daddy',
         },
-         {
+        /**
+        {
             title: 'Listle',
             description: 'Coming soon! A game for Spotify users to put their knowledge to the test. How well do you ' +
             'really know your playlists?',
@@ -184,6 +198,7 @@ const Projects = () => {
             // link: '',
             // repo: '',
         },
+         **/
     ];
 
     return (
