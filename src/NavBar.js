@@ -1,10 +1,10 @@
 /**
  * NavBar.js
  * The navigation bar at the top of the screen with my logo and links to other pages.
- * @version 2023.09.11
+ * @version 2023.11.03
  */
 import React from 'react';
-import { Box, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 import { Nav } from './NavBarElement';
 import { Link, useLocation } from 'react-router-dom';
 import myLogo from './img/JRlogo4.png';
@@ -47,18 +47,17 @@ const NavBar = () => {
                     </Link>
                 </div>
 
-                <Box style={{ display: 'flex' }}>
-                    <div style={{ pointerEvents: 'auto' }}>
-                        <Link to="/about" style={{ textDecoration: 'none', marginRight: '20px' }}>
-                            <Typography className="nav">About</Typography>
-                        </Link>
-                    </div>
-                    <div style={{ pointerEvents: 'auto', marginLeft: '1rem' }}>
-                        <Link to="/resume" style={{ textDecoration: 'none' }}>
-                            <Typography className="nav">Resumé</Typography>
-                        </Link>
-                    </div>
-                </Box>
+                <div className="nav-links">
+                    <Link to="/about" className="nav-link">
+                        <Typography className="nav">About</Typography>
+                    </Link>
+                    <Link to="/resume" className="nav-link">
+                        <Typography className="nav">Resumé</Typography>
+                    </Link>
+                    <a href="https://dev.to/jrud25" target="_blank" rel="noopener noreferrer" className="nav-link">
+                        <Typography className="nav">Blog</Typography>
+                    </a>
+                </div>
             </Nav>
         </>
     );

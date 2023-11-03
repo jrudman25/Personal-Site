@@ -1,7 +1,7 @@
 /**
  * NavBar.css
  * Styles the words icons on the nav bar.
- * @version 2023.08.20
+ * @version 2023.11.03
  */
 .nav {
     color: white;
@@ -11,4 +11,14 @@
 .nav:hover {
     color: #FFA500;
     transform: scale(1.05);
+}
+
+.nav-links {
+    display: flex;
+    pointer-events: auto;
+}
+
+.nav-link {
+    text-decoration: none;
+    margin-right: 15px;
 }

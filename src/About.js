@@ -1,7 +1,7 @@
 /**
  * About.js
  * My about page. Includes information about myself as well as a photo.
- * @version 2023.09.11
+ * @version 2023.11.03
  */
 import React from 'react';
 import { Typography, Grid } from '@mui/material';
@@ -33,7 +33,7 @@ const About = () => {
                     </Typography>
                     <Typography variant="body1" color="white" sx={{ mb: 2, ml: 2, mr: 2.5 }}>
                         I'm Jordan Rudman, a new grad Software Engineer & UI/UX Designer currently based out of
-                        Charleston, South Carolina. Originally from New York, I've lived all over the US and have been
+                        Seattle, Washington. Originally from New York, I've lived all over the US and have been
                         coding since 7th grade. My passion lies at the intersection of software engineering,
                         UI/UX design, and web application development. I'm all about turning innovative ideas into
                         digital realities.
