@@ -1,9 +1,9 @@
 # Jordan Rudman personal website
-### This app was created using create-react-app
+### The site is hosted [here](https://rudman-portfolio.web.app/)
 
 Designed with Figma and Canva.
 
-Created using React, MUI, Tailwind, Framer, React Router, and Styled Components.
+Created using create-react-app; built on React, MUI, Tailwind, Framer, React Router, and Styled Components.
 
 Managed with Node, Webpack, ESLint, and Babel.
 
