@@ -1,7 +1,7 @@
 /**
  * Loading.js
  * Handles the animation that plays when you first visit the site.
- * @version 2023.09.11
+ * @version 2025.08.04
  */
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
@@ -21,7 +21,7 @@ const Loading = ({ onLoadingComplete }) => {
             setTimeout(() => {
                 sessionStorage.setItem('animationShown', 'true');
                 onLoadingComplete();
-            }, 4250);
+            }, 3250);
         } else {
             onLoadingComplete();
         }
