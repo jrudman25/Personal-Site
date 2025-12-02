@@ -1,7 +1,7 @@
 /**
  * Projects.js
  * Handles the projects showcase section on the home page.
- * @version 2023.09.14
+ * @version 2025.12.01
  */
 import React from 'react';
 import { Box, styled } from '@mui/material';
@@ -10,15 +10,19 @@ import atlas from './img/atlas.png';
 import bucketlist from './img/bucketlist.png';
 import spirestats from './img/spirestats.png';
 import camp from './img/camp.png';
-//import question from './img/questionmark.png'
+import question from './img/questionmark.png'
 import techdaddyBG from './img/techdaddyBG.jpg';
 import atlasBG from './img/atlasBG.jpg';
 import bucketlistBG from './img/bucketlistBG.jpg';
 import spirestatsBG from './img/spirestatsBG.jpg';
 import campBG from './img/campBG2.jpg';
-//import musicBG from './img/musicBG.jpg'
+import musicBG from './img/musicBG.jpg'
 import weathernow from './img/weathernow.png'
-import weathernowBG from './img/weathernowBG.avif'
+import weathernowBG from './img/weathernowBG.avif';
+import scoreseeker from './img/scoreseeker.png';
+import scoreseekerBG from './img/scoreseekerBG.jpg';
+import algovis from './img/algovis.png';
+import algovisBG from './img/algovisBG.webp';
 import './Projects.css';
 
 const ProjectsGrid = styled(Box)({
@@ -125,11 +129,45 @@ const ProjectOverlay = styled('div')({
 
 const Projects = () => {
     const projectData = [
+         {
+         title: 'Listle',
+         description: 'Coming soon! A game for Spotify users to put their knowledge to the test. How well do you ' +
+         'really know your playlists?',
+         icon: question,
+         background: musicBG,
+         technologies: '',
+         // link: '',
+         // repo: '',
+         },
+        {
+            title: 'ScoreSeeker',
+            description:
+                'A site for all your sports needs! Enter a team to get a detailed rundown of the team\'s history, ' +
+                'their schedule, and information about any ongoing games.',
+            technologies: 'React, MUI, Firebase, Firestore',
+            icon: scoreseeker,
+            background: scoreseekerBG,
+            link: 'https://scoreseeker-9dfa6.web.app/',
+            repo: 'https://github.com/jrudman25/ScoreSeeker',
+        },
+        {
+            title: 'AlgoVis',
+            description:
+                'An interactive app that animates how different sorting algorithms work ' +
+                'step-by-step. Users can generate new arrays, highlight comparisons and swaps in real time, and seamlessly ' +
+                'switch between algorithms.',
+            technologies: 'React, MUI, Firebase',
+            icon: algovis,
+            background: algovisBG,
+            link: 'https://algovis-e25f5.web.app/',
+            repo: 'https://github.com/jrudman25/AlgoVis',
+        },
         {
             title: 'Hokie Bucket List',
             description:
-                'A symposium-winning web app for Virginia Tech students & Blacksburg locals to discover the great ' +
-                'outdoors at a difficulty level that\'s right for them.',
+                'A symposium-winning web app for VT students & Blacksburg locals to discover the great ' +
+                'outdoors at a level that\'s right for them. Form a team to climb the leaderboard and get to ' +
+                'know the beautiful New River Valley!',
             technologies: 'React, MUI, Firebase, Firestore',
             icon: bucketlist,
             background: bucketlistBG,
@@ -138,8 +176,9 @@ const Projects = () => {
         },
         {
             title: 'ATLAS Finances',
-            description: 'An app to track and predict the performance of cryptocurrencies using data from ' +
-                'Yahoo\'s Finance API and machine learning. Created as part of a winning project at VT Hacks IX. ',
+            description: 'An award-winning program to track and predict the performance of cryptocurrencies using ' +
+                'data from the Yahoo Finance API and machine learning. Created as part of VT Hacks IX at Virginia ' +
+                'Tech.',
             technologies: 'HTML, CSS, JavaScript, JQuery, Python, Prophet, RESTful API, Google Cloud Compute Engine ',
             icon: atlas,
             background: atlasBG,
@@ -148,7 +187,7 @@ const Projects = () => {
         },
         {
             title: 'WeatherNow',
-            description: 'A simple desktop weather app that displays useful up-to-date information like temperature, ' +
+            description: 'A browser-based weather app that displays useful up-to-date information like temperature, ' +
                 'wind strength, and humidity level. Built using the OpenWeatherMap API on top of plain HTML, CSS, ' +
                 'and JS.',
             icon: weathernow,
@@ -159,7 +198,7 @@ const Projects = () => {
         },
         {
             title: 'Slay the Spire Stats',
-            description: 'A companion website for players of the PC game Slay the Spire to keep track of ' +
+            description: 'A companion tool for PC players of the game Slay the Spire to keep track of ' +
                 'stats from their runs and see information about other users\' runs.',
             icon: spirestats,
             background: spirestatsBG,
@@ -179,26 +218,14 @@ const Projects = () => {
         },
         {
             title: 'TechDaddy',
-            description: 'A simple tool designed to empower everybody to make informed choices on their next ' +
+            description: 'A web app designed to empower everybody to make informed choices on their next ' +
                 'electronics purchase, no matter their level of technical knowledge. Created for Google Developer ' +
                 'Student Clubs.',
             icon: techdaddy,
             background: techdaddyBG,
-            technologies: 'Figma, ',
+            technologies: 'HTML, CSS, JavaScript, PHP',
             repo: 'https://github.com/Sarang-R-119/Tech-Daddy',
         },
-        /**
-        {
-            title: 'Listle',
-            description: 'Coming soon! A game for Spotify users to put their knowledge to the test. How well do you ' +
-            'really know your playlists?',
-            icon: question,
-            background: musicBG,
-            technologies: '',
-            // link: '',
-            // repo: '',
-        },
-         **/
     ];
 
     return (

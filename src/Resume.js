@@ -1,7 +1,7 @@
 /**
  * Resume.js
  * Handles the loading and display of my resume.
- * @version 2023.09.11
+ * @version 2025.12.01
  */
 import React from 'react';
 import { Typography } from "@mui/material";
