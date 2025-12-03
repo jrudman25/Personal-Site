@@ -1,7 +1,7 @@
 /**
  * NavBar.js
  * The navigation bar at the top of the screen with my logo and links to other pages.
- * @version 2023.11.03
+ * @version 2025.12.01
  */
 import React from 'react';
 import { Typography } from '@mui/material';
@@ -48,6 +48,9 @@ const NavBar = () => {
                 </div>
 
                 <div className="nav-links">
+                    <Link to="/" className="nav-link">
+                        <Typography className="nav">Home</Typography>
+                    </Link>
                     <Link to="/about" className="nav-link">
                         <Typography className="nav">About</Typography>
                     </Link>

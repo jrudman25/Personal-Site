@@ -3,7 +3,7 @@
  * Handles the loading and display of my resume.
  * @version 2025.12.01
  */
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Typography } from "@mui/material";
 import { pdfjs, Document, Page } from 'react-pdf';
 import AnimatedBox from './AnimatedBox';
@@ -16,8 +16,26 @@ const month = date.toLocaleString('default', { month: 'long' });
 const year = date.getFullYear();
 
 const Resume = () => {
+
+    const containerRef = useRef(null);
+    const [pageWidth, setPageWidth] = useState(800);
+
+    useEffect(() => {
+        const updateWidth = () => {
+            if (containerRef.current) {
+                // keep it from being wider than 800px on desktop
+                const width = Math.min(containerRef.current.offsetWidth, 800);
+                setPageWidth(width);
+            }
+        };
+
+        updateWidth();
+        window.addEventListener("resize", updateWidth);
+        return () => window.removeEventListener("resize", updateWidth);
+    }, []);
+
     return (
-        <AnimatedBox style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        <AnimatedBox style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
             <Typography
                 variant="h4"
                 color= "white"
@@ -40,9 +58,9 @@ const Resume = () => {
                     email
                 </a> me.
             </Typography>
-            <div style={{ maxWidth: '800px', margin: '0 auto', maxHeight: '1025px', overflow: 'hidden', marginBottom: '20px' }}>
+            <div ref={containerRef} style={{ width: '100%', maxWidth: '800px', margin: '0 auto 20px auto', overflow: 'hidden' }}>
                 <Document file={{ url: process.env.PUBLIC_URL + '/resume.pdf' }}>
-                    <Page pageNumber={1} width={800} />
+                    <Page pageNumber={1} width={pageWidth} renderTextLayer={false} renderAnnotationLayer={false} />
                 </Document>
             </div>
         </AnimatedBox>

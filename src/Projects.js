@@ -5,146 +5,109 @@
  */
 import React from 'react';
 import { Box, styled } from '@mui/material';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 import techdaddy from './img/techdaddy.png';
 import atlas from './img/atlas.png';
 import bucketlist from './img/bucketlist.png';
 import spirestats from './img/spirestats.png';
 import camp from './img/camp.png';
-import question from './img/questionmark.png'
+import question from './img/questionmark.png';
 import techdaddyBG from './img/techdaddyBG.jpg';
 import atlasBG from './img/atlasBG.jpg';
 import bucketlistBG from './img/bucketlistBG.jpg';
 import spirestatsBG from './img/spirestatsBG.jpg';
 import campBG from './img/campBG2.jpg';
-import musicBG from './img/musicBG.jpg'
-import weathernow from './img/weathernow.png'
+import musicBG from './img/musicBG.jpg';
+import weathernow from './img/weathernow.png';
 import weathernowBG from './img/weathernowBG.avif';
 import scoreseeker from './img/scoreseeker.png';
 import scoreseekerBG from './img/scoreseekerBG.jpg';
 import algovis from './img/algovis.png';
 import algovisBG from './img/algovisBG.webp';
-import './Projects.css';
 
-const ProjectsGrid = styled(Box)({
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-    gap: '1rem',
-    maxWidth: '1200px',
+const SlideContainer = styled(Box)(({ theme }) => ({
+    width: '100%',
+    maxWidth: '900px',
+    height: '500px',
     margin: '0 auto',
-});
+    borderRadius: '12px',
+    overflow: 'hidden',
+    position: 'relative',
 
-const ProjectContainer = styled(Box)(({ theme }) => ({
-    '&.project-container': {
-        width: '100%',
-        maxWidth: '600px',
-        height: '325px',
-        color: 'white',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        padding: theme.spacing(2),
-        marginBottom: theme.spacing(2),
-        backgroundColor: 'rgba(240, 240, 240, 0.9)',
-        backgroundSize: 'cover',
-        borderRadius: '8px',
-        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-        animation: 'fadeIn 1s ease-in-out',
-        transition: 'background-color 0.3s, transform 0.3s',
-        position: 'relative',
-        overflow: 'hidden',
-        '&:hover': {
-            backgroundColor: '#03003D',
-            transform: 'scale(1.05)',
-            cursor: 'pointer',
-        },
-        '@keyframes fadeIn': {
-            from: {opacity: 0, transform: 'translateY(20px)'},
-            to: {opacity: 1, transform: 'translateY(0)'},
-        },
-    }
+    [theme.breakpoints.down('sm')]: {
+        height: '450px',
+    },
+
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
 }));
 
-const ProjectTitleOverlay = styled('div')({
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
-    padding: '0.5rem 1rem',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    width: '100%',
-    zIndex: 1,
-    pointerEvents: 'none',
-});
-
-const ProjectIcon = styled('img')({
-    width: '175px',
-    height: '175px',
-    objectFit: 'contain',
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    transition: 'opacity 0.3s',
-});
-
-const ProjectOverlay = styled('div')({
+const Overlay = styled('div')(({ theme }) => ({
     width: '100%',
     height: '100%',
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    backgroundColor: 'rgba(3, 0, 61, 0.7)',
+    backgroundColor: 'rgba(3, 0, 61, 0.75)',
     color: 'white',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    padding: '16px',
-    opacity: 0,
-    transition: 'opacity 0.3s',
-    '&:hover': {
-        opacity: 1,
-    },
-    '& p': {
-        marginBottom: '8px',
-    },
-    'a': {
-        color: 'white',
-        textDecoration: 'none',
-        margin: '4px 0',
-        padding: '4px 8px',
-        border: '2px solid white',
-        borderRadius: '4px',
-        transition: 'color 0.3s, border-color 0.3s',
+    textAlign: 'center',
+    padding: '2rem',
+    backdropFilter: 'blur(2px)',
+}));
 
-        '&:hover': {
-            color: 'black',
-            backgroundColor: 'white',
-            borderColor: 'black',
-        }
+const Icon = styled('img')(({ theme }) => ({
+    width: '160px',
+    height: '160px',
+    marginBottom: '1rem',
+    objectFit: 'contain',
+
+    [theme.breakpoints.down('sm')]: {
+        width: '120px',
+        height: '120px',
     },
+}));
+
+const Title = styled('h1')({
+    fontSize: '2rem',
+    marginBottom: '1rem',
+});
+
+const LinkButton = styled('a')({
+    marginTop: '0.5rem',
+    padding: '6px 14px',
+    border: '2px solid white',
+    color: 'white',
+    borderRadius: '6px',
+    textDecoration: 'none',
+    transition: '.2s',
+    display: 'inline-block',
+
+    '&:hover': {
+        backgroundColor: 'white',
+        color: 'black',
+    }
 });
 
 const Projects = () => {
     const projectData = [
-         {
-         title: 'Listle',
-         description: 'Coming soon! A game for Spotify users to put their knowledge to the test. How well do you ' +
-         'really know your playlists?',
-         icon: question,
-         background: musicBG,
-         technologies: '',
-         // link: '',
-         // repo: '',
-         },
+        {
+            title: 'Listle',
+            description: 'Coming soon! A game for Spotify users to put their knowledge to the test.',
+            icon: question,
+            background: musicBG,
+        },
         {
             title: 'ScoreSeeker',
-            description:
-                'A site for all your sports needs! Enter a team to get a detailed rundown of the team\'s history, ' +
-                'their schedule, and information about any ongoing games.',
-            technologies: 'React, MUI, Firebase, Firestore',
+            description: 'A sports statistics platform showing team history, schedules, and live game info.',
+            technologies: 'React, MUI, Firebase',
             icon: scoreseeker,
             background: scoreseekerBG,
             link: 'https://scoreseeker-9dfa6.web.app/',
@@ -152,10 +115,7 @@ const Projects = () => {
         },
         {
             title: 'AlgoVis',
-            description:
-                'An interactive app that animates how different sorting algorithms work ' +
-                'step-by-step. Users can generate new arrays, highlight comparisons and swaps in real time, and seamlessly ' +
-                'switch between algorithms.',
+            description: 'An interactive visualization tool for sorting algorithms.',
             technologies: 'React, MUI, Firebase',
             icon: algovis,
             background: algovisBG,
@@ -164,11 +124,8 @@ const Projects = () => {
         },
         {
             title: 'Hokie Bucket List',
-            description:
-                'A symposium-winning web app for VT students & Blacksburg locals to discover the great ' +
-                'outdoors at a level that\'s right for them. Form a team to climb the leaderboard and get to ' +
-                'know the beautiful New River Valley!',
-            technologies: 'React, MUI, Firebase, Firestore',
+            description: 'A VT symposium-winning outdoor adventure tracker for students.',
+            technologies: 'React, Firebase',
             icon: bucketlist,
             background: bucketlistBG,
             link: 'https://bucketlist-90b4c.web.app/',
@@ -176,94 +133,76 @@ const Projects = () => {
         },
         {
             title: 'ATLAS Finances',
-            description: 'An award-winning program to track and predict the performance of cryptocurrencies using ' +
-                'data from the Yahoo Finance API and machine learning. Created as part of VT Hacks IX at Virginia ' +
-                'Tech.',
-            technologies: 'HTML, CSS, JavaScript, JQuery, Python, Prophet, RESTful API, Google Cloud Compute Engine ',
+            description: 'A cryptocurrency forecasting tool using ML + Yahoo Finance API.',
+            technologies: 'Python, Google Cloud, Prophet',
             icon: atlas,
             background: atlasBG,
-            video: 'https://www.youtube.com/watch?v=jt1Fnz99XYw&ab_channel=JordanRudman',
+            video: 'https://www.youtube.com/watch?v=jt1Fnz99XYw',
             repo: 'https://github.com/jrudman25/ATLAS-Finances',
         },
         {
             title: 'WeatherNow',
-            description: 'A browser-based weather app that displays useful up-to-date information like temperature, ' +
-                'wind strength, and humidity level. Built using the OpenWeatherMap API on top of plain HTML, CSS, ' +
-                'and JS.',
+            description: 'A browser weather dashboard using OpenWeatherMap API.',
             icon: weathernow,
             background: weathernowBG,
-            technologies: 'RESTful API, HTML, CSS, JavaScript, Firebase',
             link: 'https://weathernow-old.web.app/',
             repo: 'https://github.com/jrudman25/WeatherNowOld',
         },
         {
             title: 'Slay the Spire Stats',
-            description: 'A companion tool for PC players of the game Slay the Spire to keep track of ' +
-                'stats from their runs and see information about other users\' runs.',
+            description: 'A tracker for Slay the Spire gameplay stats + run history.',
             icon: spirestats,
             background: spirestatsBG,
-            technologies: 'React, Python, SQL, Firebase, Flask',
             link: 'https://slaythespirestats.web.app/',
             repo: 'https://github.com/jrudman25/DBMS',
         },
         {
             title: 'CAMP',
-            description: 'A design project that covered the entire lifecycle of an idea: ideation, ' +
-                'design, prototyping, and evaluation. Its goal was to provide a user-friendly mobile app to ' +
-                'connect local communities and combat isolation.',
+            description: 'A design project covering ideation, prototyping, and evaluation.',
             icon: camp,
             background: campBG,
-            technologies: 'Figma, Canva, Balsamiq, Marvel',
             repo: 'https://github.com/jrudman25/CAMP',
         },
         {
             title: 'TechDaddy',
-            description: 'A web app designed to empower everybody to make informed choices on their next ' +
-                'electronics purchase, no matter their level of technical knowledge. Created for Google Developer ' +
-                'Student Clubs.',
+            description: 'A tool to help users choose electronics based on needs.',
             icon: techdaddy,
             background: techdaddyBG,
-            technologies: 'HTML, CSS, JavaScript, PHP',
             repo: 'https://github.com/Sarang-R-119/Tech-Daddy',
         },
     ];
 
     return (
-        <Box display="flex" flexDirection="column" alignItems="center" style={{ flexGrow: 1 }}>
-            <ProjectsGrid>
-                {projectData.map((project, index) => (
-                    <ProjectContainer
-                        key={index}
-                        className="project-container"
-                        style={{
-                            backgroundImage: `url(${project.background})`,
-                        }}
-                    >
-                        <ProjectTitleOverlay>
-                            <h1>{project.title}</h1>
-                        </ProjectTitleOverlay>
-                        <ProjectIcon src={project.icon} alt={project.title} />
-                        <ProjectOverlay>
-                            <p>{project.description}</p>
-                            {project.link && (
-                                <a href={project.link} target="_blank" rel="noopener noreferrer">
-                                    View project
-                                </a>
-                            )}
-                            {project.video && (
-                                <a href={project.video} target="_blank" rel="noopener noreferrer">
-                                    View video
-                                </a>
-                            )}
-                            {project.repo && (
-                                <a href={project.repo} target="_blank" rel="noopener noreferrer">
-                                    View repository
-                                </a>
-                            )}
-                        </ProjectOverlay>
-                    </ProjectContainer>
+        <Box display="flex" justifyContent="center" width="100%">
+            <Swiper
+                modules={[Navigation, Pagination]}
+                navigation
+                pagination={{ clickable: true }}
+                spaceBetween={30}
+                style={{ width: '100%', maxWidth: '900px' }}
+            >
+                {projectData.map((project, i) => (
+                    <SwiperSlide key={i}>
+                        <SlideContainer style={{ backgroundImage: `url(${project.background})` }}>
+                            <Overlay>
+                                <Icon src={project.icon} alt={project.title} />
+                                <Title>{project.title}</Title>
+                                <p>{project.description}</p>
+
+                                {project.link && (
+                                    <LinkButton href={project.link} target="_blank">View Project</LinkButton>
+                                )}
+                                {project.video && (
+                                    <LinkButton href={project.video} target="_blank">Watch Video</LinkButton>
+                                )}
+                                {project.repo && (
+                                    <LinkButton href={project.repo} target="_blank">View Repo</LinkButton>
+                                )}
+                            </Overlay>
+                        </SlideContainer>
+                    </SwiperSlide>
                 ))}
-            </ProjectsGrid>
+            </Swiper>
         </Box>
     );
 };
