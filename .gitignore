@@ -25,4 +25,6 @@ yarn-error.log*
 .firebaserc
 /.firebase
 /.idea
-todo.txt
+/.vscode
+*.md
+!README.md

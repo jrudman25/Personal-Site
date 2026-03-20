@@ -1,7 +1,7 @@
 /**
  * About.js
  * My about page. Includes information about myself as well as a photo.
- * @version 2023.11.03
+ * @version 2026.03.19
  */
 import React from 'react';
 import { Typography, Grid } from '@mui/material';
@@ -12,9 +12,9 @@ import AnimatedBox from './AnimatedBox';
 
 const About = () => {
     return (
-        <Grid container spacing={4}>
+        <Grid container spacing={{ xs: 2, md: 4 }}>
             <Grid item xs={12} md={4}>
-                <AnimatedBox display="flex" justifyContent="center" sx={{ ml: 2, mr:2 }} style={{ border: '1px solid white' }}>
+                <AnimatedBox display="flex" justifyContent="center" sx={{ ml: { xs: 0, md: 2 }, mr: { xs: 0, md: 2 } }} style={{ border: '1px solid white' }}>
                     <img
                         src={self}
                         className="list-icon"
@@ -25,14 +25,14 @@ const About = () => {
             </Grid>
             <Grid item xs={12} md={8}>
                 <AnimatedBox>
-                    <Typography variant="h4" color="white" sx={{ mb: 2, ml: 2, mr: 2.5 }}>
+                    <Typography variant="h4" color="white" sx={{ mb: 2, ml: { xs: 0, md: 2 }, mr: { xs: 0, md: 2.5 }, textAlign: { xs: 'center', md: 'left' } }}>
                         Hi! Thanks for checking out my site.
                     </Typography>
-                    <Typography variant="h4" color="white" sx={{ mb: 2, ml: 2, mr: 2.5 }}>
+                    <Typography variant="h4" color="white" sx={{ mb: 2, ml: { xs: 0, md: 2 }, mr: { xs: 0, md: 2.5 }, textAlign: { xs: 'center', md: 'left' } }}>
                         Here's a bit about me.
                     </Typography>
-                    <Typography variant="body1" color="white" sx={{ mb: 2, ml: 2, mr: 2.5 }}>
-                        I'm Jordan Rudman, a new grad Software Engineer & UI/UX Designer currently based out of
+                    <Typography variant="body1" color="white" sx={{ mb: 2, ml: { xs: 0, md: 2 }, mr: { xs: 0, md: 2.5 } }}>
+                        I'm Jordan Rudman, a junior Software Engineer currently based out of
                         Seattle, Washington. Originally from New York, I've lived all over the US and have been
                         coding since 7th grade. My passion lies at the intersection of software engineering,
                         UI/UX design, and web application development. I'm all about turning innovative ideas into

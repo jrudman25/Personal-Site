@@ -1,7 +1,7 @@
 /**
  * Resume.js
  * Handles the loading and display of my resume.
- * @version 2025.12.01
+ * @version 2026.03.19
  */
 import React, { useEffect, useRef, useState } from 'react';
 import { Typography } from "@mui/material";
@@ -38,23 +38,23 @@ const Resume = () => {
         <AnimatedBox style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
             <Typography
                 variant="h4"
-                color= "white"
-                marginBottom= "1rem"
+                color="white"
+                marginBottom="1rem"
             >
                 My updated resume as of {month} {year}
             </Typography>
             <Typography
                 variant="h6"
-                color= "white"
-                marginBottom= "1rem"
+                color="white"
+                marginBottom="1rem"
             >
                 Want more information on something? Check out my {" "}
                 <a href="https://github.com/jrudman25" target="_blank" rel="noopener noreferrer"
-                   style={{ textDecoration: "underline" }}>
+                    style={{ textDecoration: "underline" }}>
                     GitHub
                 </a> or {" "}
-                <a href="mailto:your.jrud25@outlook.com" target="_blank" rel="noopener noreferrer"
-                   style={{ textDecoration: "underline" }}>
+                <a href="mailto:jrud25@outlook.com" target="_blank" rel="noopener noreferrer"
+                    style={{ textDecoration: "underline" }}>
                     email
                 </a> me.
             </Typography>

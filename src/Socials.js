@@ -1,11 +1,11 @@
 /**
  * Socials.js
  * Links to my social medias.
- * @version 2023.09.07
+ * @version 2026.03.19
  */
 import React from "react";
 import { Box, Link, SvgIcon } from "@mui/material";
-import { Email, GitHub, LinkedIn, Twitter } from "@mui/icons-material";
+import { Email, GitHub, LinkedIn, X } from "@mui/icons-material";
 import './Socials.css';
 
 const Socials = () => {
@@ -47,14 +47,14 @@ const Socials = () => {
             <Link href="https://www.linkedin.com/in/jordan-rudman/" target="_blank" rel="noopener noreferrer">
                 <LinkedIn className="social-icon" sx={{ fontSize: 36, color: 'white', marginRight: '1rem' }} />
             </Link>
-            <Link href="https://twitter.com/jrudman25" target="_blank" rel="noopener noreferrer">
-                <Twitter className="social-icon" sx={{ fontSize: 36, color: 'white', marginRight: '1rem' }} />
+            <Link href="https://x.com/jrudman25" target="_blank" rel="noopener noreferrer">
+                <X className="social-icon" sx={{ fontSize: 36, color: 'white', marginRight: '1rem' }} />
             </Link>
-            <Link href="mailto:your.jrud25@outlook.com" >
+            <Link href="mailto:jrud25@outlook.com" >
                 <Email className="social-icon" sx={{ fontSize: 36, color: 'white', marginRight: '1rem' }} />
             </Link>
             <Link href="https://ko-fi.com/jrud25" target="_blank" rel="noopener noreferrer">
-                <KofiIcon className="social-icon" sx={{ fontSize: 36, color: 'white', marginRight: '1rem'  }} />
+                <KofiIcon className="social-icon" sx={{ fontSize: 36, color: 'white', marginRight: '1rem' }} />
             </Link>
             <Link href="https://open.spotify.com/user/elementx25" target="_blank" rel="noopener noreferrer">
                 <SpotifyIcon className="social-icon" sx={{ fontSize: 36, color: 'white' }} />

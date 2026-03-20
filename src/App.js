@@ -1,7 +1,7 @@
 /**
  * App.js
  * Handles loading and routing for the site.
- * @version 2023.08.21
+ * @version 2026.03.19
  */
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -30,7 +30,7 @@ function App() {
                         <NavBar />
                         <Box style={{ flexGrow: 1, paddingTop: '120px' }}>
                             <Routes>
-                                <Route exact path="/" element={<Home />} />
+                                <Route path="/" element={<Home />} />
                                 <Route path="/about" element={<About />} />
                                 <Route path="/resume" element={<Resume />} />
                                 <Route path="*" element={<Error />} />

@@ -1,7 +1,7 @@
 /**
  * Home.js
  * The main page of the site. Contains a greeting, an intro, a skills section, and a project showcase.
- * @version 2025.12.01
+ * @version 2026.03.19
  */
 import React, { useState, useEffect, useCallback } from "react";
 import { Typography, Box, Paper } from "@mui/material";
@@ -106,7 +106,7 @@ const Home = () => {
                         color="white"
                         className="transition duration-500 ease-in-out text-center !font-bold !text-7xl"
                         sx={{
-                            fontSize: { xs: '4rem', sm: '6rem' },
+                            fontSize: { xs: '2.5rem', sm: '4rem', md: '6rem' },
                             marginBottom: '1rem',
                         }}
                     >
@@ -116,7 +116,7 @@ const Home = () => {
                 <Typography
                     variant="h3"
                     color="white"
-                    sx={{ marginBottom: '1rem' }}
+                    sx={{ marginBottom: '1rem', fontSize: { xs: '2rem', md: '3rem' } }}
                 >
                     Engineer. Developer. Builder.
                 </Typography>
@@ -127,10 +127,10 @@ const Home = () => {
                     sx={{
                         marginBottom: '3rem',
                         width: '800px',
-                        maxWidth: '100%',
+                        maxWidth: '90%',
                         marginLeft: 'auto',
                         marginRight: 'auto',
-                        fontSize: '1.2rem',
+                        fontSize: { xs: '1rem', md: '1.2rem' },
                     }}
                 >
                     Hi there! I'm Jordan- a Software Engineer who loves building clear, efficient, and impactful
@@ -210,12 +210,12 @@ const Home = () => {
                     Here are some past projects I've worked on. Interested in seeing more? See my
                     {" "}
                     <a href="https://github.com/jrudman25" target="_blank" rel="noopener noreferrer"
-                       style={{ textDecoration: "underline" }}>
+                        style={{ textDecoration: "underline" }}>
                         GitHub
                     </a> or
                     {" "}
-                    <a href="mailto:your.jrud25@outlook.com" target="_blank" rel="noopener noreferrer"
-                       style={{ textDecoration: "underline" }}>
+                    <a href="mailto:jrud25@outlook.com" target="_blank" rel="noopener noreferrer"
+                        style={{ textDecoration: "underline" }}>
                         email
                     </a> me.
                 </Typography>

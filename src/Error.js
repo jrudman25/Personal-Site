@@ -1,7 +1,7 @@
 /**
  * Error.js
  * Handles display when users navigate to a route that doesn't exist.
- * @version 2023.08.20
+ * @version 2026.03.19
  */
 import React from 'react';
 import { Typography, Box } from '@mui/material';
@@ -21,11 +21,11 @@ const Error = () => {
                         We couldn't find the page you were looking for. This is either because:
                         <Typography component="ul" sx={{ paddingLeft: '2rem', marginTop: '1rem' }}>
                             <Typography component="li">
-                                · There is an error in the URL entered into your web browser.
+                                There is an error in the URL entered into your web browser.
                                 Please check the URL and try again.
                             </Typography>
                             <Typography component="li">
-                                · The page you are looking for has been moved or deleted.
+                                The page you are looking for has been moved or deleted.
                             </Typography>
                         </Typography>
                     </Typography>
