@@ -28,6 +28,9 @@ import scoreseeker from './img/scoreseeker.png';
 import scoreseekerBG from './img/scoreseekerBG.jpg';
 import algovis from './img/algovis.png';
 import algovisBG from './img/algovisBG.webp';
+import guidepost from './img/guidepost.jpg';
+import guidepostBG from './img/guidepostBG.webp';
+import tuneteaser from './img/tt.jpg';
 
 const SlideContainer = styled(Box)(({ theme }) => ({
     width: '100%',
@@ -99,15 +102,27 @@ const LinkButton = styled('a')({
 const Projects = () => {
     const projectData = [
         {
-            title: 'Listle',
-            description: 'Coming soon! A game for Spotify users to put their knowledge to the test.',
-            icon: question,
+            title: 'Guidepost AI Job Search Manager',
+            description: 'A job search manager that uses AI to help users find and apply for jobs.',
+            technologies: 'Next.js, TypeScript, Gemini API, Tailwind CSS, Shadcn UI, Supabase, Vercel',
+            icon: guidepost,
+            background: guidepostBG,
+            link: 'https://guidepost-ai.vercel.app/',
+            repo: 'https://github.com/jrudman25/guidepost',
+        },
+        {
+            title: 'TuneTeaser',
+            description: 'A game for Spotify users to put their knowledge to the test.',
+            technologies: 'React, TypeScript, MUI, Spotify API, iTunes API, Firebase Hosting',
+            icon: tuneteaser,
             background: musicBG,
+            link: 'https://tuneteaser.web.app/',
+            repo: 'https://github.com/jrudman25/TuneTeaser',
         },
         {
             title: 'ScoreSeeker',
             description: 'A sports statistics platform showing team history, schedules, and live game info.',
-            technologies: 'React, MUI, Firebase',
+            technologies: 'React, JavaScript, TheSportsDB API, Tone.js, MUI, Firebase Hosting',
             icon: scoreseeker,
             background: scoreseekerBG,
             link: 'https://scoreseeker-9dfa6.web.app/',
@@ -116,7 +131,7 @@ const Projects = () => {
         {
             title: 'AlgoVis',
             description: 'An interactive visualization tool for sorting algorithms.',
-            technologies: 'React, MUI, Firebase',
+            technologies: 'React, MUI, Firebase Hosting',
             icon: algovis,
             background: algovisBG,
             link: 'https://algovis-e25f5.web.app/',
@@ -125,7 +140,7 @@ const Projects = () => {
         {
             title: 'Hokie Bucket List',
             description: 'A VT symposium-winning outdoor adventure tracker for students.',
-            technologies: 'React, Firebase',
+            technologies: 'React, MUI, Styled Components, Firebase Storage, Firebase Hosting, Firebase Authentication',
             icon: bucketlist,
             background: bucketlistBG,
             link: 'https://bucketlist-90b4c.web.app/',
@@ -133,8 +148,8 @@ const Projects = () => {
         },
         {
             title: 'ATLAS Finances',
-            description: 'A cryptocurrency forecasting tool using ML + Yahoo Finance API.',
-            technologies: 'Python, Google Cloud, Prophet',
+            description: 'A cryptocurrency forecasting tool using machine learning.',
+            technologies: 'JavaScript, jQuery, Python, Google Cloud, Prophet, Yahoo Finance API, GitHub Pages',
             icon: atlas,
             background: atlasBG,
             video: 'https://www.youtube.com/watch?v=jt1Fnz99XYw',
@@ -143,6 +158,7 @@ const Projects = () => {
         {
             title: 'WeatherNow',
             description: 'A browser weather dashboard using OpenWeatherMap API.',
+            technologies: 'HTML, CSS, JavaScript, OpenWeatherMap API, Firebase Hosting',
             icon: weathernow,
             background: weathernowBG,
             link: 'https://weathernow-old.web.app/',
@@ -151,6 +167,7 @@ const Projects = () => {
         {
             title: 'Slay the Spire Stats',
             description: 'A tracker for Slay the Spire gameplay stats + run history.',
+            technologies: 'React, JavaScript, MUI, AWS Lambda,Firebase Hosting, Firebase Authentication',
             icon: spirestats,
             background: spirestatsBG,
             link: 'https://slaythespirestats.web.app/',
@@ -159,6 +176,7 @@ const Projects = () => {
         {
             title: 'CAMP',
             description: 'A design project covering ideation, prototyping, and evaluation.',
+            technologies: 'Figma, Storyboard That, Canva, Balsamiq',
             icon: camp,
             background: campBG,
             repo: 'https://github.com/jrudman25/CAMP',
@@ -166,6 +184,7 @@ const Projects = () => {
         {
             title: 'TechDaddy',
             description: 'A tool to help users choose electronics based on needs.',
+            technologies: 'HTML, CSS, JavaScript, PHP',
             icon: techdaddy,
             background: techdaddyBG,
             repo: 'https://github.com/Sarang-R-119/Tech-Daddy',

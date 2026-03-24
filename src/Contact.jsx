@@ -68,7 +68,7 @@ const Contact = () => {
                 </StyledButton>
                 <StyledButton
                     variant="outlined"
-                    href="https://www.linkedin.com/in/jordanrudman/"
+                    href="https://www.linkedin.com/in/jordan-rudman/"
                     target="_blank"
                     rel="noopener noreferrer"
                 >

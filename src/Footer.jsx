@@ -12,7 +12,7 @@ const Footer = () => {
         <Typography
             sx={{ color: 'white', marginBottom: '0.5rem' }}
         >
-            Made with ♥ by me © {new Date().getFullYear()}
+            Made with ♥ by me © {new Date().getFullYear()} | <a href="https://github.com/jrudman25/Personal-Site" target="_blank" rel="noopener noreferrer">Source</a>
         </Typography>
     );
 };
