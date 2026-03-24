@@ -4,7 +4,7 @@
  * @version 2025.12.01
  */
 import React from 'react';
-import { Box, styled } from '@mui/material';
+import { Box, Chip, styled } from '@mui/material';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
@@ -189,14 +189,32 @@ const Projects = () => {
                                 <Title>{project.title}</Title>
                                 <p>{project.description}</p>
 
+                                {project.technologies && (
+                                    <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '6px', mt: 1, mb: 1 }}>
+                                        {project.technologies.split(', ').map((tech) => (
+                                            <Chip
+                                                key={tech}
+                                                label={tech}
+                                                size="small"
+                                                variant="outlined"
+                                                sx={{
+                                                    borderColor: 'rgba(255,255,255,0.5)',
+                                                    color: 'white',
+                                                    fontSize: '0.75rem',
+                                                }}
+                                            />
+                                        ))}
+                                    </Box>
+                                )}
+
                                 {project.link && (
-                                    <LinkButton href={project.link} target="_blank">View Project</LinkButton>
+                                    <LinkButton href={project.link} target="_blank" rel="noopener noreferrer">View Project</LinkButton>
                                 )}
                                 {project.video && (
-                                    <LinkButton href={project.video} target="_blank">Watch Video</LinkButton>
+                                    <LinkButton href={project.video} target="_blank" rel="noopener noreferrer">Watch Video</LinkButton>
                                 )}
                                 {project.repo && (
-                                    <LinkButton href={project.repo} target="_blank">View Repo</LinkButton>
+                                    <LinkButton href={project.repo} target="_blank" rel="noopener noreferrer">View Repo</LinkButton>
                                 )}
                             </Overlay>
                         </SlideContainer>

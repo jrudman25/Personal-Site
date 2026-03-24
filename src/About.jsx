@@ -4,7 +4,7 @@
  * @version 2026.03.19
  */
 import React from 'react';
-import { Typography, Grid } from '@mui/material';
+import { Typography, Grid, Box } from '@mui/material';
 import self from './img/myself.jpg';
 import Socials from './Socials';
 //import Contact from './Contact';
@@ -14,12 +14,12 @@ const About = () => {
     return (
         <Grid container spacing={{ xs: 2, md: 4 }}>
             <Grid item xs={12} md={4}>
-                <AnimatedBox display="flex" justifyContent="center" sx={{ ml: { xs: 0, md: 2 }, mr: { xs: 0, md: 2 } }} style={{ border: '1px solid white' }}>
-                    <img
+                <AnimatedBox display="flex" justifyContent="center" sx={{ ml: { xs: 0, md: 2 }, mr: { xs: 0, md: 2 }, border: '1px solid white' }}>
+                    <Box
+                        component="img"
                         src={self}
-                        className="list-icon"
-                        style={{ width: '100%', height: 'auto', display: 'block' }}
                         alt="myself sitting on a bench in front of some trees"
+                        sx={{ width: '100%', height: 'auto', display: 'block' }}
                     />
                 </AnimatedBox>
             </Grid>

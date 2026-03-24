@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 
 const Error = () => {
     return (
-        <div>
+        <Box>
             <Box sx={{ marginTop: '1rem' }}>
                 <Typography variant="h2" sx={{ mb: 1, marginTop: 4 }} textAlign="center" color="white">
                     Oops!
@@ -35,7 +35,7 @@ const Error = () => {
                     </Typography>
                 </Box>
             </Box>
-        </div>
+        </Box>
     );
 };
 

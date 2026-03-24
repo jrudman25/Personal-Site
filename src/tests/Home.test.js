@@ -20,11 +20,14 @@ describe('Home Component', () => {
     });
 
     test('renders skill categories', async () => {
-        const { getAllByText } = render(<Home />);
-        const designerSkills = getAllByText(/Designer/i);
+        const { getByText } = render(<Home />);
+        const frontEnd = getByText(/Front/i);
+        const backEnd = getByText(/Back/i);
+        const tools = getByText(/Tools/i);
 
-        expect(designerSkills[0]).toBeInTheDocument();
-        expect(designerSkills[1]).toBeInTheDocument();
+        expect(frontEnd).toBeInTheDocument();
+        expect(backEnd).toBeInTheDocument();
+        expect(tools).toBeInTheDocument();
 
     });
 });

@@ -26,9 +26,9 @@ function App() {
             {!loadingComplete && <Loading onLoadingComplete={handleLoadingComplete} />}
             {loadingComplete && (
                 <Router>
-                    <Box style={{ height: '100vh', overflowY: 'auto', display: 'flex', flexDirection: 'column' }}>
+                    <Box id="app-scroll-container" sx={{ height: '100vh', overflowY: 'auto', display: 'flex', flexDirection: 'column' }}>
                         <NavBar />
-                        <Box style={{ flexGrow: 1, paddingTop: '120px' }}>
+                        <Box sx={{ flexGrow: 1, paddingTop: '120px' }}>
                             <Routes>
                                 <Route path="/" element={<Home />} />
                                 <Route path="/about" element={<About />} />
@@ -36,7 +36,7 @@ function App() {
                                 <Route path="*" element={<Error />} />
                             </Routes>
                         </Box>
-                        <Box style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }} >
+                        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                             <Footer />
                         </Box>
                     </Box>

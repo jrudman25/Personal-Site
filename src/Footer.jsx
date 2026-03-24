@@ -10,8 +10,7 @@ const Footer = () => {
 
     return (
         <Typography
-        color = 'white'
-        marginBottom = '0.5rem'
+            sx={{ color: 'white', marginBottom: '0.5rem' }}
         >
             Made with ♥ by me © {new Date().getFullYear()}
         </Typography>

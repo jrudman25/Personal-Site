@@ -4,7 +4,7 @@
  * @version 2026.03.19
  */
 import React, { useState } from 'react';
-import { Typography, IconButton, Menu, MenuItem, useMediaQuery, useTheme } from '@mui/material';
+import { Typography, IconButton, Menu, MenuItem, Box, useMediaQuery, useTheme } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Nav } from './NavBarElement';
 import { Link, useLocation } from 'react-router-dom';
@@ -17,9 +17,13 @@ const NavBar = () => {
     const isMobile = useMediaQuery(theme.breakpoints.down('md'));
     const [anchorEl, setAnchorEl] = useState(null);
 
-    const handleLogoClick = () => {
+    const handleLogoClick = (e) => {
         if (location.pathname === '/') {
-            window.location.reload();
+            e.preventDefault();
+            const scrollContainer = document.getElementById('app-scroll-container');
+            if (scrollContainer) {
+                scrollContainer.scrollTo({ top: 0, behavior: 'smooth' });
+            }
         }
     };
 
@@ -32,35 +36,20 @@ const NavBar = () => {
     };
 
     return (
-        <Nav
-            style={{
-                position: 'fixed',
-                top: 0,
-                left: 0,
-                width: '100%',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                backgroundColor: 'transparent',
-                zIndex: 9999,
-                padding: isMobile ? '10px 20px' : '60px',
-                pointerEvents: 'none',
-                boxSizing: 'border-box',
-            }}
-        >
-            <div style={{ display: 'flex', alignItems: 'center', pointerEvents: 'auto' }}>
+        <Nav>
+            <Box sx={{ display: 'flex', alignItems: 'center', pointerEvents: 'auto' }}>
                 <Link to="/" onClick={handleLogoClick}>
-                    <img
+                    <Box
+                        component="img"
                         src={myLogo}
-                        className="list-icon"
-                        style={{ height: '50px', width: '53px' }}
                         alt="the letters J and R as a circle logo"
+                        sx={{ height: '50px', width: '53px', filter: 'drop-shadow(0 1px 3px rgba(0,0,0,0.5))' }}
                     />
                 </Link>
-            </div>
+            </Box>
 
             {isMobile ? (
-                <div style={{ pointerEvents: 'auto' }}>
+                <Box sx={{ pointerEvents: 'auto' }}>
                     <IconButton
                         size="large"
                         edge="start"
@@ -90,9 +79,9 @@ const NavBar = () => {
                             <Typography textAlign="center">Blog</Typography>
                         </MenuItem>
                     </Menu>
-                </div>
+                </Box>
             ) : (
-                <div className="nav-links" style={{ pointerEvents: 'auto' }}>
+                <Box className="nav-links" sx={{ pointerEvents: 'auto' }}>
                     <Link to="/" className="nav-link">
                         <Typography className="nav">Home</Typography>
                     </Link>
@@ -105,7 +94,7 @@ const NavBar = () => {
                     <a href="https://dev.to/jrud25" target="_blank" rel="noopener noreferrer" className="nav-link">
                         <Typography className="nav">Blog</Typography>
                     </a>
-                </div>
+                </Box>
             )}
         </Nav>
     );

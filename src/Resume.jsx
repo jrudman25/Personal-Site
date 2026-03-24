@@ -4,7 +4,7 @@
  * @version 2026.03.19
  */
 import React, { useEffect, useRef, useState } from 'react';
-import { Typography } from "@mui/material";
+import { Typography, Box } from "@mui/material";
 import { pdfjs, Document, Page } from 'react-pdf';
 import AnimatedBox from './AnimatedBox';
 
@@ -35,7 +35,7 @@ const Resume = () => {
     }, []);
 
     return (
-        <AnimatedBox style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
+        <AnimatedBox sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
             <Typography
                 variant="h4"
                 color="white"
@@ -50,19 +50,19 @@ const Resume = () => {
             >
                 Want more information on something? Check out my {" "}
                 <a href="https://github.com/jrudman25" target="_blank" rel="noopener noreferrer"
-                    style={{ textDecoration: "underline" }}>
+                    style={{ textDecoration: 'underline' }}>
                     GitHub
                 </a> or {" "}
                 <a href="mailto:jrud25@outlook.com" target="_blank" rel="noopener noreferrer"
-                    style={{ textDecoration: "underline" }}>
+                    style={{ textDecoration: 'underline' }}>
                     email
                 </a> me.
             </Typography>
-            <div ref={containerRef} style={{ width: '100%', maxWidth: '800px', margin: '0 auto 20px auto', overflow: 'hidden' }}>
+            <Box ref={containerRef} sx={{ width: '100%', maxWidth: '800px', margin: '0 auto 20px auto', overflow: 'hidden' }}>
                 <Document file={{ url: '/resume.pdf' }}>
                     <Page pageNumber={1} width={pageWidth} renderTextLayer={false} renderAnnotationLayer={false} />
                 </Document>
-            </div>
+            </Box>
         </AnimatedBox>
     );
 };

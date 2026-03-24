@@ -1,14 +1,14 @@
 /**
- * Home.js
+ * Home.jsx
  * The main page of the site. Contains a greeting, an intro, a skills section, and a project showcase.
- * @version 2026.03.19
+ * @version 2026.03.22
  */
-import React, { useState, useEffect, useCallback } from "react";
-import { Typography, Box, Paper } from "@mui/material";
+import React, { useState, useEffect, useCallback, useRef } from "react";
+import { Typography, Box, Paper, Chip } from "@mui/material";
 import { Devices, BuildCircle, Storage } from '@mui/icons-material';
 import Projects from './Projects';
 import Socials from './Socials';
-//import Contact from './Contact';
+import Contact from './Contact';
 import AnimatedBox from './AnimatedBox';
 import skyline from './img/skyline.png';
 
@@ -18,48 +18,17 @@ const skills = [
     {
         title: 'Front End',
         icon: Devices,
-        subSections: [
-            {
-                title: 'Languages & Frameworks',
-                items: 'TypeScript, JavaScript (ES6+), React, HTML5, CSS3/Tailwind, Next.js',
-            },
-            {
-                title: 'Front End Skills',
-                items: 'State Management, API Integration, Responsive Design, Performance Optimization',
-            },
-        ],
+        items: ['React', 'TypeScript', 'JavaScript', 'Next.js', 'HTML/CSS', 'Responsive Design'],
     },
     {
         title: 'Back End',
         icon: Storage,
-        subSections: [
-            {
-                title: 'Languages & Technologies',
-                items: 'Node.js, Java, Python, Go, C, SQL',
-            },
-            {
-                title: 'Back End Skills',
-                items: 'REST APIs, Data Modeling, Authentication, Server Logic, Error Handling',
-            },
-        ],
+        items: ['Node.js', 'Java', 'Python', 'Go', 'SQL', 'REST APIs'],
     },
     {
         title: 'Tools & Platforms',
         icon: BuildCircle,
-        subSections: [
-            {
-                title: 'Development Tools',
-                items: 'WebStorm, VS Code, Git/GitHub/GitLab, Postman, Docker, Kubernetes',
-            },
-            {
-                title: 'Cloud & Services',
-                items: 'Firebase, AWS, Better Stack',
-            },
-            {
-                title: 'Testing & CI/CD',
-                items: 'JUnit, Storybook, Jest, React Testing Library, GitHub Actions',
-            },
-        ],
+        items: ['Git', 'Docker', 'AWS', 'Firebase', 'Jest', 'Vercel'],
     },
 ];
 
@@ -69,6 +38,7 @@ const Home = () => {
     const [languageIndex, setLanguageIndex] = useState(0);
     const [displayedGreeting, setDisplayedGreeting] = useState("");
     const greeting = languages[languageIndex];
+    const timeoutIds = useRef([]);
 
     const typeGreeting = useCallback((index, currentIndex) => {
         if (currentIndex !== languageIndex) {
@@ -77,30 +47,38 @@ const Home = () => {
 
         if (index < greeting.length) {
             setDisplayedGreeting((prevGreeting) => prevGreeting + greeting[index]);
-            setTimeout(() => typeGreeting(index + 1, currentIndex), 200);
+            const id = setTimeout(() => typeGreeting(index + 1, currentIndex), 200);
+            timeoutIds.current.push(id);
         } else {
-            setTimeout(() => {
+            const id = setTimeout(() => {
                 setDisplayedGreeting("");
                 setLanguageIndex((prevIndex) => (prevIndex + 1) % languages.length);
             }, 2000);
+            timeoutIds.current.push(id);
         }
     }, [languageIndex, greeting]);
 
     useEffect(() => {
-        let timeoutId;
-
         setDisplayedGreeting("");
+        timeoutIds.current = [];
         typeGreeting(0, languageIndex);
 
         return () => {
-            clearTimeout(timeoutId);
+            timeoutIds.current.forEach(clearTimeout);
         };
     }, [languageIndex, typeGreeting]);
 
     return (
-        <Box style={{ height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <AnimatedBox sx={{ marginTop: '4rem', textAlign: 'center', overflow: 'hidden' }}>
-                <div style={{ height: '100px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+        <Box sx={{ height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <AnimatedBox sx={{ marginTop: '4rem', textAlign: 'center', overflow: 'hidden', width: '100%' }}>
+
+                {/* Greeting — fixed height so content below doesn't shift */}
+                <Box sx={{
+                    height: { xs: '80px', sm: '100px', md: '130px' },
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                }}>
                     <Typography
                         variant="h1"
                         color="white"
@@ -109,16 +87,17 @@ const Home = () => {
                             fontWeight: 'bold',
                             textAlign: 'center',
                             transition: 'all 500ms ease-in-out',
-                            marginBottom: '1rem',
+                            whiteSpace: 'nowrap',
                         }}
                     >
                         {`${displayedGreeting}, I'm Jordan.`}
                     </Typography>
-                </div>
+                </Box>
+
                 <Typography
                     variant="h3"
                     color="white"
-                    sx={{ marginBottom: '1rem', fontSize: { xs: '2rem', md: '3rem' } }}
+                    sx={{ marginBottom: '1rem', marginTop: '1rem', fontSize: { xs: '2rem', md: '3rem' } }}
                 >
                     Engineer. Developer. Builder.
                 </Typography>
@@ -140,94 +119,155 @@ const Home = () => {
                     I focus on writing clean code, designing reliable systems, and creating software that improves how
                     people interact with technology.
                 </Typography>
-                <img
-                    src={skyline}
-                    style={{ width: '100%', height: 'auto', maxWidth: '100%' }}
-                    className="decoration"
-                    alt="a city skyline"
-                />
+                {/* Skyline overlaps slightly into the skills Paper below */}
+                <Box sx={{ position: 'relative', maxWidth: '900px', margin: '0 auto', marginBottom: '-11px', zIndex: -1 }}>
+                    <Box
+                        component="img"
+                        src={skyline}
+                        alt="a city skyline"
+                        sx={{ width: '100%', height: 'auto', display: 'block' }}
+                    />
+                    <Box sx={{
+                        position: 'absolute',
+                        bottom: 0,
+                        left: 0,
+                        right: 0,
+                        height: '20px',
+                        background: 'linear-gradient(to bottom, transparent, #ffffff)',
+                    }} />
+                </Box>
                 <Paper
-                    elevation={3}
+                    elevation={0}
                     sx={{
-                        padding: '2rem',
                         width: '100%',
                         maxWidth: '900px',
-                        margin: '2rem auto 3rem auto',
+                        margin: '0 auto 3rem auto',
+                        borderRadius: '12px',
+                        overflow: 'hidden',
                     }}
                 >
-                    <Box
-                        sx={{
-                            display: 'flex',
-                            justifyContent: 'center',
-                            alignItems: 'stretch',
-                            flexWrap: 'wrap',
-                            marginTop: '1rem',
-                        }}
-                    >
-                        {skills.map((skillCategory, index) => (
-                            <Box
-                                key={skillCategory.title}
-                                sx={{
-                                    flex: { xs: '100%', sm: 1 },
-                                    padding: '1rem',
-                                    textAlign: 'center',
-                                    borderRight: { xs: 'none', sm: index < skills.length - 1 ? '1px solid #03003D' : 'none' },
-                                    boxSizing: 'border-box',
-                                }}
-                            >
-                                {React.createElement(skillCategory.icon, { sx: { fontSize: '4rem', color: '#03003D' } })}
-                                <Typography variant="h5" color="black" sx={{ marginBottom: '1rem', marginTop: '0.5rem' }}>
-                                    {skillCategory.title}
-                                </Typography>
 
-                                {skillCategory.subSections.map((subSection) => (
-                                    <Box key={subSection.title} sx={{ marginBottom: '1rem' }}>
-                                        <Typography variant="subtitle1" color="#060070" sx={{ marginBottom: '0.5rem' }}>
-                                            {subSection.title}
-                                        </Typography>
-                                        {subSection.items.split(', ').map((item) => (
-                                            <Typography variant="body2" color="black" key={item}>
-                                                {item}
-                                            </Typography>
+                    <Box sx={{ padding: { xs: '2.5rem 1rem 2rem', md: '3rem 2rem 3rem' } }}>
+                        <Typography
+                            variant="h4"
+                            sx={{
+                                textAlign: 'center',
+                                color: '#03003D',
+                                fontWeight: 600,
+                                marginBottom: '0.5rem',
+                            }}
+                        >
+                            What I Work With
+                        </Typography>
+                        <Typography
+                            variant="body2"
+                            sx={{
+                                textAlign: 'center',
+                                color: '#666',
+                                marginBottom: '2rem',
+                            }}
+                        >
+                            Technologies and tools I use day-to-day
+                        </Typography>
+                        <Box
+                            sx={{
+                                display: 'flex',
+                                justifyContent: 'center',
+                                alignItems: 'flex-start',
+                                flexWrap: 'wrap',
+                                gap: { xs: '2rem', md: '0' },
+                            }}
+                        >
+                            {skills.map((category, index) => (
+                                <Box
+                                    key={category.title}
+                                    sx={{
+                                        flex: { xs: '100%', sm: 1 },
+                                        padding: { xs: '0 1rem', md: '0 1.5rem' },
+                                        textAlign: 'center',
+                                        borderRight: {
+                                            xs: 'none',
+                                            sm: index < skills.length - 1 ? '1px solid #e0e0e0' : 'none',
+                                        },
+                                        boxSizing: 'border-box',
+                                    }}
+                                >
+                                    {React.createElement(category.icon, {
+                                        sx: { fontSize: '3rem', color: '#03003D', mb: 0.5 },
+                                    })}
+                                    <Typography
+                                        variant="h6"
+                                        sx={{
+                                            color: '#03003D',
+                                            fontWeight: 600,
+                                            marginBottom: '1rem',
+                                        }}
+                                    >
+                                        {category.title}
+                                    </Typography>
+                                    <Box sx={{
+                                        display: 'flex',
+                                        flexWrap: 'wrap',
+                                        justifyContent: 'center',
+                                        gap: '8px',
+                                    }}>
+                                        {category.items.map((skill) => (
+                                            <Chip
+                                                key={skill}
+                                                label={skill}
+                                                variant="outlined"
+                                                sx={{
+                                                    borderColor: '#03003D',
+                                                    color: '#03003D',
+                                                    fontWeight: 500,
+                                                    fontSize: '0.85rem',
+                                                    '&:hover': {
+                                                        backgroundColor: '#03003D',
+                                                        color: 'white',
+                                                        borderColor: '#03003D',
+                                                    },
+                                                    transition: 'all 0.2s ease',
+                                                }}
+                                            />
                                         ))}
                                     </Box>
-                                ))}
-                            </Box>
-                        ))}
+                                </Box>
+                            ))}
+                        </Box>
                     </Box>
                 </Paper>
 
                 <Typography
                     variant="h4"
                     color="white"
-                    sx={{ marginTop: '3rem', marginBottom: '0.5rem' }}
+                    sx={{ marginTop: '1rem', marginBottom: '0.5rem' }}
                 >
                     My Recent Work
                 </Typography>
                 <Typography
                     variant="h6"
                     color="white"
-                    sx={{ marginTop: '0.5rem', marginBottom: '3rem' }}
+                    sx={{ marginTop: '0.5rem', marginBottom: '3rem', maxWidth: '700px', mx: 'auto' }}
                 >
                     Here are some past projects I've worked on. Interested in seeing more? See my
                     {" "}
                     <a href="https://github.com/jrudman25" target="_blank" rel="noopener noreferrer"
-                        style={{ textDecoration: "underline" }}>
+                        style={{ textDecoration: 'underline' }}>
                         GitHub
                     </a> or
                     {" "}
                     <a href="mailto:jrud25@outlook.com" target="_blank" rel="noopener noreferrer"
-                        style={{ textDecoration: "underline" }}>
+                        style={{ textDecoration: 'underline' }}>
                         email
                     </a> me.
                 </Typography>
             </AnimatedBox>
-            <Box sx={{ flexGrow: 1 }}>
+            <Box sx={{ flexGrow: 1, width: '100%' }}>
                 <Projects />
             </Box>
-            {/*<Box >
+            <Box sx={{ width: '100%', mt: 4, mb: 4 }}>
                 <Contact />
-            </Box>*/}
+            </Box>
         </Box>
     );
 };

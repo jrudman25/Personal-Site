@@ -1,55 +1,81 @@
 /**
- * Contact.js
- * My about page. Includes information about myself as well as a photo.
- * @version 2023.09.05
+ * Contact.jsx
+ * A call-to-action section inviting visitors to get in touch.
+ * @version 2026.03.22
  */
 import React from 'react';
-import { Typography, Grid, Paper, Button, Box } from "@mui/material";
+import { Typography, Button, Box } from "@mui/material";
 import { styled } from '@mui/material/styles';
+import EmailIcon from '@mui/icons-material/Email';
 
-const StyledButton = styled(Button)(({ theme }) => ({
-    border: `2px solid #03003D`,
-    color: '#03003D',
+const StyledButton = styled(Button)({
+    border: '2px solid rgba(255,255,255,0.6)',
+    color: 'white',
     backgroundColor: 'transparent',
     borderRadius: '50px',
-    transition: 'background-color 0.3s, color 0.3s',
+    padding: '10px 28px',
+    fontSize: '1rem',
+    fontWeight: 600,
+    transition: 'all 0.3s ease',
     '&:hover': {
-        backgroundColor: '#03003D',
-        color: '#fff',
-        border: `2px solid #fff`,
+        backgroundColor: 'white',
+        color: '#03003D',
+        borderColor: 'white',
+        transform: 'translateY(-2px)',
+        boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
     },
-}));
+});
 
 const Contact = () => {
     return (
-        <Grid container justifyContent="center" alignItems="center" sx={{ mt: 2, mb: 2 }}>
-            <Grid item xs={12} md={8}>
-                <Paper elevation={3} sx={{ padding: '2rem', display: 'flex', alignItems: 'center' }}>
-                    <Box flex={1} mr={12}>
-                        <Typography variant="h5" gutterBottom noWrap fontWeight="bold">
-                            Contact me
-                        </Typography>
-                    </Box>
-                    <Box flex={3} mr={12}>
-                        <Typography variant="body1" gutterBottom sx={{ textAlign: 'center' }}>
-                            Want to collaborate on a project, discuss employment opportunities, or just say hey? I'm
-                            always up for it. Let's chat.
-                        </Typography>
-                    </Box>
-                    <Box flex={1} display="flex" alignItems="center">
-                        <StyledButton
-                            variant="outlined"
-                            href="#"
-                            sx={{ mt: 2, height: 'fit-content' }}
-                        >
-                            <Typography variant="body1" noWrap>
-                                Let's do it
-                            </Typography>
-                        </StyledButton>
-                    </Box>
-                </Paper>
-            </Grid>
-        </Grid>
+        <Box
+            sx={{
+                maxWidth: '900px',
+                width: '100%',
+                margin: '0 auto',
+                borderRadius: '12px',
+                textAlign: 'center',
+                padding: { xs: '2.5rem 1.5rem', md: '3rem' },
+                background: 'linear-gradient(135deg, #03003D 0%, #060070 100%)',
+            }}
+        >
+            <EmailIcon sx={{ fontSize: '2.5rem', color: 'rgba(255,255,255,0.8)', mb: 1 }} />
+            <Typography
+                variant="h5"
+                sx={{ fontWeight: 700, color: 'white', mb: 1 }}
+            >
+                Let's Work Together
+            </Typography>
+            <Typography
+                variant="body1"
+                sx={{
+                    color: 'rgba(255,255,255,0.75)',
+                    maxWidth: '500px',
+                    margin: '0 auto',
+                    mb: 3,
+                    lineHeight: 1.6,
+                }}
+            >
+                Want to collaborate on a project, discuss opportunities, or just say hey?
+                I'm always up for it.
+            </Typography>
+            <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, flexWrap: 'wrap' }}>
+                <StyledButton
+                    variant="outlined"
+                    href="mailto:jrud25@outlook.com"
+                >
+                    Get in Touch
+                </StyledButton>
+                <StyledButton
+                    variant="outlined"
+                    href="https://www.linkedin.com/in/jordanrudman/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    LinkedIn
+                </StyledButton>
+            </Box>
+        </Box>
     );
 };
 
