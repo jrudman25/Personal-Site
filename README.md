@@ -2,7 +2,7 @@
 
 ### 🌐 [Live Site](https://rudman-portfolio.web.app/)
 
-A personal portfolio site showcasing my work, skills, and background as a Software Engineer.
+A personal portfolio site showcasing my work, skills, and background as a software engineer.
 
 ## Tech Stack
 
@@ -19,40 +19,23 @@ A personal portfolio site showcasing my work, skills, and background as a Softwa
 ## Features
 
 - **Animated greeting** that cycles through multiple languages
-- **Skills section** with interactive chip/badge layout
-- **Project carousel** (Swiper) showcasing past work with tech stack tags
-- **Responsive design** optimized for desktop and mobile
-- **Resume viewer** with embedded PDF rendering (react-pdf)
-- **Contact CTA** with direct email and LinkedIn links
-
-## Getting Started
-
-```bash
-# Install dependencies
-npm install
-
-# Start dev server
-npm run dev
-
-# Build for production
-npm run build
-
-# Deploy to Firebase
-firebase deploy
-```
+- **Editorial hero** focused on positioning, selected work, and professional credibility
+- **Focus areas** that explain the product, systems, and interface work I do
+- **Curated project grid** with outcomes, roles, highlights, links, and tech stack tags
+- **Approach and skills sections** designed for quick scanning
+- **Responsive design** optimized desktop-first with mobile scaling
+- **Contact CTA** with direct email, LinkedIn, and secondary resume access
 
 ## Project Structure
 
 ```
 src/
 ├── App.jsx            # Router and layout
-├── Home.jsx           # Landing page (greeting, skills, projects)
-├── About.jsx          # Bio and photo
-├── Resume.jsx         # PDF resume viewer
+├── Home.jsx           # Single-page portfolio layout
 ├── Error.jsx          # 404 page
 ├── NavBar.jsx         # Navigation bar
 ├── NavBarElement.jsx   # NavBar styled component
-├── Projects.jsx       # Project carousel (Swiper)
+├── Projects.jsx       # Curated project grid
 ├── Contact.jsx        # CTA section
 ├── Socials.jsx        # Social media icons
 ├── Footer.jsx         # Site footer

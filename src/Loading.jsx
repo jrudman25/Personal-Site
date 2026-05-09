@@ -1,62 +1,58 @@
 /**
  * Loading.js
  * Handles the animation that plays when you first visit the site.
- * @version 2025.08.04
+ * @version 2026.05.07
  */
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 
 const Loading = ({ onLoadingComplete }) => {
 
-    const [loadingComplete, setLoadingComplete] = useState(false);
+    const [isExiting, setIsExiting] = useState(false);
 
     useEffect(() => {
-        const animationShown = sessionStorage.getItem('animationShown');
+        const exitTimer = setTimeout(() => {
+            setIsExiting(true);
+        }, 2750);
 
-        if (!animationShown) {
-            setTimeout(() => {
-                setLoadingComplete(true);
-            }, 2750);
-
-            setTimeout(() => {
-                sessionStorage.setItem('animationShown', 'true');
-                onLoadingComplete();
-            }, 3250);
-        } else {
+        const completeTimer = setTimeout(() => {
             onLoadingComplete();
-        }
+        }, 3400);
+
+        return () => {
+            clearTimeout(exitTimer);
+            clearTimeout(completeTimer);
+        };
     }, [onLoadingComplete]);
 
     return (
         <>
-            {!loadingComplete && (
-                <motion.div
-                    style={{
-                        width: '100vw',
-                        height: '100vh',
-                        background: 'black',
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        position: 'fixed',
-                        top: 0,
-                        left: 0,
-                        zIndex: 9999,
-                        opacity: loadingComplete ? 0 : 1,
-                    }}
-                    animate={{ opacity: loadingComplete ? 0 : 1 }}
-                    transition={{ duration: 2.5 }}
-                >
+            <motion.div
+                style={{
+                    width: '100vw',
+                    height: '100vh',
+                    background: 'radial-gradient(circle at center, #090733 0%, #030016 68%, #000000 100%)',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    position: 'fixed',
+                    top: 0,
+                    left: 0,
+                    zIndex: 9999,
+                }}
+                animate={{ opacity: isExiting ? 0 : 1 }}
+                transition={{ duration: 0.65, ease: 'easeInOut' }}
+            >
 
-                    <motion.svg
-                        width="294"
-                        height="321"
-                        viewBox="0 0 294 321"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                    >
-                        <motion.path
-                            d="M80.2 179.6C79.7479 175.079 72.6935 171.021 70.3333 167.333C63.6314 156.862 59.4885
+                <motion.svg
+                    width="294"
+                    height="321"
+                    viewBox="0 0 294 321"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                    <motion.path
+                        d="M80.2 179.6C79.7479 175.079 72.6935 171.021 70.3333 167.333C63.6314 156.862 59.4885
                             144.1 53.4445 133.111C46.2575 120.044 43.4884 105.304 41 90.8C38.0792 73.7757 35.8683 58.1061
                             38.6445 40.7556C39.8232 33.3884 42.7334 2.71789 57.9778 14.2667C69.9587 23.3431 80.3137 41.2531
                             85.6222 55.0222C91.2648 69.6575 95.7454 85.2519 98.6 100.667C102.392 121.143 100.628 143.785
@@ -75,16 +71,15 @@ const Loading = ({ onLoadingComplete }) => {
                             166.511 187.378C169.451 193.14 174.635 197.667 179.578 201.644C194.485 213.638 209.79 224.967
                             223.844 238C234.248 247.648 243.93 258.042 254.378 267.644C261.654 274.332 269.676 279.772
                             277.267 286C279.625 287.935 280.94 290.76 283.4 292.4"
-                            stroke="white"
-                            strokeWidth="21"
-                            strokeLinecap="round"
-                            initial={{ pathLength: 0 }}
-                            animate={{ pathLength: 1 }}
-                            transition={{ duration: 2, ease: 'easeInOut' }}
-                        />
-                    </motion.svg>
-                </motion.div>
-            )}
+                        stroke="white"
+                        strokeWidth="21"
+                        strokeLinecap="round"
+                        initial={{ pathLength: 0 }}
+                        animate={{ pathLength: 1 }}
+                        transition={{ duration: 2, ease: 'easeInOut' }}
+                    />
+                </motion.svg>
+            </motion.div>
         </>
     );
 };

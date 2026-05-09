@@ -1,7 +1,7 @@
 /**
- * App.js
+ * App.jsx
  * Handles loading and routing for the site.
- * @version 2026.03.19
+ * @version 2026.04.23
  */
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -10,8 +10,6 @@ import NavBar from './NavBar';
 import Loading from './Loading';
 import Home from './Home';
 import Error from './Error';
-import About from './About';
-import Resume from './Resume';
 import Footer from "./Footer";
 
 function App() {
@@ -31,8 +29,6 @@ function App() {
                         <Box sx={{ flexGrow: 1, paddingTop: '120px' }}>
                             <Routes>
                                 <Route path="/" element={<Home />} />
-                                <Route path="/about" element={<About />} />
-                                <Route path="/resume" element={<Resume />} />
                                 <Route path="*" element={<Error />} />
                             </Routes>
                         </Box>
