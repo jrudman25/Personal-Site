@@ -5,7 +5,7 @@
  */
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import { Typography, Box, Paper, Chip, Button, Grid } from "@mui/material";
-import { Devices, BuildCircle, Storage, ArrowForward, Hub, Terminal, DesignServices, LocationOn, School } from '@mui/icons-material';
+import { Devices, BuildCircle, Storage, ArrowForward, Hub, Terminal, DesignServices, LocationOn, School, GitHub } from '@mui/icons-material';
 import Projects from './Projects';
 import Contact from './Contact';
 import AnimatedBox from './AnimatedBox';
@@ -180,24 +180,40 @@ const Home = () => {
                         <Typography
                             sx={{
                                 color: '#FFB84D',
-                                fontSize: { xs: '0.78rem', md: '0.82rem' },
+                                fontSize: { xs: '0.72rem', sm: '0.78rem', md: '0.82rem' },
                                 fontWeight: 800,
-                                letterSpacing: '0.2em',
+                                letterSpacing: { xs: '0.13em', sm: '0.18em', md: '0.2em' },
                                 textTransform: 'uppercase',
                                 mb: 2,
                                 minHeight: '1.35rem',
                                 display: 'inline-flex',
                                 alignItems: 'center',
                                 gap: 1,
+                                maxWidth: '100%',
+                                whiteSpace: 'nowrap',
+                                overflow: 'hidden',
                             }}
                         >
-                            <Box component="span" sx={{ minWidth: { xs: '7.4rem', md: '8.2rem' }, textAlign: 'left' }}>
-                                {displayedGreeting || '\u00A0'}, I'm Jordan
+                            <Box
+                                component="span"
+                                sx={{
+                                    display: 'inline-grid',
+                                    gridTemplateAreas: '"text"',
+                                    flex: '0 0 auto',
+                                    textAlign: 'left',
+                                }}
+                            >
+                                <Box component="span" sx={{ gridArea: 'text', visibility: 'hidden' }}>
+                                    Bonjour, I'm Jordan
+                                </Box>
+                                <Box component="span" sx={{ gridArea: 'text' }}>
+                                    {displayedGreeting || '\u00A0'}, I'm Jordan
+                                </Box>
                             </Box>
-                            <Box component="span" sx={{ color: 'rgba(255,255,255,0.42)' }}>
+                            <Box component="span" sx={{ display: { xs: 'none', sm: 'inline' }, color: 'rgba(255,255,255,0.42)' }}>
                                 /
                             </Box>
-                            <Box component="span">
+                            <Box component="span" sx={{ display: { xs: 'none', sm: 'inline' } }}>
                                 Creative technologist
                             </Box>
                         </Typography>
@@ -246,6 +262,28 @@ const Home = () => {
                                 }}
                             >
                                 View selected work
+                            </Button>
+                            <Button
+                                variant="outlined"
+                                href="https://github.com/jrudman25"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                startIcon={<GitHub />}
+                                sx={{
+                                    color: 'white',
+                                    borderColor: 'rgba(255,255,255,0.24)',
+                                    borderRadius: '999px',
+                                    px: 3,
+                                    py: 1.15,
+                                    fontWeight: 700,
+                                    textTransform: 'none',
+                                    '&:hover': {
+                                        borderColor: 'rgba(255,255,255,0.7)',
+                                        backgroundColor: 'rgba(255,255,255,0.08)',
+                                    },
+                                }}
+                            >
+                                GitHub
                             </Button>
                             <Button
                                 variant="outlined"
