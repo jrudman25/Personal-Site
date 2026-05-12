@@ -7,6 +7,7 @@ import React from 'react';
 import { Typography, Button, Box } from "@mui/material";
 import { styled } from '@mui/material/styles';
 import EmailIcon from '@mui/icons-material/Email';
+import DownloadIcon from '@mui/icons-material/Download';
 
 const StyledButton = styled(Button)({
     border: '1px solid rgba(255,255,255,0.28)',
@@ -63,31 +64,42 @@ const Contact = () => {
                 <Box
                     sx={{
                         display: 'flex',
-                        justifyContent: { xs: 'flex-start', md: 'flex-end' },
+                        justifyContent: { xs: 'flex-start', md: 'center' },
                         gap: 1.5,
                         flexWrap: 'wrap',
                     }}
                 >
-                    <StyledButton
-                        variant="outlined"
-                        href="mailto:jrud25@outlook.com"
+                    <Box
+                        sx={{
+                            display: 'flex',
+                            justifyContent: { xs: 'flex-start', md: 'center' },
+                            gap: 1.5,
+                            flexWrap: 'wrap',
+                            width: '100%',
+                        }}
                     >
-                        Email Jordan
-                    </StyledButton>
+                        <StyledButton
+                            variant="outlined"
+                            href="mailto:jrud25@outlook.com"
+                        >
+                            Email Jordan
+                        </StyledButton>
+                        <StyledButton
+                            variant="outlined"
+                            href="https://www.linkedin.com/in/jordan-rudman/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            LinkedIn
+                        </StyledButton>
+                    </Box>
                     <StyledButton
                         variant="outlined"
-                        href="https://www.linkedin.com/in/jordan-rudman/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        LinkedIn
-                    </StyledButton>
-                    <StyledButton
-                        variant="outlined"
-                        href="/resume.pdf"
+                        href="/Jordan-Rudman-Software-Engineer-Resume.pdf"
                         download
+                        startIcon={<DownloadIcon />}
                     >
-                        Resume
+                        Download Resume
                     </StyledButton>
                 </Box>
             </Box>

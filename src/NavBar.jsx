@@ -6,6 +6,7 @@
 import React, { useState } from 'react';
 import { Typography, IconButton, Menu, MenuItem, Box, useMediaQuery, useTheme } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import { Nav } from './NavBarElement';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import myLogo from './img/JRlogo4.png';
@@ -112,7 +113,10 @@ const NavBar = () => {
                                     }
                                 }}
                             >
-                                <Typography textAlign="center">{item.label}</Typography>
+                                <Box sx={{ display: 'inline-flex', alignItems: 'center', gap: 0.75 }}>
+                                    <Typography textAlign="center">{item.label}</Typography>
+                                    {item.external && <OpenInNewIcon sx={{ fontSize: '0.9rem' }} />}
+                                </Box>
                             </MenuItem>
                         ))}
                     </Menu>
@@ -122,7 +126,10 @@ const NavBar = () => {
                     {navItems.map((item) =>
                         item.external ? (
                             <a key={item.label} href={item.href} target="_blank" rel="noopener noreferrer" className="nav-link">
-                                <Typography className="nav">{item.label}</Typography>
+                                <Typography className="nav" component="span" sx={{ display: 'inline-flex', alignItems: 'center', gap: 0.5 }}>
+                                    {item.label}
+                                    <OpenInNewIcon sx={{ fontSize: '0.9rem' }} />
+                                </Typography>
                             </a>
                         ) : (
                             <Box
