@@ -21,7 +21,7 @@ A personal portfolio site showcasing my work, skills, and background as a softwa
 - **Animated greeting** that cycles through multiple languages
 - **Editorial hero** focused on positioning, selected work, and professional credibility
 - **Focus areas** that explain the product, systems, and interface work I do
-- **Curated project grid** with outcomes, roles, highlights, links, and tech stack tags
+- **Curated project grid** with outcomes, key features, project highlights, standout details, links, and tech stack tags
 - **Approach and skills sections** designed for quick scanning
 - **Responsive design** optimized desktop-first with mobile scaling
 - **Contact CTA** with direct email, LinkedIn, and secondary resume access
