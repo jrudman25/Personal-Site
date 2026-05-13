@@ -277,14 +277,9 @@ const Projects = () => {
                         <Typography sx={{ color: '#FFB84D', fontSize: '0.76rem', letterSpacing: '0.14em', textTransform: 'uppercase', fontWeight: 800, mb: 1, minHeight: '2.3em' }}>
                             {project.outcome}
                         </Typography>
-                        <Box sx={{ mb: 1.5, minHeight: '4.8em' }}>
-                            <Typography sx={{ fontSize: '0.72rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.54)', mb: 0.45, fontWeight: 800 }}>
-                                Key features
-                            </Typography>
-                            <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.78)', lineHeight: 1.55 }}>
-                                {project.features}
-                            </Typography>
-                        </Box>
+                        <Typography sx={{ fontSize: '0.72rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.54)', mb: 0.45, fontWeight: 800 }}>
+                            Description
+                        </Typography>
                         <Typography variant="body2" sx={{
                             color: 'rgba(255,255,255,0.82)',
                             mb: 1.5,
@@ -297,6 +292,14 @@ const Projects = () => {
                         }}>
                             {project.description}
                         </Typography>
+                        <Box sx={{ mb: 1.5, minHeight: '4.8em' }}>
+                            <Typography sx={{ fontSize: '0.72rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.54)', mb: 0.45, fontWeight: 800 }}>
+                                Key features
+                            </Typography>
+                            <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.78)', lineHeight: 1.55 }}>
+                                {project.features}
+                            </Typography>
+                        </Box>
                         <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: '6px', mb: 1.5, minHeight: '84px', alignContent: 'flex-start' }}>
                             {project.technologies.map((tech) => (
                                 <Chip
