@@ -156,7 +156,7 @@ const projectData = [
         outcome: 'Algorithm visualization',
         highlight: 'Sorting algorithms made clearer through motion and interaction.',
         standout: 'AlgoVis makes algorithm behavior tangible with animated comparisons for bubble sort and merge sort, backed by a modern Vite, HeroUI, TanStack Router, and Vitest setup deployed on Cloudflare Pages.',
-        link: 'https://algovis.jrud25.workers.dev/',
+        link: 'https://algovis.pages.dev/',
         repo: 'https://github.com/jrudman25/AlgoVis',
     },
     {
