@@ -32,10 +32,12 @@ describe('Loading Component', () => {
         expect(container.querySelector('svg')).toHaveAttribute('aria-hidden', 'true');
     });
 
-    test('skips the hero mark when reduced motion is requested', () => {
+    test('renders the hero mark without animation when reduced motion is requested', () => {
         setReducedMotion(true);
         const { container } = render(<Loading />);
+        const svg = container.querySelector('svg');
 
-        expect(container).toBeEmptyDOMElement();
+        expect(svg).toBeInTheDocument();
+        expect(svg).toHaveAttribute('aria-hidden', 'true');
     });
 });

@@ -14,7 +14,7 @@ import Footer from "./Footer";
 function App() {
     return (
         <Router>
-            <Box id="app-scroll-container" sx={{ height: '100vh', overflowY: 'auto', display: 'flex', flexDirection: 'column' }}>
+            <Box id="app-scroll-container" sx={{ height: '100vh', overflowY: 'auto', display: 'flex', flexDirection: 'column', '@supports (height: 100dvh)': { height: '100dvh' } }}>
                 <NavBar />
                 <Box component="main" sx={{ flexGrow: 1, paddingTop: '120px' }}>
                     <Routes>

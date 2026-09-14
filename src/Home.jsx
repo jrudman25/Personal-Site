@@ -232,8 +232,8 @@ const Home = () => {
                                 color: 'white',
                                 fontSize: { xs: '3.2rem', sm: '4.6rem', md: '6.8rem' },
                                 fontWeight: 900,
-                                letterSpacing: '-0.075em',
-                                lineHeight: 0.9,
+                                letterSpacing: '-0.06em',
+                                lineHeight: 1,
                                 maxWidth: '850px',
                                 mb: 3,
                             }}
@@ -264,6 +264,7 @@ const Home = () => {
                                     py: 1.15,
                                     fontWeight: 800,
                                     textTransform: 'none',
+                                    transition: 'transform 0.2s ease, background-color 0.2s ease',
                                     '&:hover': {
                                         backgroundColor: '#FFD18A',
                                         transform: 'translateY(-2px)',
@@ -339,7 +340,7 @@ const Home = () => {
                                 p: { xs: 2, md: 2.5 },
                                 background: 'linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0.025))',
                                 boxShadow: '0 28px 80px rgba(0,0,0,0.34)',
-                                transform: { xs: 'none', md: 'rotate(2deg)' },
+                                transform: { xs: 'none', md: 'translateY(-125px) rotate(2deg)' },
                             }}
                         >
                             <Loading />
@@ -360,8 +361,9 @@ const Home = () => {
                                 elevation={0}
                                 sx={{
                                     position: { xs: 'relative', md: 'absolute' },
-                                    left: { md: '-34px' },
-                                    bottom: { md: '28px' },
+                                    left: { md: '32px' },
+                                    right: { md: '32px' },
+                                    bottom: { md: '32px' },
                                     mt: { xs: 2, md: 0 },
                                     p: 2,
                                     borderRadius: '18px',
@@ -369,7 +371,7 @@ const Home = () => {
                                     background: 'rgba(3,0,61,0.84)',
                                     border: '1px solid rgba(255,255,255,0.12)',
                                     backdropFilter: 'blur(16px)',
-                                    zIndex: 2,
+                                    zIndex: 3,
                                 }}
                             >
                                 <Typography sx={{ fontWeight: 800, mb: 0.5 }}>
@@ -392,6 +394,7 @@ const Home = () => {
                                 elevation={0}
                                 sx={{
                                     height: '100%',
+                                    boxSizing: 'border-box',
                                     p: { xs: 2.5, md: 3 },
                                     borderRadius: '24px',
                                     color: 'white',
@@ -446,6 +449,7 @@ const Home = () => {
                                 elevation={0}
                                 sx={{
                                     height: '100%',
+                                    boxSizing: 'border-box',
                                     p: { xs: 2.5, md: 4 },
                                     borderRadius: '28px',
                                     color: 'white',
@@ -578,6 +582,10 @@ const Home = () => {
                                                     fontWeight: 500,
                                                     fontSize: '0.85rem',
                                                     transition: 'all 0.2s ease',
+                                                    '&:hover': {
+                                                        backgroundColor: 'rgba(3,0,61,0.08)',
+                                                        transform: 'translateY(-1px)',
+                                                    },
                                                 }}
                                             />
                                         ))}

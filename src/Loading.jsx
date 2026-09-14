@@ -11,10 +11,6 @@ const Loading = () => {
     const prefersReducedMotion = typeof window !== 'undefined'
         && window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
 
-    if (prefersReducedMotion) {
-        return null;
-    }
-
     return (
         <Box
             component={motion.svg}
@@ -22,15 +18,16 @@ const Loading = () => {
             viewBox="0 0 294 321"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 0.22 }}
+            initial={prefersReducedMotion ? false : { opacity: 0 }}
+            animate={{ opacity: 0.34 }}
             transition={{ duration: 0.6, ease: 'easeOut' }}
             sx={{
+                display: { xs: 'none', md: 'block' },
                 position: 'absolute',
-                width: { xs: '112%', md: '120%' },
+                width: '84%',
                 height: 'auto',
-                right: { xs: '-6%', md: '-10%' },
-                top: { xs: '-7%', md: '-11%' },
+                left: { xs: '68%', md: '80%' },
+                top: { xs: '6%', md: '4%' },
                 zIndex: 0,
                 pointerEvents: 'none',
                 filter: 'drop-shadow(0 0 28px rgba(255,184,77,0.16))',
@@ -59,7 +56,7 @@ const Loading = () => {
                 stroke="#FFB84D"
                 strokeWidth="12"
                 strokeLinecap="round"
-                initial={{ pathLength: 0 }}
+                initial={prefersReducedMotion ? false : { pathLength: 0 }}
                 animate={{ pathLength: 1 }}
                 transition={{ duration: 1.6, ease: 'easeInOut' }}
             />
