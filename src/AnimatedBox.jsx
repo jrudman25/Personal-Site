@@ -14,6 +14,9 @@ const fadeInAnimation = {
 const AnimatedBox = styled(Box)(({ theme }) => ({
     animation: `fadeIn 1s ${theme.transitions.easing.easeInOut}`,
     '@keyframes fadeIn': fadeInAnimation,
+    '@media (prefers-reduced-motion: reduce)': {
+        animation: 'none',
+    },
 }));
 
 export default AnimatedBox;

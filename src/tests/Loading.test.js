@@ -5,33 +5,37 @@
  */
 import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
-import { act, render } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import Loading from '../Loading';
 
 describe('Loading Component', () => {
-    beforeEach(() => {
-        jest.useFakeTimers();
-    });
+    const originalMatchMedia = window.matchMedia;
+
+    const setReducedMotion = (matches) => {
+        window.matchMedia = jest.fn().mockReturnValue({
+            matches,
+            addListener: jest.fn(),
+            removeListener: jest.fn(),
+            addEventListener: jest.fn(),
+            removeEventListener: jest.fn(),
+        });
+    };
 
     afterEach(() => {
-        jest.runOnlyPendingTimers();
-        jest.useRealTimers();
+        window.matchMedia = originalMatchMedia;
     });
 
-    test('calls onLoadingComplete after the intro animation duration', () => {
-        const onLoadingComplete = jest.fn();
-        render(<Loading onLoadingComplete={onLoadingComplete} />);
+    test('renders an assistive-technology-hidden hero mark', () => {
+        setReducedMotion(false);
+        const { container } = render(<Loading />);
 
-        act(() => {
-            jest.advanceTimersByTime(3399);
-        });
+        expect(container.querySelector('svg')).toHaveAttribute('aria-hidden', 'true');
+    });
 
-        expect(onLoadingComplete).not.toHaveBeenCalled();
+    test('skips the hero mark when reduced motion is requested', () => {
+        setReducedMotion(true);
+        const { container } = render(<Loading />);
 
-        act(() => {
-            jest.advanceTimersByTime(1);
-        });
-
-        expect(onLoadingComplete).toHaveBeenCalledTimes(1);
+        expect(container).toBeEmptyDOMElement();
     });
 });

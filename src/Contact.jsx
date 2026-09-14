@@ -45,6 +45,7 @@ const Contact = () => {
                 <Box>
                     <EmailIcon sx={{ fontSize: '2.3rem', color: '#FFB84D', mb: 1 }} />
                     <Typography
+                        component="h2"
                         variant="h4"
                         sx={{ fontWeight: 850, letterSpacing: '-0.04em', color: 'white', mb: 1 }}
                     >

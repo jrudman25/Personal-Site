@@ -4,11 +4,12 @@
  * @version 2026.05.07
  */
 import React, { useState, useEffect, useCallback, useRef } from "react";
-import { Typography, Box, Paper, Chip, Button, Grid } from "@mui/material";
+import { Typography, Box, Paper, Chip, Button, Grid, useMediaQuery } from "@mui/material";
 import { Devices, BuildCircle, Storage, ArrowForward, Hub, Terminal, DesignServices, LocationOn, School, GitHub } from '@mui/icons-material';
 import Projects from './Projects';
 import Contact from './Contact';
 import AnimatedBox from './AnimatedBox';
+import Loading from './Loading';
 import self from './img/myself.jpg';
 import skyline from './img/skyline.png';
 
@@ -71,6 +72,7 @@ const SectionHeader = ({ eyebrow, title, children, align = 'left' }) => (
             {eyebrow}
         </Typography>
         <Typography
+            component="h2"
             variant="h3"
             sx={{
                 color: 'white',
@@ -98,6 +100,7 @@ const SectionHeader = ({ eyebrow, title, children, align = 'left' }) => (
 );
 
 const Home = () => {
+    const prefersReducedMotion = useMediaQuery('(prefers-reduced-motion: reduce)');
     const [languageIndex, setLanguageIndex] = useState(0);
     const [displayedGreeting, setDisplayedGreeting] = useState("");
     const greeting = languages[languageIndex];
@@ -122,6 +125,11 @@ const Home = () => {
     }, [languageIndex, greeting]);
 
     useEffect(() => {
+        if (prefersReducedMotion) {
+            setDisplayedGreeting('Hello');
+            return undefined;
+        }
+
         setDisplayedGreeting("");
         timeoutIds.current = [];
         typeGreeting(0, languageIndex);
@@ -129,7 +137,7 @@ const Home = () => {
         return () => {
             timeoutIds.current.forEach(clearTimeout);
         };
-    }, [languageIndex, typeGreeting]);
+    }, [languageIndex, prefersReducedMotion, typeGreeting]);
 
     return (
         <Box
@@ -155,6 +163,7 @@ const Home = () => {
                     pt: { xs: 4, md: 2 },
                     pb: { xs: 8, md: 10 },
                     boxSizing: 'border-box',
+                    animation: 'none',
                 }}
             >
                 <Box
@@ -333,6 +342,7 @@ const Home = () => {
                                 transform: { xs: 'none', md: 'rotate(2deg)' },
                             }}
                         >
+                            <Loading />
                             <Box
                                 component="img"
                                 src={self}
@@ -342,6 +352,8 @@ const Home = () => {
                                     display: 'block',
                                     borderRadius: '24px',
                                     filter: 'saturate(0.92) contrast(1.04)',
+                                    position: 'relative',
+                                    zIndex: 1,
                                 }}
                             />
                             <Paper
@@ -357,6 +369,7 @@ const Home = () => {
                                     background: 'rgba(3,0,61,0.84)',
                                     border: '1px solid rgba(255,255,255,0.12)',
                                     backdropFilter: 'blur(16px)',
+                                    zIndex: 2,
                                 }}
                             >
                                 <Typography sx={{ fontWeight: 800, mb: 0.5 }}>
@@ -387,7 +400,7 @@ const Home = () => {
                                 }}
                             >
                                 {React.createElement(area.icon, { sx: { color: '#FFB84D', fontSize: '2rem', mb: 2 } })}
-                                <Typography variant="h6" sx={{ fontWeight: 800, mb: 1 }}>
+                                <Typography component="h2" variant="h6" sx={{ fontWeight: 800, mb: 1 }}>
                                     {area.title}
                                 </Typography>
                                 <Typography sx={{ color: 'rgba(255,255,255,0.68)', lineHeight: 1.65 }}>
@@ -489,6 +502,7 @@ const Home = () => {
                 >
                     <Box sx={{ padding: { xs: '2.5rem 1rem 2rem', md: '3.5rem 2.5rem' } }}>
                         <Typography
+                            component="h2"
                             variant="h4"
                             sx={{
                                 textAlign: 'center',
@@ -537,6 +551,7 @@ const Home = () => {
                                         sx: { fontSize: '3rem', color: '#03003D', mb: 0.5 },
                                     })}
                                     <Typography
+                                        component="h3"
                                         variant="h6"
                                         sx={{
                                             color: '#03003D',

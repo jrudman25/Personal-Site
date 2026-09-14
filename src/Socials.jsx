@@ -49,22 +49,22 @@ function KofiIcon(props) {
 const Socials = () => {
     return (
         <Box sx={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginTop: '1rem', marginBottom: '2rem' }}>
-            <Link href="https://github.com/jrudman25" target="_blank" rel="noopener noreferrer">
+            <Link href="https://github.com/jrudman25" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile">
                 <GitHub sx={iconSx} />
             </Link>
-            <Link href="https://www.linkedin.com/in/jordan-rudman/" target="_blank" rel="noopener noreferrer">
+            <Link href="https://www.linkedin.com/in/jordan-rudman/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
                 <LinkedIn sx={iconSx} />
             </Link>
-            <Link href="https://x.com/jrudman25" target="_blank" rel="noopener noreferrer">
+            <Link href="https://x.com/jrudman25" target="_blank" rel="noopener noreferrer" aria-label="X profile">
                 <X sx={iconSx} />
             </Link>
-            <Link href="mailto:jrud25@outlook.com">
+            <Link href="mailto:jrud25@outlook.com" aria-label="Email Jordan directly">
                 <Email sx={iconSx} />
             </Link>
-            <Link href="https://ko-fi.com/jrud25" target="_blank" rel="noopener noreferrer">
+            <Link href="https://ko-fi.com/jrud25" target="_blank" rel="noopener noreferrer" aria-label="Ko-fi profile">
                 <KofiIcon sx={iconSx} />
             </Link>
-            <Link href="https://open.spotify.com/user/elementx25" target="_blank" rel="noopener noreferrer">
+            <Link href="https://open.spotify.com/user/elementx25" target="_blank" rel="noopener noreferrer" aria-label="Spotify profile">
                 <SpotifyIcon sx={iconSx} />
             </Link>
         </Box>

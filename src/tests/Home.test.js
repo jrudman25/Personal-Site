@@ -19,21 +19,22 @@ describe('Home Component', () => {
         expect(screen.getByRole('link', { name: /Start a conversation/i })).toHaveAttribute('href', 'mailto:jrud25@outlook.com');
     });
 
-    test('renders selected work section with project cards', () => {
+    test('renders selected work with a semantic section and one heading per project', () => {
         render(<Home />);
 
-        expect(screen.getAllByText(/Selected work/i).length).toBeGreaterThan(0);
-        expect(screen.getAllByText(/LivePulse/i).length).toBeGreaterThan(0);
-        expect(screen.getAllByText(/Guidepost/i).length).toBeGreaterThan(0);
-        expect(screen.getAllByText(/PixLog/i).length).toBeGreaterThan(0);
+        expect(screen.getByRole('heading', { level: 2, name: /Proof that the ideas ship/i })).toBeInTheDocument();
+        expect(screen.getAllByRole('heading', { level: 3, name: /LivePulse/i })).toHaveLength(1);
+        expect(screen.getAllByRole('heading', { level: 3, name: /Guidepost/i })).toHaveLength(1);
+        expect(screen.getAllByRole('heading', { level: 3, name: /PixLog/i })).toHaveLength(1);
     });
 
-    test('renders skill categories', () => {
+    test('renders skill categories beneath the skills section heading', () => {
         render(<Home />);
 
-        expect(screen.getAllByText(/Front End/i).length).toBeGreaterThan(0);
-        expect(screen.getAllByText(/Back End/i).length).toBeGreaterThan(0);
-        expect(screen.getAllByText(/Tools & Platforms/i).length).toBeGreaterThan(0);
+        expect(screen.getByRole('heading', { level: 2, name: /Tools I reach for/i })).toBeInTheDocument();
+        expect(screen.getByRole('heading', { level: 3, name: /Front End/i })).toBeInTheDocument();
+        expect(screen.getByRole('heading', { level: 3, name: /Back End/i })).toBeInTheDocument();
+        expect(screen.getByRole('heading', { level: 3, name: /Tools & Platforms/i })).toBeInTheDocument();
     });
 
     test('renders contact options', () => {

@@ -226,7 +226,7 @@ const Projects = () => {
                             />
                         </Box>
                         <Box sx={{ position: 'relative', zIndex: 1, maxWidth: index < 2 ? '78%' : '90%', mt: 'auto', mb: 'auto', pt: 1.5 }}>
-                            <Typography variant="h4" sx={{ fontWeight: 850, lineHeight: 1.02, mb: 1, letterSpacing: '-0.04em', minHeight: '2.05em', display: 'flex', alignItems: 'flex-end' }}>
+                            <Typography component="p" aria-hidden="true" variant="h4" sx={{ color: 'white', fontWeight: 850, lineHeight: 1.02, mb: 1, letterSpacing: '-0.04em', minHeight: '2.05em', display: 'flex', alignItems: 'flex-end' }}>
                                 {project.title}
                             </Typography>
                             <Typography sx={{
@@ -271,7 +271,7 @@ const Projects = () => {
                         />
                     </Visual>
                     <Overlay>
-                        <Typography variant="h5" sx={{ fontWeight: 700, mb: 0.5, minHeight: '1.35em' }}>
+                        <Typography component="h3" variant="h5" sx={{ fontWeight: 700, mb: 0.5, minHeight: '1.35em' }}>
                             {project.title}
                         </Typography>
                         <Typography sx={{ color: '#FFB84D', fontSize: '0.76rem', letterSpacing: '0.14em', textTransform: 'uppercase', fontWeight: 800, mb: 1, minHeight: '2.3em' }}>

@@ -5,7 +5,7 @@
  */
 import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
-import { act, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import App from '../App';
 
 describe('App Component', () => {
@@ -18,33 +18,28 @@ describe('App Component', () => {
         jest.useRealTimers();
     });
 
-    test('shows the loading animation before rendering main content', () => {
+    test('renders meaningful content immediately while the decorative intro runs', () => {
         render(<App />);
-
-        expect(screen.queryByRole('heading', { level: 1 })).not.toBeInTheDocument();
-    });
-
-    test('renders main content after the loading animation completes', () => {
-        render(<App />);
-
-        act(() => {
-            jest.advanceTimersByTime(3400);
-        });
 
         expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(/I build full-stack products/i);
+        expect(screen.getByRole('main')).toBeInTheDocument();
         expect(screen.getByRole('navigation')).toBeInTheDocument();
         expect(screen.getAllByText(/Selected work/i).length).toBeGreaterThan(0);
     });
 
-    test('renders the error route for unknown paths after loading completes', () => {
+    test('renders named social links', () => {
+        render(<App />);
+
+        expect(screen.getByRole('link', { name: /GitHub profile/i })).toBeInTheDocument();
+        expect(screen.getByRole('link', { name: /LinkedIn profile/i })).toBeInTheDocument();
+        expect(screen.getByRole('link', { name: /Email Jordan directly/i })).toBeInTheDocument();
+    });
+
+    test('renders the error route for unknown client-side paths', () => {
         window.history.pushState({}, '', '/not-found');
 
         render(<App />);
 
-        act(() => {
-            jest.advanceTimersByTime(3400);
-        });
-
-        expect(screen.getByText(/Oops/i)).toBeInTheDocument();
+        expect(screen.getByRole('heading', { level: 1, name: /Oops/i })).toBeInTheDocument();
     });
 });
