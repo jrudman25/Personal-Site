@@ -1,0 +1,17 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["react", "jsx-a11y", "import"],
+  "rules": {
+    "import/no-unassigned-import": "off"
+  },
+  "categories": {
+    "correctness": "error",
+    "suspicious": "warn",
+    "pedantic": "off",
+    "style": "off",
+    "nursery": "off",
+    "restriction": "off",
+    "perf": "warn"
+  },
+  "ignorePatterns": ["dist", "coverage"]
+}
