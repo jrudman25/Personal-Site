@@ -1,7 +1,7 @@
 /**
  * Home.jsx
  * The main single-page layout: Hero, About, Skills, Projects, and Contact sections.
- * @version 2026.05.07
+ * @version 2026.09.15
  */
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import { Typography, Box, Paper, Chip, Button, Grid, useMediaQuery } from "@mui/material";
@@ -419,7 +419,7 @@ const Home = () => {
             <Box id="projects" sx={{ width: '100%', scrollMarginTop: '120px', mb: { xs: 8, md: 12 } }}>
                 <AnimatedBox sx={{ maxWidth: '1180px', mx: 'auto', px: { xs: 2, md: 6 }, boxSizing: 'border-box' }}>
                     <SectionHeader eyebrow="Selected work" title="Proof that the ideas ship">
-                        A curated set of projects spanning realtime infrastructure, AI-assisted workflows, collaborative media, and interactive experiences. Each card is meant to show the product thinking and technical scope quickly.
+                        A curated set of projects. Each card is meant to show the product thinking and technical scope quickly. For a more in-depth understanding, check out the live sites or the repositories.
                     </SectionHeader>
                 </AnimatedBox>
                 <Projects />
