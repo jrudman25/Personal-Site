@@ -4,8 +4,13 @@
  * @version 2026.05.07
  */
 import React from "react";
-import { Box, Link, SvgIcon } from "@mui/material";
-import { Email, GitHub, LinkedIn, X } from "@mui/icons-material";
+import Box from "@mui/material/Box";
+import Link from "@mui/material/Link";
+import SvgIcon from "@mui/material/SvgIcon";
+import Email from "@mui/icons-material/Email";
+import GitHub from "@mui/icons-material/GitHub";
+import LinkedIn from "@mui/icons-material/LinkedIn";
+import X from "@mui/icons-material/X";
 
 const iconSx = {
     fontSize: 36,

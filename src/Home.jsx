@@ -4,8 +4,23 @@
  * @version 2026.09.15
  */
 import React, { useState, useEffect, useCallback, useRef } from "react";
-import { Typography, Box, Paper, Chip, Button, Grid, useMediaQuery } from "@mui/material";
-import { Devices, BuildCircle, Storage, ArrowForward, Hub, Terminal, DesignServices, LocationOn, School, GitHub } from '@mui/icons-material';
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+import Paper from "@mui/material/Paper";
+import Chip from "@mui/material/Chip";
+import Button from "@mui/material/Button";
+import Grid from "@mui/material/Grid";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import Devices from '@mui/icons-material/Devices';
+import BuildCircle from '@mui/icons-material/BuildCircle';
+import Storage from '@mui/icons-material/Storage';
+import ArrowForward from '@mui/icons-material/ArrowForward';
+import Hub from '@mui/icons-material/Hub';
+import Terminal from '@mui/icons-material/Terminal';
+import DesignServices from '@mui/icons-material/DesignServices';
+import LocationOn from '@mui/icons-material/LocationOn';
+import School from '@mui/icons-material/School';
+import GitHub from '@mui/icons-material/GitHub';
 import Projects from './Projects';
 import Contact from './Contact';
 import AnimatedBox from './AnimatedBox';

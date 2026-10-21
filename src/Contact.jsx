@@ -4,7 +4,9 @@
  * @version 2026.05.07
  */
 import React from 'react';
-import { Typography, Button, Box } from "@mui/material";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
 import { styled } from '@mui/material/styles';
 import EmailIcon from '@mui/icons-material/Email';
 import DownloadIcon from '@mui/icons-material/Download';

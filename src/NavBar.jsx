@@ -4,7 +4,13 @@
  * @version 2026.05.07
  */
 import React, { useState } from 'react';
-import { Typography, IconButton, Menu, MenuItem, Box, useMediaQuery, useTheme } from '@mui/material';
+import Typography from '@mui/material/Typography';
+import IconButton from '@mui/material/IconButton';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import Box from '@mui/material/Box';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
 import MenuIcon from '@mui/icons-material/Menu';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import { Nav } from './NavBarElement';

@@ -5,7 +5,7 @@
  */
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Box } from '@mui/material';
+import Box from '@mui/material/Box';
 import NavBar from './NavBar';
 import Home from './Home';
 import Error from './Error';

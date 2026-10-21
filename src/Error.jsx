@@ -4,7 +4,8 @@
  * @version 2026.03.19
  */
 import React from 'react';
-import { Typography, Box } from '@mui/material';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
 import { Link } from 'react-router-dom';
 
 const Error = () => {

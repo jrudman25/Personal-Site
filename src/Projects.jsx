@@ -4,8 +4,15 @@
  * @version 2026.09.14
  */
 import React, { useState } from 'react';
-import { Box, Chip, Collapse, Typography, styled, useMediaQuery } from '@mui/material';
-import { Launch, GitHub, ExpandMore } from '@mui/icons-material';
+import Box from '@mui/material/Box';
+import Chip from '@mui/material/Chip';
+import Collapse from '@mui/material/Collapse';
+import Typography from '@mui/material/Typography';
+import { styled } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import Launch from '@mui/icons-material/Launch';
+import GitHub from '@mui/icons-material/GitHub';
+import ExpandMore from '@mui/icons-material/ExpandMore';
 
 const Card = styled(Box)(({ theme }) => ({
     borderRadius: '28px',
