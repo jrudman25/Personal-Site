@@ -43,6 +43,6 @@ describe('Home Component', () => {
         expect(screen.getByText(/Have a team, role, or product problem/i)).toBeInTheDocument();
         expect(screen.getByRole('link', { name: /Email Jordan/i })).toHaveAttribute('href', 'mailto:jrud25@outlook.com');
         expect(screen.getByRole('link', { name: /LinkedIn/i })).toHaveAttribute('href', 'https://www.linkedin.com/in/jordan-rudman/');
-        expect(screen.getByRole('link', { name: /Download Resume/i })).toHaveAttribute('href', '/Jordan-Rudman-Software-Engineer-Resume.pdf');
+        expect(screen.getByRole('link', { name: /Download Resume/i })).toHaveAttribute('href', '/Jordan-Rudman-Software-Engineer.pdf');
     });
 });

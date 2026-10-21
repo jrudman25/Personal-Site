@@ -96,7 +96,7 @@ const Contact = () => {
                     </Box>
                     <StyledButton
                         variant="outlined"
-                        href="/Jordan-Rudman-Software-Engineer-Resume.pdf"
+                        href="/Jordan-Rudman-Software-Engineer.pdf"
                         download
                         startIcon={<DownloadIcon />}
                     >
