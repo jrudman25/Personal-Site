@@ -61,7 +61,7 @@ const Contact = () => {
                             lineHeight: 1.7,
                         }}
                     >
-                        I am most interested in full-stack and front-end engineering roles where strong product taste, clean systems, and thoughtful interfaces all matter.
+                        I'm looking for software engineering roles where I can solve useful problems, learn from a strong team, and help turn ideas into working software.
                     </Typography>
                 </Box>
                 <Box

@@ -21,7 +21,7 @@ describe('App Component', () => {
     test('renders meaningful content immediately while the decorative intro runs', () => {
         render(<App />);
 
-        expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(/I build full-stack products/i);
+        expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('Thoughtful software. From interface to infrastructure.');
         expect(screen.getByRole('main')).toBeInTheDocument();
         expect(screen.getByRole('navigation')).toBeInTheDocument();
         expect(screen.getAllByText(/Selected work/i).length).toBeGreaterThan(0);

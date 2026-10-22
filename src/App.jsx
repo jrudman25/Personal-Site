@@ -16,7 +16,7 @@ function App() {
         <Router>
             <Box id="app-scroll-container" sx={{ height: '100vh', overflowY: 'auto', display: 'flex', flexDirection: 'column', '@supports (height: 100dvh)': { height: '100dvh' } }}>
                 <NavBar />
-                <Box component="main" sx={{ flexGrow: 1, paddingTop: '120px' }}>
+                <Box component="main" sx={{ flexGrow: 1, paddingTop: { xs: '96px', md: '112px' } }}>
                     <Routes>
                         <Route path="/" element={<Home />} />
                         <Route path="*" element={<Error />} />

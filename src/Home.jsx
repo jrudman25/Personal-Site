@@ -50,23 +50,23 @@ const focusAreas = [
     {
         title: 'Interfaces with intent',
         icon: DesignServices,
-        body: 'Design-minded front ends that make complex flows feel calm, quick, and usable.',
+        body: 'Clear, responsive interfaces that make complex tasks easier to navigate.',
     },
     {
         title: 'Systems that respond',
         icon: Hub,
-        body: 'Realtime, API-driven products with clear architecture from database to browser.',
+        body: 'Real-time, API-driven applications with clear architecture from database to browser.',
     },
     {
-        title: 'Shipping the whole slice',
+        title: 'From idea to release',
         icon: Terminal,
-        body: 'Full-stack ownership across planning, implementation, deployment, and iteration.',
+        body: 'Hands-on work across planning, implementation, deployment, and iteration.',
     },
 ];
 
 const credentials = [
-    { label: 'Seattle, WA', icon: LocationOn },
-    { label: 'BS Computer Science, HCI minor', icon: School },
+    { label: 'Seattle, WA, USA', icon: LocationOn },
+    { label: 'BS Computer Science + HCI minor, Virginia Tech', icon: School },
     { label: 'React, Next.js, Go, TypeScript', icon: Terminal },
 ];
 
@@ -91,10 +91,10 @@ const SectionHeader = ({ eyebrow, title, children, align = 'left' }) => (
             variant="h3"
             sx={{
                 color: 'white',
-                fontWeight: 850,
+                fontWeight: 700,
                 letterSpacing: '-0.04em',
                 fontSize: { xs: '2rem', md: '3rem' },
-                lineHeight: 1,
+                lineHeight: 1.12,
                 mb: 1.5,
             }}
         >
@@ -171,12 +171,11 @@ const Home = () => {
                 sx={{
                     position: 'relative',
                     width: '100%',
-                    minHeight: { xs: 'auto', md: 'calc(100vh - 120px)' },
-                    display: 'flex',
-                    alignItems: 'center',
+                    maxWidth: '1180px',
+                    mx: 'auto',
                     px: { xs: 2, md: 6 },
-                    pt: { xs: 4, md: 2 },
-                    pb: { xs: 8, md: 10 },
+                    pt: { xs: 2, md: 3 },
+                    pb: { xs: 4, md: 5 },
                     boxSizing: 'border-box',
                     animation: 'none',
                 }}
@@ -184,23 +183,35 @@ const Home = () => {
                 <Box
                     sx={{
                         position: 'absolute',
-                        width: { xs: 260, md: 520 },
-                        height: { xs: 260, md: 520 },
-                        right: { xs: '-120px', md: '6%' },
-                        top: { xs: '12%', md: '9%' },
+                        width: { xs: 200, md: 340 },
+                        height: { xs: 200, md: 340 },
+                        right: { xs: '-100px', md: '6%' },
+                        top: { xs: '0%', md: '0%' },
                         borderRadius: '50%',
-                        background: 'radial-gradient(circle, rgba(255,184,77,0.2) 0%, rgba(255,184,77,0.06) 45%, transparent 70%)',
+                        background: 'radial-gradient(circle, rgba(255,184,77,0.14) 0%, rgba(255,184,77,0.04) 45%, transparent 70%)',
                         filter: 'blur(4px)',
                         pointerEvents: 'none',
                     }}
                 />
-                <Grid
-                    container
-                    spacing={{ xs: 5, md: 8 }}
-                    alignItems="center"
-                    sx={{ maxWidth: '1180px', mx: 'auto', position: 'relative', zIndex: 1 }}
+                <Box
+                    sx={{
+                        display: 'grid',
+                        gridTemplateColumns: { xs: 'minmax(0, 1fr)', md: 'minmax(0, 7fr) minmax(0, 5fr)' },
+                        gridTemplateAreas: {
+                            xs: '"copy" "portrait"',
+                            md: '"copy portrait"',
+                        },
+                        columnGap: { xs: 0, md: 6 },
+                        rowGap: 5,
+                        alignItems: 'center',
+                        width: '100%',
+                        maxWidth: '1180px',
+                        mx: 'auto',
+                        position: 'relative',
+                        zIndex: 1,
+                    }}
                 >
-                    <Grid item xs={12} md={7}>
+                    <Box sx={{ gridArea: 'copy', minWidth: 0 }}>
                         <Typography
                             sx={{
                                 color: '#FFB84D',
@@ -234,39 +245,34 @@ const Home = () => {
                                     {displayedGreeting || '\u00A0'}, I'm Jordan
                                 </Box>
                             </Box>
-                            <Box component="span" sx={{ display: { xs: 'none', sm: 'inline' }, color: 'rgba(255,255,255,0.42)' }}>
-                                /
-                            </Box>
-                            <Box component="span" sx={{ display: { xs: 'none', sm: 'inline' } }}>
-                                Creative technologist
-                            </Box>
                         </Typography>
                         <Typography
                             variant="h1"
                             sx={{
                                 color: 'white',
-                                fontSize: { xs: '3.2rem', sm: '4.6rem', md: '6.8rem' },
-                                fontWeight: 900,
-                                letterSpacing: '-0.06em',
-                                lineHeight: 1,
-                                maxWidth: '850px',
-                                mb: 3,
+                                fontSize: { xs: '2rem', sm: '3.4rem', md: '3.5rem' },
+                                fontWeight: 700,
+                                letterSpacing: '-0.035em',
+                                lineHeight: 1.08,
+                                maxWidth: '820px',
+                                textWrap: 'balance',
+                                mb: 2,
                             }}
                         >
-                            I build full-stack products with a designer's eye and an engineer's spine.
+                            Thoughtful software. From interface to infrastructure.
                         </Typography>
                         <Typography
                             sx={{
                                 color: 'rgba(255,255,255,0.76)',
-                                fontSize: { xs: '1.08rem', md: '1.25rem' },
-                                lineHeight: 1.75,
-                                maxWidth: '690px',
-                                mb: 3,
+                                fontSize: { xs: '1rem', md: '1.1rem' },
+                                lineHeight: 1.65,
+                                maxWidth: '620px',
+                                mb: 2,
                             }}
                         >
-                            I turn ambiguous ideas into shipped web applications, from realtime systems and AI-powered workflows to interfaces that feel considered at every click.
+                            I’m a software engineer building interactive applications, real-time systems, and AI-powered tools.
                         </Typography>
-                        <Box sx={{ display: 'flex', gap: 1.5, flexWrap: 'wrap', mb: 3 }}>
+                        <Box sx={{ display: 'flex', gap: 1.5, flexWrap: 'wrap' }}>
                             <Button
                                 variant="contained"
                                 href="#projects"
@@ -330,7 +336,7 @@ const Home = () => {
                                 Start a conversation
                             </Button>
                         </Box>
-                        <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
+                        <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, mt: 3 }}>
                             {credentials.map((item) => (
                                 <Chip
                                     key={item.label}
@@ -345,96 +351,71 @@ const Home = () => {
                                 />
                             ))}
                         </Box>
-                    </Grid>
-                    <Grid item xs={12} md={5}>
+                    </Box>
+                    <Box
+                        sx={{
+                            gridArea: 'portrait',
+                            position: 'relative',
+                            border: '1px solid rgba(255,255,255,0.14)',
+                            borderRadius: '34px',
+                            p: { xs: 2, md: 2.5 },
+                            background: 'linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0.025))',
+                            boxShadow: '0 28px 80px rgba(0,0,0,0.34)',
+                            transform: { xs: 'none', md: 'scale(0.8) rotate(2deg)' },
+                        }}
+                    >
+                        <Loading />
                         <Box
+                            component="img"
+                            src={self}
+                            width={1748}
+                            height={2003}
+                            loading="eager"
+                            alt="Jordan Rudman"
                             sx={{
+                                width: '100%',
+                                height: 'auto',
+                                aspectRatio: '1748 / 2003',
+                                display: 'block',
+                                borderRadius: '24px',
+                                filter: 'saturate(0.92) contrast(1.04)',
                                 position: 'relative',
-                                border: '1px solid rgba(255,255,255,0.14)',
-                                borderRadius: '34px',
-                                p: { xs: 2, md: 2.5 },
-                                background: 'linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0.025))',
-                                boxShadow: '0 28px 80px rgba(0,0,0,0.34)',
-                                transform: { xs: 'none', md: 'translateY(-125px) rotate(2deg)' },
+                                zIndex: 1,
+                            }}
+                        />
+                        <Paper
+                            elevation={0}
+                            sx={{
+                                position: { xs: 'relative', md: 'absolute' },
+                                left: { md: '32px' },
+                                right: { md: '32px' },
+                                bottom: { md: '32px' },
+                                mt: { xs: 2, md: 0 },
+                                p: 2,
+                                borderRadius: '18px',
+                                color: 'white',
+                                background: 'rgba(3,0,61,0.84)',
+                                border: '1px solid rgba(255,255,255,0.12)',
+                                backdropFilter: 'blur(16px)',
+                                zIndex: 3,
                             }}
                         >
-                            <Loading />
-                            <Box
-                                component="img"
-                                src={self}
-                                alt="Jordan Rudman"
-                                sx={{
-                                    width: '100%',
-                                    display: 'block',
-                                    borderRadius: '24px',
-                                    filter: 'saturate(0.92) contrast(1.04)',
-                                    position: 'relative',
-                                    zIndex: 1,
-                                }}
-                            />
-                            <Paper
-                                elevation={0}
-                                sx={{
-                                    position: { xs: 'relative', md: 'absolute' },
-                                    left: { md: '32px' },
-                                    right: { md: '32px' },
-                                    bottom: { md: '32px' },
-                                    mt: { xs: 2, md: 0 },
-                                    p: 2,
-                                    borderRadius: '18px',
-                                    color: 'white',
-                                    background: 'rgba(3,0,61,0.84)',
-                                    border: '1px solid rgba(255,255,255,0.12)',
-                                    backdropFilter: 'blur(16px)',
-                                    zIndex: 3,
-                                }}
-                            >
-                                <Typography sx={{ fontWeight: 800, mb: 0.5 }}>
-                                    Current focus
-                                </Typography>
-                                <Typography sx={{ color: 'rgba(255,255,255,0.72)', lineHeight: 1.5, fontSize: '0.92rem' }}>
-                                    Building production-ready apps that balance technical depth with human-centered interaction.
-                                </Typography>
-                            </Paper>
-                        </Box>
-                    </Grid>
-                </Grid>
+                            <Typography sx={{ fontWeight: 800, mb: 0.5 }}>
+                                How I think
+                            </Typography>
+                            <Typography sx={{ color: 'rgba(255,255,255,0.72)', lineHeight: 1.5, fontSize: '0.92rem' }}>
+                                A computer science foundation, an HCI perspective, and a habit of asking how things could work better.
+                            </Typography>
+                        </Paper>
+                    </Box>
+                </Box>
             </AnimatedBox>
-
-            <Box sx={{ width: '100%', maxWidth: '1180px', px: { xs: 2, md: 6 }, boxSizing: 'border-box', mb: { xs: 8, md: 12 } }}>
-                <Grid container spacing={2.5}>
-                    {focusAreas.map((area) => (
-                        <Grid item xs={12} md={4} key={area.title}>
-                            <Paper
-                                elevation={0}
-                                sx={{
-                                    height: '100%',
-                                    boxSizing: 'border-box',
-                                    p: { xs: 2.5, md: 3 },
-                                    borderRadius: '24px',
-                                    color: 'white',
-                                    background: 'linear-gradient(180deg, rgba(255,255,255,0.09), rgba(255,255,255,0.035))',
-                                    border: '1px solid rgba(255,255,255,0.12)',
-                                }}
-                            >
-                                {React.createElement(area.icon, { sx: { color: '#FFB84D', fontSize: '2rem', mb: 2 } })}
-                                <Typography component="h2" variant="h6" sx={{ fontWeight: 800, mb: 1 }}>
-                                    {area.title}
-                                </Typography>
-                                <Typography sx={{ color: 'rgba(255,255,255,0.68)', lineHeight: 1.65 }}>
-                                    {area.body}
-                                </Typography>
-                            </Paper>
-                        </Grid>
-                    ))}
-                </Grid>
-            </Box>
 
             {/* ─── PROJECTS ─── */}
             <Box id="projects" sx={{ width: '100%', scrollMarginTop: '120px', mb: { xs: 8, md: 12 } }}>
                 <AnimatedBox sx={{ maxWidth: '1180px', mx: 'auto', px: { xs: 2, md: 6 }, boxSizing: 'border-box' }}>
                     <SectionHeader eyebrow="Selected work" title="Proof that the ideas ship">
-                        A curated set of projects. Each card is meant to show the product thinking and technical scope quickly. For a more in-depth understanding, check out the live sites or the repositories.
+                        Selected projects across real-time systems, AI workflows, and interactive experiences.
                     </SectionHeader>
                 </AnimatedBox>
                 <Projects />
@@ -453,7 +434,7 @@ const Home = () => {
                 }}
             >
                 <AnimatedBox>
-                    <Grid container spacing={{ xs: 3, md: 6 }} alignItems="stretch">
+                    <Grid container spacing={{ xs: 3, md: 6 }} alignItems="flex-start">
                         <Grid item xs={12} md={5}>
                             <SectionHeader eyebrow="Approach" title="I like the messy middle of product work">
                                 The part where user needs, system constraints, and visual polish all compete for attention is where I do my best work.
@@ -463,7 +444,6 @@ const Home = () => {
                             <Paper
                                 elevation={0}
                                 sx={{
-                                    height: '100%',
                                     boxSizing: 'border-box',
                                     p: { xs: 2.5, md: 4 },
                                     borderRadius: '28px',
@@ -476,15 +456,44 @@ const Home = () => {
                                     I'm a Seattle-based software engineer, originally from New York, with a BS in Computer Science from Virginia Tech and a minor in Human-Computer Interaction.
                                 </Typography>
                                 <Typography sx={{ mb: 2, lineHeight: 1.8, color: 'rgba(255,255,255,0.82)' }}>
-                                    I build across the stack: React and Next.js front ends, Go and Node.js services, realtime messaging, databases, auth, deployment, and the product details that make an app feel finished.
+                                    I work across interfaces and services: React and Next.js, Go and Node.js, real-time messaging, databases, authentication, and deployment.
                                 </Typography>
                                 <Typography sx={{ lineHeight: 1.8, color: 'rgba(255,255,255,0.82)' }}>
-                                    I'm currently looking for full-stack or front-end engineering roles where I can contribute quickly, keep learning from strong teams, and build products people actually want to use.
+                                    I'm currently looking for software engineering roles where I can contribute quickly, keep learning from strong teams, and build products people actually want to use.
                                 </Typography>
                             </Paper>
                         </Grid>
                     </Grid>
                 </AnimatedBox>
+            </Box>
+
+            <Box sx={{ width: '100%', maxWidth: '1180px', px: { xs: 2, md: 6 }, boxSizing: 'border-box', mb: { xs: 6, md: 8 } }}>
+                <Grid container spacing={2.5}>
+                    {focusAreas.map((area) => (
+                        <Grid item xs={12} md={4} key={area.title}>
+                            <Paper
+                                elevation={0}
+                                sx={{
+                                    height: '100%',
+                                    boxSizing: 'border-box',
+                                    p: 2.5,
+                                    borderRadius: '24px',
+                                    color: 'white',
+                                    background: 'linear-gradient(180deg, rgba(255,255,255,0.09), rgba(255,255,255,0.035))',
+                                    border: '1px solid rgba(255,255,255,0.12)',
+                                }}
+                            >
+                                {React.createElement(area.icon, { sx: { color: '#FFB84D', fontSize: '2rem', mb: 1 } })}
+                                <Typography component="h2" variant="h6" sx={{ fontWeight: 800, mb: 1 }}>
+                                    {area.title}
+                                </Typography>
+                                <Typography sx={{ color: 'rgba(255,255,255,0.68)', lineHeight: 1.65 }}>
+                                    {area.body}
+                                </Typography>
+                            </Paper>
+                        </Grid>
+                    ))}
+                </Grid>
             </Box>
 
             {/* ─── SKILLS ─── */}
@@ -526,7 +535,7 @@ const Home = () => {
                             sx={{
                                 textAlign: 'center',
                                 color: '#03003D',
-                                fontWeight: 850,
+                                fontWeight: 700,
                                 letterSpacing: '-0.04em',
                                 marginBottom: '0.5rem',
                             }}
@@ -541,7 +550,7 @@ const Home = () => {
                                 marginBottom: '2rem',
                             }}
                         >
-                            A practical stack for designing, building, and shipping web products
+                            Some common languages, tools, and practices behind my projects.
                         </Typography>
                         <Box
                             sx={{
