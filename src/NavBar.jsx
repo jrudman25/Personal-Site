@@ -3,7 +3,7 @@
  * The navigation bar at the top of the screen with my logo and scroll-based section links.
  * @version 2026.05.07
  */
-import React, { useState } from 'react';
+import React, { useId, useState } from 'react';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
@@ -23,13 +23,17 @@ const NavBar = () => {
     const navigate = useNavigate();
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+    const prefersReducedMotion = useMediaQuery('(prefers-reduced-motion: reduce)');
+    const scrollBehavior = prefersReducedMotion ? 'auto' : 'smooth';
     const [anchorEl, setAnchorEl] = useState(null);
+    const menuOpen = Boolean(anchorEl);
+    const mobileMenuId = useId();
 
     const scrollTo = (id) => {
         const doScroll = () => {
             const el = document.getElementById(id);
             if (el) {
-                el.scrollIntoView({ behavior: 'smooth' });
+                el.scrollIntoView({ behavior: scrollBehavior });
             }
         };
 
@@ -48,7 +52,7 @@ const NavBar = () => {
         } else {
             const scrollContainer = document.getElementById('app-scroll-container');
             if (scrollContainer) {
-                scrollContainer.scrollTo({ top: 0, behavior: 'smooth' });
+                scrollContainer.scrollTo({ top: 0, behavior: scrollBehavior });
             }
         }
     };
@@ -89,14 +93,18 @@ const NavBar = () => {
                         edge="start"
                         color="inherit"
                         aria-label="menu"
+                        aria-haspopup="true"
+                        aria-expanded={menuOpen ? 'true' : undefined}
+                        aria-controls={menuOpen ? mobileMenuId : undefined}
                         onClick={handleMenuOpen}
                         sx={{ color: 'white' }}
                     >
                         <MenuIcon />
                     </IconButton>
                     <Menu
+                        id={mobileMenuId}
                         anchorEl={anchorEl}
-                        open={Boolean(anchorEl)}
+                        open={menuOpen}
                         onClose={handleMenuClose}
                         sx={{
                             mt: 1,
@@ -140,11 +148,13 @@ const NavBar = () => {
                         ) : (
                             <Box
                                 key={item.label}
+                                component="button"
+                                type="button"
                                 onClick={item.action}
                                 className="nav-link"
-                                sx={{ cursor: 'pointer' }}
+                                sx={{ cursor: 'pointer', border: 0, backgroundColor: 'transparent', font: 'inherit' }}
                             >
-                                <Typography className="nav">{item.label}</Typography>
+                                <Typography className="nav" component="span">{item.label}</Typography>
                             </Box>
                         )
                     )}

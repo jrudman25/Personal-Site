@@ -1,6 +1,10 @@
+:root {
+  --font-sans: 'Aptos', 'Segoe UI', 'Helvetica Neue', sans-serif;
+}
+
 body {
   margin: 0;
-  font-family: 'Aptos', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #03003D;
