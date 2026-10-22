@@ -11,58 +11,17 @@ import Chip from "@mui/material/Chip";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import Devices from '@mui/icons-material/Devices';
-import BuildCircle from '@mui/icons-material/BuildCircle';
-import Storage from '@mui/icons-material/Storage';
 import ArrowForward from '@mui/icons-material/ArrowForward';
-import Hub from '@mui/icons-material/Hub';
 import Terminal from '@mui/icons-material/Terminal';
-import DesignServices from '@mui/icons-material/DesignServices';
 import LocationOn from '@mui/icons-material/LocationOn';
 import School from '@mui/icons-material/School';
 import GitHub from '@mui/icons-material/GitHub';
 import Projects from './Projects';
 import Contact from './Contact';
+import Skills from './Skills';
 import AnimatedBox from './AnimatedBox';
 import Loading from './Loading';
 import self from './img/myself.jpg';
-import skyline from './img/skyline.png';
-
-const skills = [
-    {
-        title: 'Front End',
-        icon: Devices,
-        items: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'HTML/CSS', 'Responsive Design'],
-    },
-    {
-        title: 'Back End',
-        icon: Storage,
-        items: ['Go', 'Node.js', 'Java', 'Python', 'SQL', 'REST APIs', 'WebSockets'],
-    },
-    {
-        title: 'Tools & Platforms',
-        icon: BuildCircle,
-        items: ['Git', 'Docker', 'Supabase', 'Firebase', 'AWS', 'Vercel'],
-    },
-];
-
-const focusAreas = [
-    {
-        title: 'Interfaces with intent',
-        icon: DesignServices,
-        body: 'Clear, responsive interfaces that make complex tasks easier to navigate.',
-    },
-    {
-        title: 'Systems that respond',
-        icon: Hub,
-        body: 'Real-time, API-driven applications with clear architecture from database to browser.',
-    },
-    {
-        title: 'From idea to release',
-        icon: Terminal,
-        body: 'Hands-on work across planning, implementation, deployment, and iteration.',
-    },
-];
 
 const credentials = [
     { label: 'Seattle, WA, USA', icon: LocationOn },
@@ -467,158 +426,9 @@ const Home = () => {
                 </AnimatedBox>
             </Box>
 
-            <Box sx={{ width: '100%', maxWidth: '1180px', px: { xs: 2, md: 6 }, boxSizing: 'border-box', mb: { xs: 6, md: 8 } }}>
-                <Grid container spacing={2.5}>
-                    {focusAreas.map((area) => (
-                        <Grid item xs={12} md={4} key={area.title}>
-                            <Paper
-                                elevation={0}
-                                sx={{
-                                    height: '100%',
-                                    boxSizing: 'border-box',
-                                    p: 2.5,
-                                    borderRadius: '24px',
-                                    color: 'white',
-                                    background: 'linear-gradient(180deg, rgba(255,255,255,0.09), rgba(255,255,255,0.035))',
-                                    border: '1px solid rgba(255,255,255,0.12)',
-                                }}
-                            >
-                                {React.createElement(area.icon, { sx: { color: '#FFB84D', fontSize: '2rem', mb: 1 } })}
-                                <Typography component="h2" variant="h6" sx={{ fontWeight: 800, mb: 1 }}>
-                                    {area.title}
-                                </Typography>
-                                <Typography sx={{ color: 'rgba(255,255,255,0.68)', lineHeight: 1.65 }}>
-                                    {area.body}
-                                </Typography>
-                            </Paper>
-                        </Grid>
-                    ))}
-                </Grid>
-            </Box>
-
             {/* ─── SKILLS ─── */}
             <Box id="skills" sx={{ width: '100%', scrollMarginTop: '120px', mb: { xs: 7, md: 10 } }}>
-                <Box sx={{ position: 'relative', maxWidth: { xs: 'calc(100% - 40px)', md: '948px' }, margin: '0 auto', marginBottom: '-2px', zIndex: 0, opacity: 0.9 }}>
-                    <Box
-                        component="img"
-                        src={skyline}
-                        alt="a city skyline"
-                        sx={{ width: '100%', height: 'auto', display: 'block' }}
-                    />
-                    <Box sx={{
-                        position: 'absolute',
-                        bottom: 0,
-                        left: 0,
-                        right: 0,
-                        height: '18px',
-                        background: 'linear-gradient(to bottom, transparent, #F6F1E8)',
-                    }} />
-                </Box>
-                <Paper
-                    elevation={0}
-                    sx={{
-                        width: '100%',
-                        maxWidth: '980px',
-                        margin: '0 auto',
-                        borderRadius: '28px',
-                        overflow: 'hidden',
-                        background: '#F6F1E8',
-                        border: '1px solid rgba(255,255,255,0.16)',
-                        position: 'relative',
-                        zIndex: 1,
-                    }}
-                >
-                    <Box sx={{ padding: { xs: '2.5rem 1rem 2rem', md: '3.5rem 2.5rem' } }}>
-                        <Typography
-                            component="h2"
-                            variant="h4"
-                            sx={{
-                                textAlign: 'center',
-                                color: '#03003D',
-                                fontWeight: 700,
-                                letterSpacing: '-0.04em',
-                                marginBottom: '0.5rem',
-                            }}
-                        >
-                            Tools I reach for
-                        </Typography>
-                        <Typography
-                            variant="body2"
-                            sx={{
-                                textAlign: 'center',
-                                color: '#666',
-                                marginBottom: '2rem',
-                            }}
-                        >
-                            Some common languages, tools, and practices behind my projects.
-                        </Typography>
-                        <Box
-                            sx={{
-                                display: 'flex',
-                                justifyContent: 'center',
-                                alignItems: 'flex-start',
-                                flexWrap: 'wrap',
-                                gap: { xs: '2rem', md: '0' },
-                            }}
-                        >
-                            {skills.map((category, index) => (
-                                <Box
-                                    key={category.title}
-                                    sx={{
-                                        flex: { xs: '100%', sm: 1 },
-                                        padding: { xs: '0 1rem', md: '0 1.5rem' },
-                                        textAlign: 'center',
-                                        borderRight: {
-                                            xs: 'none',
-                                            sm: index < skills.length - 1 ? '1px solid #e0e0e0' : 'none',
-                                        },
-                                        boxSizing: 'border-box',
-                                    }}
-                                >
-                                    {React.createElement(category.icon, {
-                                        sx: { fontSize: '3rem', color: '#03003D', mb: 0.5 },
-                                    })}
-                                    <Typography
-                                        component="h3"
-                                        variant="h6"
-                                        sx={{
-                                            color: '#03003D',
-                                            fontWeight: 600,
-                                            marginBottom: '1rem',
-                                        }}
-                                    >
-                                        {category.title}
-                                    </Typography>
-                                    <Box sx={{
-                                        display: 'flex',
-                                        flexWrap: 'wrap',
-                                        justifyContent: 'center',
-                                        gap: '8px',
-                                    }}>
-                                        {category.items.map((skill) => (
-                                            <Chip
-                                                key={skill}
-                                                label={skill}
-                                                variant="outlined"
-                                                sx={{
-                                                    borderColor: '#03003D',
-                                                    color: '#03003D',
-                                                    fontWeight: 500,
-                                                    fontSize: '0.85rem',
-                                                    transition: 'all 0.2s ease',
-                                                    '&:hover': {
-                                                        backgroundColor: 'rgba(3,0,61,0.08)',
-                                                        transform: 'translateY(-1px)',
-                                                    },
-                                                }}
-                                            />
-                                        ))}
-                                    </Box>
-                                </Box>
-                            ))}
-                        </Box>
-                    </Box>
-                </Paper>
+                <Skills />
             </Box>
 
             {/* ─── CONTACT ─── */}

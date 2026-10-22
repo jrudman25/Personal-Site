@@ -5,7 +5,7 @@
  */
 import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
-import { render, screen } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 import Home from '../Home';
 
 describe('Home Component', () => {
@@ -30,18 +30,21 @@ describe('Home Component', () => {
         expect(screen.getAllByRole('heading', { level: 3, name: /PixLog/i })).toHaveLength(1);
     });
 
-    test('places selected work before the about and focus-area sections', () => {
+    test('places selected work before about, skills, and contact', () => {
         render(<Home />);
 
         const selectedWork = screen.getByRole('heading', { level: 2, name: /Proof that the ideas ship/i });
         const about = screen.getByRole('heading', { level: 2, name: /messy middle of product work/i });
-        const focusArea = screen.getByRole('heading', { level: 2, name: /Interfaces with intent/i });
         const skills = screen.getByRole('heading', { level: 2, name: /Tools I reach for/i });
+        const contact = screen.getByRole('heading', { level: 2, name: /Have a team, role, or product problem/i });
+        const follows = (first, second) => first.compareDocumentPosition(second) & Node.DOCUMENT_POSITION_FOLLOWING;
 
-        expect(selectedWork.compareDocumentPosition(about) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
-        expect(selectedWork.compareDocumentPosition(focusArea) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
-        expect(about.compareDocumentPosition(focusArea) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
-        expect(focusArea.compareDocumentPosition(skills) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+        expect(follows(selectedWork, about)).toBeTruthy();
+        expect(follows(about, skills)).toBeTruthy();
+        expect(follows(skills, contact)).toBeTruthy();
+        ['Interfaces with intent', 'Systems that respond', 'From idea to release'].forEach((title) => {
+            expect(screen.queryByRole('heading', { name: title })).not.toBeInTheDocument();
+        });
     });
 
     test('shows one portrait and the credential pills before selected work', () => {
@@ -60,20 +63,22 @@ describe('Home Component', () => {
         });
     });
 
-    test('shows the engineering perspective and the focus-area title', () => {
+    test('shows the engineering perspective', () => {
         render(<Home />);
 
         expect(screen.getByText('A computer science foundation, an HCI perspective, and a habit of asking how things could work better.')).toBeInTheDocument();
-        expect(screen.getByRole('heading', { level: 2, name: 'From idea to release' })).toBeInTheDocument();
     });
 
     test('renders skill categories beneath the skills section heading', () => {
         render(<Home />);
 
         expect(screen.getByRole('heading', { level: 2, name: /Tools I reach for/i })).toBeInTheDocument();
-        expect(screen.getByRole('heading', { level: 3, name: /Front End/i })).toBeInTheDocument();
-        expect(screen.getByRole('heading', { level: 3, name: /Back End/i })).toBeInTheDocument();
-        expect(screen.getByRole('heading', { level: 3, name: /Tools & Platforms/i })).toBeInTheDocument();
+
+        const region = screen.getByRole('region', { name: /Tools I reach for/i });
+        ['Languages', 'Interfaces', 'Services & data', 'Testing', 'Delivery', 'AI integration'].forEach((title) => {
+            expect(within(region).getByRole('heading', { level: 3, name: title })).toBeInTheDocument();
+        });
+        expect(within(region).queryByRole('link')).not.toBeInTheDocument();
     });
 
     test('renders contact options', () => {
@@ -83,6 +88,7 @@ describe('Home Component', () => {
         expect(screen.getByText("I'm looking for software engineering roles where I can solve useful problems, learn from a strong team, and help turn ideas into working software.")).toBeInTheDocument();
         expect(screen.getByRole('link', { name: /Email Jordan/i })).toHaveAttribute('href', 'mailto:jrud25@outlook.com');
         expect(screen.getByRole('link', { name: /LinkedIn/i })).toHaveAttribute('href', 'https://www.linkedin.com/in/jordan-rudman/');
+        expect(screen.getAllByRole('link', { name: /Download Resume/i })).toHaveLength(1);
         expect(screen.getByRole('link', { name: /Download Resume/i })).toHaveAttribute('href', '/Jordan-Rudman-Software-Engineer.pdf');
     });
 });
