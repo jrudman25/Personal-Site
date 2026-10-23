@@ -1,11 +1,11 @@
 /**
  * Loading.test.js
  * Tests the intro loading animation lifecycle.
- * @version 2026.05.11
+ * @version 2026.10.22
  */
 import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
-import { render } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import Loading from '../Loading';
 
 describe('Loading Component', () => {
@@ -39,5 +39,24 @@ describe('Loading Component', () => {
 
         expect(svg).toBeInTheDocument();
         expect(svg).toHaveAttribute('aria-hidden', 'true');
+    });
+
+    test('restarts the animation when the replay button is clicked', () => {
+        setReducedMotion(false);
+        const { container } = render(<Loading />);
+        const before = container.querySelector('svg');
+
+        fireEvent.click(screen.getByRole('button', { name: 'Replay signature animation' }));
+
+        const after = container.querySelector('svg');
+        expect(after).toBeInTheDocument();
+        expect(after).not.toBe(before);
+    });
+
+    test('omits the replay button when reduced motion is requested', () => {
+        setReducedMotion(true);
+        render(<Loading />);
+
+        expect(screen.queryByRole('button', { name: 'Replay signature animation' })).not.toBeInTheDocument();
     });
 });
