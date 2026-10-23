@@ -18,7 +18,7 @@ const skillGroups = [
     { title: 'Services & data', icon: Storage, ...violet, items: ['Node.js', 'PostgreSQL', 'Redis', 'Supabase', 'Firebase', 'REST APIs', 'WebSockets'] },
     { title: 'Testing', icon: BugReport, ...amber, items: ['Vitest', 'Jest', 'React Testing Library', 'Playwright', 'Testify'] },
     { title: 'Delivery', icon: RocketLaunch, ...cyan, items: ['Docker', 'GitHub Actions', 'Vercel', 'GCP', 'AWS Lambda'] },
-    { title: 'AI integration', icon: AutoAwesome, ...violet, items: ['Gemini API', 'RAG', 'pgvector', 'structured extraction'] },
+    { title: 'AI integration', icon: AutoAwesome, ...violet, items: ['Gemini API', 'RAG', 'pgvector', 'Structured extraction'] },
 ];
 
 const Skills = () => (

@@ -1,7 +1,7 @@
 /**
  * Socials.jsx
  * Links to my social medias.
- * @version 2026.05.07
+ * @version 2026.10.21
  */
 import React from "react";
 import Box from "@mui/material/Box";
@@ -19,6 +19,10 @@ const iconSx = {
     '&:hover': {
         color: '#FFA500',
         transform: 'scale(1.1)',
+    },
+    '@media (prefers-reduced-motion: reduce)': {
+        transition: 'none',
+        '&:hover': { transform: 'none' },
     },
 };
 

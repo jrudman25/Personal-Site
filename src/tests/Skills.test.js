@@ -9,7 +9,7 @@ const expectedGroups = {
     'Services & data': ['Node.js', 'PostgreSQL', 'Redis', 'Supabase', 'Firebase', 'REST APIs', 'WebSockets'],
     'Testing': ['Vitest', 'Jest', 'React Testing Library', 'Playwright', 'Testify'],
     'Delivery': ['Docker', 'GitHub Actions', 'Vercel', 'GCP', 'AWS Lambda'],
-    'AI integration': ['Gemini API', 'RAG', 'pgvector', 'structured extraction'],
+    'AI integration': ['Gemini API', 'RAG', 'pgvector', 'Structured extraction'],
 };
 
 describe('Skills Component', () => {

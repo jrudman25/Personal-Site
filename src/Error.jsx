@@ -1,33 +1,27 @@
 /**
  * Error.js
  * Handles display when users navigate to a route that doesn't exist.
- * @version 2026.03.19
+ * @version 2026.10.21
  */
 import React from 'react';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import { Link } from 'react-router-dom';
+import Link from '@mui/material/Link';
+import { Link as RouterLink } from 'react-router-dom';
 
 const Error = () => {
     return (
         <Box sx={{ maxWidth: '760px', mx: 'auto', px: 3, py: 6, color: 'white' }}>
-            <Typography component="h1" variant="h2" sx={{ mb: 3, fontWeight: 850 }} textAlign="center">
-                Oops!
+            <Typography component="h1" variant="h2" sx={{ mb: 3, fontWeight: 700 }} textAlign="center">
+                This page wandered off.
             </Typography>
-            <Typography sx={{ mb: 2, fontSize: '1.15rem', lineHeight: 1.7 }}>
-                We couldn't find the page you were looking for. This is either because:
+            <Typography sx={{ mb: 3, fontSize: '1.15rem', lineHeight: 1.7 }}>
+                The address may be incorrect, or the page may have moved. The portfolio is still right where you left it.
             </Typography>
-            <Box component="ul" sx={{ pl: 3, mb: 3 }}>
-                <Typography component="li" sx={{ mb: 1, lineHeight: 1.7 }}>
-                    There is an error in the URL entered into your web browser. Please check the URL and try again.
-                </Typography>
-                <Typography component="li" sx={{ lineHeight: 1.7 }}>
-                    The page you are looking for has been moved or deleted.
-                </Typography>
-            </Box>
             <Typography sx={{ fontSize: '1.15rem', lineHeight: 1.7 }}>
-                You can return to the homepage by clicking{' '}
-                <Link to="/" style={{ color: '#fff', textDecoration: 'underline' }}>here</Link>.
+                <Link component={RouterLink} to="/" underline="always" sx={{ color: '#FFB84D' }}>
+                    Return to the portfolio
+                </Link>
             </Typography>
         </Box>
     );
