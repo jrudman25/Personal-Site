@@ -1,6 +1,6 @@
 /**
  * Home.jsx
- * The main single-page layout: Hero, About, Skills, Projects, and Contact sections.
+ * The main single-page layout: Hero, Projects, About, Skills, and Contact sections.
  * @version 2026.10.22
  */
 import React, { useState, useEffect } from "react";
@@ -15,6 +15,7 @@ import ArrowForward from '@mui/icons-material/ArrowForward';
 import Terminal from '@mui/icons-material/Terminal';
 import LocationOn from '@mui/icons-material/LocationOn';
 import School from '@mui/icons-material/School';
+import Work from '@mui/icons-material/WorkTwoTone';
 import GitHub from '@mui/icons-material/GitHub';
 import Projects from './Projects';
 import Contact from './Contact';
@@ -28,9 +29,10 @@ const credentials = [
     { label: 'Seattle, WA, USA', icon: LocationOn },
     { label: 'BS Computer Science + HCI minor, Virginia Tech', icon: School },
     { label: 'React, Next.js, Go, TypeScript', icon: Terminal },
+    { label: 'Open to SWE roles', icon: Work },
 ];
 
-const languages = ["Hello", "Hola", "Bonjour", "こんにちは", "안녕하세요", "Ciao", "你好"];
+const languages = ["Hello", "Hola", "Bonjour", "こんにちは", "안녕하세요", "Ciao", "你好", "привет"];
 
 const SectionHeader = ({ eyebrow, title, children, align = 'left' }) => (
     <Box sx={{ textAlign: { xs: 'center', md: align }, mb: { xs: 3, md: 4 } }}>
@@ -416,7 +418,7 @@ const Home = () => {
                                     I'm Jordan Rudman, a Seattle-based software engineer with a BS in Computer Science and a minor in Human-Computer Interaction from Virginia Tech.
                                 </Typography>
                                 <Typography sx={{ mb: 2, lineHeight: 1.8, color: 'rgba(255,255,255,0.82)' }}>
-                                    I work across interfaces and services: React and Next.js, Go and Node.js, real-time messaging, databases, authentication, and deployment.
+                                    I like to work on both halves of a product: the systems underneath and the experience on top, whether that means making a real-time feature feel instant, making a complex workflow legible, or deciding what to build when constraints pull in different directions.
                                 </Typography>
                                 <Typography sx={{ lineHeight: 1.8, color: 'rgba(255,255,255,0.82)' }}>
                                     I'm currently looking for software engineering roles where I can contribute quickly, keep learning from strong teams, and build products people actually want to use.
