@@ -1,7 +1,7 @@
 /**
  * App.test.js
  * Tests the App component (routing)
- * @version 2026.05.11
+ * @version 2026.10.21
  */
 import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
@@ -40,6 +40,6 @@ describe('App Component', () => {
 
         render(<App />);
 
-        expect(screen.getByRole('heading', { level: 1, name: /Oops/i })).toBeInTheDocument();
+        expect(screen.getByRole('heading', { level: 1, name: /wandered off/i })).toBeInTheDocument();
     });
 });

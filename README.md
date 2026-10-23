@@ -23,7 +23,7 @@ A personal portfolio site showcasing my work, skills, and background as a softwa
 - **Curated project grid** with outcomes, key features, project highlights, standout details, links, and tech stack tags
 - **Approach and skills sections** designed for quick scanning, with skills organized into six icon-led groups
 - **Shared typography** through a local-font MUI theme (Aptos with system fallbacks, no font downloads)
-- **Keyboard-operable navigation** with native buttons and reduced-motion-aware scrolling
+- **Keyboard-operable navigation** with native buttons, reduced-motion-aware scrolling, and a current-section indicator on desktop and in the mobile menu
 - **Responsive design** optimized desktop-first with mobile scaling
 - **Contact CTA** with direct email, LinkedIn, and secondary resume access
 
@@ -39,6 +39,7 @@ src/
 ├── NavBarElement.jsx   # NavBar styled component
 ├── Projects.jsx       # Curated project grid
 ├── Skills.jsx         # Grouped skills section
+├── useActiveSection.js # Current-section tracking for the NavBar
 ├── Contact.jsx        # CTA section
 ├── Socials.jsx        # Social media icons
 ├── Footer.jsx         # Site footer

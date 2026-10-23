@@ -5,10 +5,39 @@
  */
 import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
-import { render, screen, within } from '@testing-library/react';
+import { fireEvent, render, screen, within } from '@testing-library/react';
 import Home from '../Home';
 
+const mockMatchMedia = (reducedMotion) => {
+    window.matchMedia = jest.fn().mockImplementation((query) => ({
+        matches: query.includes('prefers-reduced-motion') && reducedMotion,
+        media: query,
+        onchange: null,
+        addListener: jest.fn(),
+        removeListener: jest.fn(),
+        addEventListener: jest.fn(),
+        removeEventListener: jest.fn(),
+        dispatchEvent: jest.fn(),
+    }));
+};
+
 describe('Home Component', () => {
+    let originalMatchMedia;
+    let originalScrollIntoView;
+
+    beforeEach(() => {
+        originalMatchMedia = window.matchMedia;
+        originalScrollIntoView = Element.prototype.scrollIntoView;
+        Element.prototype.scrollIntoView = jest.fn();
+        window.history.replaceState({}, '', '/');
+        mockMatchMedia(false);
+    });
+
+    afterEach(() => {
+        Element.prototype.scrollIntoView = originalScrollIntoView;
+        window.matchMedia = originalMatchMedia;
+    });
+
     test('renders the redesigned hero content and primary actions', () => {
         render(<Home />);
 
@@ -19,6 +48,27 @@ describe('Home Component', () => {
         expect(screen.getByRole('link', { name: /View selected work/i })).toHaveAttribute('href', '#projects');
         expect(screen.getByRole('link', { name: /GitHub/i })).toHaveAttribute('href', 'https://github.com/jrudman25');
         expect(screen.getByRole('link', { name: /Start a conversation/i })).toHaveAttribute('href', 'mailto:jrud25@outlook.com');
+    });
+
+    test('smoothly scrolls to selected work without changing the URL hash', () => {
+        expect(window.location.hash).toBe('');
+        render(<Home />);
+
+        const projects = document.getElementById('projects');
+        fireEvent.click(screen.getByRole('link', { name: /View selected work/i }));
+
+        expect(projects.scrollIntoView).toHaveBeenCalledWith({ behavior: 'smooth' });
+        expect(window.location.hash).toBe('');
+    });
+
+    test('scrolls to selected work without animation when reduced motion is preferred', () => {
+        mockMatchMedia(true);
+        render(<Home />);
+
+        const projects = document.getElementById('projects');
+        fireEvent.click(screen.getByRole('link', { name: /View selected work/i }));
+
+        expect(projects.scrollIntoView).toHaveBeenCalledWith({ behavior: 'auto' });
     });
 
     test('renders selected work with a semantic section and one heading per project', () => {

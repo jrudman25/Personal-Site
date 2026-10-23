@@ -1,7 +1,7 @@
 /**
  * Projects.jsx
  * A featured card row plus an expandable index of secondary projects.
- * @version 2026.09.14
+ * @version 2026.10.21
  */
 import React, { useState } from 'react';
 import Box from '@mui/material/Box';
@@ -14,26 +14,23 @@ import Launch from '@mui/icons-material/Launch';
 import GitHub from '@mui/icons-material/GitHub';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 
-const Card = styled(Box)(({ theme }) => ({
+const Card = styled(Box)({
     borderRadius: '28px',
     overflow: 'hidden',
     position: 'relative',
-    minHeight: '430px',
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'space-between',
     background: 'linear-gradient(180deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.035) 100%)',
     border: '1px solid rgba(255,255,255,0.12)',
     transition: 'transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease',
     '&:hover': {
-        transform: 'translateY(-6px)',
         boxShadow: '0 18px 42px rgba(0,0,0,0.28)',
         borderColor: 'rgba(255,255,255,0.28)',
     },
-    [theme.breakpoints.down('sm')]: {
-        minHeight: '420px',
+    '@media (prefers-reduced-motion: reduce)': {
+        transition: 'none',
     },
-}));
+});
 
 const Visual = styled(Box)({
     position: 'relative',
@@ -134,43 +131,40 @@ const microLabel = {
 const featuredProjects = [
     {
         title: 'LivePulse',
-        description: 'A live-event chat platform with authenticated rooms, temporary Redis chat history, and Ticketmaster-powered event discovery.',
         technologies: ['Go', 'Next.js', 'TypeScript', 'WebSockets', 'Neon', 'Upstash Redis', 'Clerk', 'Ticketmaster API', 'Northflank'],
         background: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)',
-        accent: 'linear-gradient(135deg, rgba(80,181,255,0.55) 0%, rgba(116,88,255,0.35) 100%)',
+        glow: 'linear-gradient(135deg, rgba(80,181,255,0.55) 0%, rgba(116,88,255,0.35) 100%)',
         eyebrow: 'Full-stack real-time build',
         features: 'JWT-authenticated WebSocket rooms, Redis TTL chat history, event ingestion',
         outcome: 'Real-time event chat',
-        highlight: 'Join live-event conversations from anywhere.',
-        standout: 'Go WebSocket hubs handle room connections, Clerk authenticates users, and Redis TTLs manage temporary chat history. Neon stores event data, with event discovery powered by Ticketmaster.',
+        summary: 'A live-event chat platform: find an event through Ticketmaster-powered discovery, then join an authenticated room to talk with other fans in real time.',
+        standout: 'Go WebSocket hubs manage room connections with Clerk JWT auth, while Redis TTLs keep chat history temporary and Neon stores ingested event data.',
         link: 'https://livepulse-hq.vercel.app/',
         repo: 'https://github.com/jrudman25/LivePulse',
     },
     {
         title: 'Guidepost',
-        description: 'An AI-powered job search manager that parses resumes, discovers listings, scores fit, and tracks applications through an analytics dashboard.',
         technologies: ['Next.js', 'TypeScript', 'Gemini API', 'SerpAPI', 'Supabase', 'Recharts', 'Vercel Cron', 'Vitest'],
         background: 'linear-gradient(135deg, #0d1b2a 0%, #1b263b 50%, #415a77 100%)',
-        accent: 'linear-gradient(135deg, rgba(117,220,255,0.45) 0%, rgba(255,255,255,0.14) 100%)',
+        glow: 'linear-gradient(135deg, rgba(117,220,255,0.45) 0%, rgba(255,255,255,0.14) 100%)',
         eyebrow: 'Applied AI workflow',
         features: 'Resume parsing, batch AI scoring, cron search, analytics dashboard',
         outcome: 'Job-search operating system',
-        highlight: 'AI-powered job discovery, ranking, and tracking in one focused flow.',
-        standout: 'Guidepost turns job hunting into an automated pipeline: SerpAPI discovery, Gemini resume parsing and batch scoring, Supabase RLS persistence, pipeline logs, database backups, and analytics for application outcomes.',
+        summary: 'An AI job search manager that parses your resume, discovers listings, scores fit, and tracks applications in one dashboard.',
+        standout: 'Runs as an automated pipeline: scheduled SerpAPI discovery, Gemini batch scoring, Supabase RLS persistence, pipeline logs, and database backups.',
         link: 'https://guidepost-ai.vercel.app/',
         repo: 'https://github.com/jrudman25/guidepost',
     },
     {
         title: 'Proofstack',
-        description: 'A GitHub portfolio tool that turns repository history into cited project briefs for interview preparation and portfolio exploration.',
         technologies: ['Next.js', 'TypeScript', 'Supabase', 'pgvector', 'Gemini API', 'GitHub OAuth', 'Upstash Redis', 'Tailwind CSS'],
         background: 'linear-gradient(135deg, #3c1f12 0%, #86198f 45%, #f97316 100%)',
-        accent: 'linear-gradient(135deg, rgba(134,25,143,0.42) 0%, rgba(255,184,77,0.32) 100%)',
+        glow: 'linear-gradient(135deg, rgba(134,25,143,0.42) 0%, rgba(255,184,77,0.32) 100%)',
         eyebrow: 'AI portfolio intelligence',
         features: 'Repository sync, RAG chat with citations, interview briefings, owner-edited briefs',
         outcome: 'GitHub portfolio, explained',
-        highlight: 'Understand your GitHub projects and prepare to explain the work behind them.',
-        standout: 'Proofstack combines GitHub OAuth sync, dependency-based stack detection, pgvector embeddings, and hybrid RAG chat with enforced citations, so owners get interview-ready context and external viewers get an evidence-backed way to explore the work.',
+        summary: 'A GitHub portfolio tool that turns repository history into cited project briefs for interview prep and portfolio exploration.',
+        standout: 'Combines GitHub OAuth sync, dependency-based stack detection, pgvector embeddings, and hybrid RAG chat with enforced citations.',
         link: 'https://getproofstack.vercel.app/',
         repo: 'https://github.com/jrudman25/Proofstack',
     },
@@ -197,6 +191,7 @@ const moreProjects = [
         highlight: 'Rank every weapon, tool, and armor piece in a modpack.',
         standout: 'BestInSlot ships one shared Java module across two incompatible loader and JDK targets: NeoForge 1.21.1 on Java 21 and Forge 1.12.2 on Java 8. Attribute, mining-speed, and use-action fallbacks keep modded items sorting correctly.',
         link: 'https://github.com/jrudman25/BestInSlot/releases',
+        linkLabel: 'Download',
         repo: 'https://github.com/jrudman25/BestInSlot',
     },
     {
@@ -235,143 +230,146 @@ const moreProjects = [
 
 ];
 
-const FeaturedCard = ({ project }) => (
-    <Card sx={{ gridColumn: { xs: 'span 1', md: 'span 4' } }}>
-        <Visual sx={{ background: project.image ? 'transparent' : project.background, height: 220, p: project.image ? 0 : '1.25rem' }}>
-            {project.image ? (
-                <Box
-                    component="img"
-                    src={project.image}
-                    alt={`${project.title} preview`}
-                    sx={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-                />
-            ) : (
-                <Glow style={{ background: project.accent }} />
-            )}
-            <Box sx={{ position: 'relative', zIndex: 1, display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 2, p: project.image ? '1.25rem' : 0 }}>
+const FeaturedCard = ({ project, open, onToggle, reducedMotion }) => {
+    const detailsId = `project-details-${project.title.toLowerCase()}`;
+    const visibleTechnologies = project.technologies.slice(0, 4);
+    const extraTechnologies = project.technologies.slice(4);
+
+    return (
+        <Card sx={{ gridColumn: { xs: 'span 1', md: 'span 4' } }}>
+            <Visual sx={{ height: 144, background: project.image ? 'transparent' : project.background, p: project.image ? 0 : '1.25rem' }}>
+                {project.image ? (
+                    <Box
+                        component="img"
+                        src={project.image}
+                        alt={`${project.title} preview`}
+                        sx={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                    />
+                ) : (
+                    <Glow style={{ background: project.glow }} />
+                )}
                 <Chip
                     label={project.eyebrow}
                     size="small"
                     sx={{
+                        position: 'relative',
+                        zIndex: 1,
                         color: 'white',
                         backgroundColor: project.image ? 'rgba(0,0,0,0.45)' : 'rgba(255,255,255,0.12)',
                         backdropFilter: 'blur(8px)',
                         border: '1px solid rgba(255,255,255,0.16)',
                         fontWeight: 600,
+                        alignSelf: 'flex-start',
+                        mb: 1.5,
                     }}
                 />
-            </Box>
-            {!project.image && (
-                <>
-                    <Box
-                        sx={{
-                            position: 'absolute',
-                            right: 22,
-                            bottom: 18,
-                            width: 118,
-                            height: 118,
-                            borderRadius: '28px',
-                            border: '1px solid rgba(255,255,255,0.14)',
-                            background: 'rgba(255,255,255,0.08)',
-                            backdropFilter: 'blur(10px)',
-                            transform: 'rotate(12deg)',
-                        }}
-                    />
-                    <Box
-                        sx={{
-                            position: 'absolute',
-                            right: 82,
-                            bottom: 60,
-                            width: 86,
-                            height: 86,
-                            borderRadius: '24px',
-                            border: '1px solid rgba(255,255,255,0.16)',
-                            background: 'rgba(255,255,255,0.12)',
-                            backdropFilter: 'blur(10px)',
-                            transform: 'rotate(-9deg)',
-                        }}
-                    />
-                </>
-            )}
-        </Visual>
-        <Overlay>
-            <Typography component="h3" variant="h5" sx={{ fontWeight: 700, mb: 0.5, minHeight: '1.35em' }}>
-                {project.title}
-            </Typography>
-            <Typography sx={{ color: '#FFB84D', fontSize: '0.76rem', letterSpacing: '0.14em', textTransform: 'uppercase', fontWeight: 800, mb: 1, minHeight: '2.3em' }}>
-                {project.outcome}
-            </Typography>
-            <Typography sx={{ color: 'rgba(255,255,255,0.88)', fontSize: '0.95rem', lineHeight: 1.55, mb: 1.5 }}>
-                {project.highlight}
-            </Typography>
-            <Typography sx={{ ...microLabel, mb: 0.45 }}>
-                Description
-            </Typography>
-            <Typography variant="body2" sx={{
-                color: 'rgba(255,255,255,0.82)',
-                mb: 1.5,
-                lineHeight: 1.5,
-                minHeight: '4.5em',
-            }}>
-                {project.description}
-            </Typography>
-            <Box sx={{ mb: 1.5, minHeight: '4.8em' }}>
+            </Visual>
+            <Overlay>
+                <Typography component="h3" variant="h5" sx={{ fontWeight: 700, mb: 0.5 }}>
+                    {project.title}
+                </Typography>
+                <Typography sx={{ color: '#FFB84D', fontSize: '0.76rem', letterSpacing: '0.14em', textTransform: 'uppercase', fontWeight: 800, mb: 1 }}>
+                    {project.outcome}
+                </Typography>
+                <Typography sx={{ color: 'rgba(255,255,255,0.88)', fontSize: '0.95rem', lineHeight: 1.55, mb: 1.5 }}>
+                    {project.summary}
+                </Typography>
                 <Typography sx={{ ...microLabel, mb: 0.45 }}>
-                    Key features
-                </Typography>
-                <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.78)', lineHeight: 1.55 }}>
-                    {project.features}
-                </Typography>
-            </Box>
-            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: '6px', mb: 1.5, minHeight: '84px', alignContent: 'flex-start' }}>
-                {project.technologies.map((tech) => (
-                    <Chip
-                        key={tech}
-                        label={tech}
-                        size="small"
-                        variant="outlined"
-                        sx={{
-                            borderColor: 'rgba(255,255,255,0.4)',
-                            color: 'rgba(255,255,255,0.9)',
-                            fontSize: '0.7rem',
-                            height: '24px',
-                        }}
-                    />
-                ))}
-            </Box>
-            <Box
-                sx={{
-                    borderRadius: '14px',
-                    padding: '0.9rem 1rem',
-                    background: 'rgba(255,255,255,0.06)',
-                    border: '1px solid rgba(255,255,255,0.1)',
-                    mb: 1.5,
-                    minHeight: '190px',
-                    boxSizing: 'border-box',
-                }}
-            >
-                <Typography sx={{ ...microLabel, color: 'rgba(255,255,255,0.58)', mb: 0.6 }}>
                     Why it stands out
                 </Typography>
-                <Typography sx={{ color: 'rgba(255,255,255,0.86)', lineHeight: 1.6, fontSize: '0.94rem' }}>
+                <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.86)', lineHeight: 1.6, mb: 1.5 }}>
                     {project.standout}
                 </Typography>
-            </Box>
-            <Box sx={{ display: 'flex', gap: 1.5, mt: 'auto' }}>
-                {project.link && (
-                    <LinkButton href={project.link} target="_blank" rel="noopener noreferrer">
-                        <Launch sx={{ fontSize: 16 }} /> Live
-                    </LinkButton>
-                )}
-                {project.repo && (
-                    <LinkButton href={project.repo} target="_blank" rel="noopener noreferrer">
-                        <GitHub sx={{ fontSize: 16 }} /> Repo
-                    </LinkButton>
-                )}
-            </Box>
-        </Overlay>
-    </Card>
-);
+                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: '6px', mb: 1.5, alignContent: 'flex-start' }}>
+                    {visibleTechnologies.map((tech) => (
+                        <Chip
+                            key={tech}
+                            label={tech}
+                            size="small"
+                            variant="outlined"
+                            sx={{
+                                borderColor: 'rgba(255,255,255,0.4)',
+                                color: 'rgba(255,255,255,0.9)',
+                                fontSize: '0.7rem',
+                                height: '24px',
+                            }}
+                        />
+                    ))}
+                    {extraTechnologies.length > 0 && !open && (
+                        <Chip
+                            label={`+${extraTechnologies.length}`}
+                            aria-label={`${extraTechnologies.length} more technologies, shown in details`}
+                            size="small"
+                            variant="outlined"
+                            sx={{
+                                borderColor: 'rgba(255,255,255,0.4)',
+                                color: 'rgba(255,255,255,0.9)',
+                                fontSize: '0.7rem',
+                                height: '24px',
+                            }}
+                        />
+                    )}
+                    {extraTechnologies.length > 0 && (
+                        <Collapse in={open} timeout={reducedMotion ? 0 : 'auto'} sx={{ width: '100%' }}>
+                            <Box
+                                id={`${detailsId}-tech`}
+                                sx={{ display: 'flex', flexWrap: 'wrap', gap: '6px', mt: '6px' }}
+                            >
+                                {extraTechnologies.map((tech) => (
+                                    <Chip
+                                        key={tech}
+                                        label={tech}
+                                        size="small"
+                                        variant="outlined"
+                                        sx={{
+                                            borderColor: 'rgba(255,255,255,0.4)',
+                                            color: 'rgba(255,255,255,0.9)',
+                                            fontSize: '0.7rem',
+                                            height: '24px',
+                                        }}
+                                    />
+                                ))}
+                            </Box>
+                        </Collapse>
+                    )}
+                </Box>
+                <Box sx={{ display: 'flex', gap: 1.5, flexWrap: 'wrap', mt: 'auto', pt: 1 }}>
+                    {project.link && (
+                        <LinkButton href={project.link} target="_blank" rel="noopener noreferrer">
+                            <Launch sx={{ fontSize: 16 }} /> {project.linkLabel || 'Live'}
+                        </LinkButton>
+                    )}
+                    {project.repo && (
+                        <LinkButton href={project.repo} target="_blank" rel="noopener noreferrer">
+                            <GitHub sx={{ fontSize: 16 }} /> Repo
+                        </LinkButton>
+                    )}
+                    <DetailsButton onClick={onToggle} aria-expanded={open} aria-controls={`${detailsId} ${detailsId}-tech`}>
+                        Details
+                        <ExpandMore sx={{ fontSize: 18, transform: open ? 'rotate(180deg)' : 'none', transition: 'transform 0.25s ease' }} />
+                    </DetailsButton>
+                </Box>
+                <Collapse in={open} timeout={reducedMotion ? 0 : 'auto'}>
+                    <Box
+                        id={detailsId}
+                        sx={{
+                            mt: 1.5,
+                            pt: 1.5,
+                            borderTop: '1px solid rgba(255,255,255,0.1)',
+                        }}
+                    >
+                        <Typography sx={{ ...microLabel, mb: 0.45 }}>
+                            Key features
+                        </Typography>
+                        <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.78)', lineHeight: 1.55 }}>
+                            {project.features}
+                        </Typography>
+                    </Box>
+                </Collapse>
+            </Overlay>
+        </Card>
+    );
+};
 
 const ProjectRow = ({ project, open, onToggle, reducedMotion }) => {
     const detailsId = `project-details-${project.title.toLowerCase()}`;
@@ -389,7 +387,7 @@ const ProjectRow = ({ project, open, onToggle, reducedMotion }) => {
                 <Box sx={{ display: 'flex', gap: 1, alignItems: 'center', flexWrap: 'wrap' }}>
                     {project.link && (
                         <LinkButton href={project.link} target="_blank" rel="noopener noreferrer">
-                            <Launch sx={{ fontSize: 16 }} /> Live
+                            <Launch sx={{ fontSize: 16 }} /> {project.linkLabel || 'Live'}
                         </LinkButton>
                     )}
                     {project.repo && (
@@ -494,7 +492,13 @@ const Projects = () => {
                 }}
             >
                 {featuredProjects.map((project) => (
-                    <FeaturedCard key={project.title} project={project} />
+                    <FeaturedCard
+                        key={project.title}
+                        project={project}
+                        open={Boolean(expanded[project.title])}
+                        onToggle={() => setExpanded((prev) => ({ ...prev, [project.title]: !prev[project.title] }))}
+                        reducedMotion={reducedMotion}
+                    />
                 ))}
             </Box>
             <Box sx={{ width: '100%', maxWidth: '1180px', margin: '0 auto', px: { xs: 2, md: 6 }, boxSizing: 'border-box', mt: 4 }}>

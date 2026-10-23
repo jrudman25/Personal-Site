@@ -1,7 +1,7 @@
 /**
  * Home.jsx
  * The main single-page layout: Hero, About, Skills, Projects, and Contact sections.
- * @version 2026.09.15
+ * @version 2026.10.21
  */
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import Typography from "@mui/material/Typography";
@@ -22,6 +22,7 @@ import Skills from './Skills';
 import AnimatedBox from './AnimatedBox';
 import Loading from './Loading';
 import self from './img/myself.jpg';
+import scrollToSection from './scrollToSection';
 
 const credentials = [
     { label: 'Seattle, WA, USA', icon: LocationOn },
@@ -229,12 +230,16 @@ const Home = () => {
                                 mb: 2,
                             }}
                         >
-                            I’m a software engineer building interactive applications, real-time systems, and AI-powered tools.
+                            I'm a software engineer building interactive applications, real-time systems, and AI-powered tools.
                         </Typography>
                         <Box sx={{ display: 'flex', gap: 1.5, flexWrap: 'wrap' }}>
                             <Button
                                 variant="contained"
                                 href="#projects"
+                                onClick={(event) => {
+                                    event.preventDefault();
+                                    scrollToSection('projects', prefersReducedMotion);
+                                }}
                                 endIcon={<ArrowForward />}
                                 sx={{
                                     backgroundColor: '#FFB84D',
@@ -248,6 +253,10 @@ const Home = () => {
                                     '&:hover': {
                                         backgroundColor: '#FFD18A',
                                         transform: 'translateY(-2px)',
+                                    },
+                                    '@media (prefers-reduced-motion: reduce)': {
+                                        transition: 'none',
+                                        '&:hover': { transform: 'none' },
                                     },
                                 }}
                             >
@@ -412,7 +421,7 @@ const Home = () => {
                                 }}
                             >
                                 <Typography sx={{ mb: 2, lineHeight: 1.8, color: 'rgba(255,255,255,0.82)' }}>
-                                    I'm a Seattle-based software engineer, originally from New York, with a BS in Computer Science from Virginia Tech and a minor in Human-Computer Interaction.
+                                    I'm Jordan Rudman, a Seattle-based software engineer with a BS in Computer Science and a minor in Human-Computer Interaction from Virginia Tech.
                                 </Typography>
                                 <Typography sx={{ mb: 2, lineHeight: 1.8, color: 'rgba(255,255,255,0.82)' }}>
                                     I work across interfaces and services: React and Next.js, Go and Node.js, real-time messaging, databases, authentication, and deployment.
