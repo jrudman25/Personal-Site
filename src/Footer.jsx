@@ -1,13 +1,15 @@
 /**
  * Footer.js
  * A small footer at the bottom of the page.
- * @version 2026.10.21
+ * @version 2026.10.22
  */
 import React from 'react';
 import Box from '@mui/material/Box';
 import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
 import Socials from './Socials';
+
+const currentYear = new Date().getFullYear();
 
 const Footer = () => {
 
@@ -20,7 +22,7 @@ const Footer = () => {
             <Typography
                 sx={{ color: 'white', marginBottom: '0.5rem', textAlign: 'center' }}
             >
-                Made with ♥ by me © {new Date().getFullYear()} |{' '}
+                Made with ♥ by me © {currentYear} |{' '}
                 <Link
                     href="https://github.com/jrudman25/Personal-Site"
                     target="_blank"

@@ -1,9 +1,9 @@
 /**
  * Home.jsx
  * The main single-page layout: Hero, About, Skills, Projects, and Contact sections.
- * @version 2026.10.21
+ * @version 2026.10.22
  */
-import React, { useState, useEffect, useCallback, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
@@ -76,43 +76,35 @@ const SectionHeader = ({ eyebrow, title, children, align = 'left' }) => (
 
 const Home = () => {
     const prefersReducedMotion = useMediaQuery('(prefers-reduced-motion: reduce)');
-    const [languageIndex, setLanguageIndex] = useState(0);
     const [displayedGreeting, setDisplayedGreeting] = useState("");
-    const greeting = languages[languageIndex];
-    const timeoutIds = useRef([]);
-
-    const typeGreeting = useCallback((index, currentIndex) => {
-        if (currentIndex !== languageIndex) {
-            return;
-        }
-
-        if (index < greeting.length) {
-            setDisplayedGreeting((prevGreeting) => prevGreeting + greeting[index]);
-            const id = setTimeout(() => typeGreeting(index + 1, currentIndex), 120);
-            timeoutIds.current.push(id);
-        } else {
-            const id = setTimeout(() => {
-                setDisplayedGreeting("");
-                setLanguageIndex((prevIndex) => (prevIndex + 1) % languages.length);
-            }, 1800);
-            timeoutIds.current.push(id);
-        }
-    }, [languageIndex, greeting]);
+    const greetingText = prefersReducedMotion ? languages[0] : displayedGreeting;
 
     useEffect(() => {
         if (prefersReducedMotion) {
-            setDisplayedGreeting('Hello');
             return undefined;
         }
 
-        setDisplayedGreeting("");
-        timeoutIds.current = [];
-        typeGreeting(0, languageIndex);
+        let timeoutId;
+        let languageIndex = 0;
 
-        return () => {
-            timeoutIds.current.forEach(clearTimeout);
-        };
-    }, [languageIndex, prefersReducedMotion, typeGreeting]);
+        function typeGreeting(characterIndex) {
+            const word = languages[languageIndex];
+            if (characterIndex < word.length) {
+                setDisplayedGreeting(word.slice(0, characterIndex + 1));
+                timeoutId = setTimeout(() => typeGreeting(characterIndex + 1), 120);
+                return;
+            }
+            timeoutId = setTimeout(() => {
+                setDisplayedGreeting("");
+                languageIndex = (languageIndex + 1) % languages.length;
+                typeGreeting(0);
+            }, 1800);
+        }
+
+        timeoutId = setTimeout(() => typeGreeting(0), 120);
+
+        return () => clearTimeout(timeoutId);
+    }, [prefersReducedMotion]);
 
     return (
         <Box
@@ -202,7 +194,7 @@ const Home = () => {
                                     Bonjour, I'm Jordan
                                 </Box>
                                 <Box component="span" sx={{ gridArea: 'text' }}>
-                                    {displayedGreeting || '\u00A0'}, I'm Jordan
+                                    {greetingText || '\u00A0'}, I'm Jordan
                                 </Box>
                             </Box>
                         </Typography>
