@@ -1,7 +1,7 @@
 /**
  * Contact.jsx
  * A call-to-action section inviting visitors to get in touch.
- * @version 2026.05.07
+ * @version 2026.10.21
  */
 import React from 'react';
 import Typography from "@mui/material/Typography";
@@ -10,6 +10,7 @@ import Box from "@mui/material/Box";
 import { styled } from '@mui/material/styles';
 import EmailIcon from '@mui/icons-material/Email';
 import DownloadIcon from '@mui/icons-material/Download';
+import EmailAction from './EmailAction';
 
 const StyledButton = styled(Button)({
     border: '1px solid rgba(255,255,255,0.28)',
@@ -25,6 +26,10 @@ const StyledButton = styled(Button)({
         backgroundColor: 'rgba(255,255,255,0.12)',
         borderColor: 'rgba(255,255,255,0.62)',
         transform: 'translateY(-2px)',
+    },
+    '@media (prefers-reduced-motion: reduce)': {
+        transition: 'none',
+        '&:hover': { transform: 'none' },
     },
 });
 
@@ -81,12 +86,7 @@ const Contact = () => {
                             width: '100%',
                         }}
                     >
-                        <StyledButton
-                            variant="outlined"
-                            href="mailto:jrud25@outlook.com"
-                        >
-                            Email Jordan
-                        </StyledButton>
+                        <EmailAction />
                         <StyledButton
                             variant="outlined"
                             href="https://www.linkedin.com/in/jordan-rudman/"
